@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+buildscript {
+    ext.kotlin_version = '1.3.31'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        //Gradle Android Maven plugin
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    Properties properties = new Properties()
+    InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+    properties.load(inputStream)
+
+    app = [
+            applicationId: "com.cgy.wandroid",
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion: 21,
+            androidSupportSdkVersion: "28.0.0",
+            targetSdkVersion: 28,
+            versionCode: 10,
+            versionName: "${versionNameValue}",
+            baseUrl: "${baseUrlValue}",
+            uploadFileUrl: "${uploadFileUrlValue}",
+            keyAlias: properties.getProperty('keyAlias'),
+            keyPassword: properties.getProperty('keyPassword'),
+            storePassword: properties.getProperty('storePassword'),
+            storeFile: "${rootDir.absolutePath}/jks/wandroid.jks",
+            channelFile: "docs/channel.txt"
+    ]
+}
+
+def getVersionNameValue() {
+    if (hasProperty('versionName') && versionName) {
+        return versionName
+    } else {
+        return '2.1.7'
+    }
+}
+
+def getBaseUrlValue() {
+    if (hasProperty('baseurl') && baseurl) {
+        return baseurl
+    } else {
+        return 'https://www.wanandroid.com'
+//    return 'http://192.168.10.151:8081/'
+//    return 'http://testseller.app.go2.cn/'
+    }
+}
+
+def getUploadFileUrlValue() {
+    if (hasProperty('uploadfileurl') && uploadfileurl) {
+        return uploadfileurl
+    } else {
+        return 'http://fabu.ximgs.net/'
+//        return 'http://192.168.10.35:43010/'
+    }
+}
+
+
