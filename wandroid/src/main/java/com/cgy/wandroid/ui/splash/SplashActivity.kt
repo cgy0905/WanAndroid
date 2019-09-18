@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui
+package com.cgy.wandroid.ui.splash
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 /**
  * @author: cgy
  * @description:
- * 2019/9/16 16:47
+ * @date: 2019/9/16 16:47
  */
 @Suppress("DEPRECATED_IDENTITY_EQUALS")
 class SplashActivity : BaseActivity<IPresenter>() {

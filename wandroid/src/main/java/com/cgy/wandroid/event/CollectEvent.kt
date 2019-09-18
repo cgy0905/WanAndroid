@@ -1,7 +1,9 @@
 package me.hegj.wandroid.app.event
 
+import com.cgy.wandroid.event.BaseEvent
 
-class CollectEvent :BaseEvent{
+
+class CollectEvent : BaseEvent {
     var collect = false //需要改变的值
     var id = 0 //收藏变化的id
     var tag = ""

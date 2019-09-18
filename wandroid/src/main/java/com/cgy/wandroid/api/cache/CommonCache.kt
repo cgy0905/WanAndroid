@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.hegj.wandroid.mvp.model.api.cache
+package com.cgy.wandroid.api.cache
 
 import io.rx_cache2.internal.RxCache
 

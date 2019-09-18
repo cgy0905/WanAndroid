@@ -29,7 +29,7 @@ android {
 
     signingConfigs {
         def alias = "wandroid"
-        def password = "password"
+        def password = "123456"
         def filePath = "wandroid.jks"
 
         debug {

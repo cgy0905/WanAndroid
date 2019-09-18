@@ -22,8 +22,9 @@ import retrofit2.http.*
 
 /**
  * 存放一些与 API 有关的东西,如请求地址,请求码等
- * @Author:         hegaojian
- * @CreateDate:     2019/8/4 15:28
+ * @author: cgy
+ * @description : 存放一些与 API 有关的东西,如请求地址,请求码等
+ * @date: 2019/9/17 15:28
  */
 interface Api {
 
@@ -43,7 +44,7 @@ interface Api {
      */
     @FormUrlEncoded
     @POST("/user/register")
-    fun register(@Field("username") username: String, @Field("password") pwd: String, @Field("repassword") rpwd: String): Observable<ApiResponse<Any>>
+    fun register(@Field("username") username: String, @Field("password") pwd: String, @Field("repassword") confirmPwd: String): Observable<ApiResponse<Any>>
 
 
     /**

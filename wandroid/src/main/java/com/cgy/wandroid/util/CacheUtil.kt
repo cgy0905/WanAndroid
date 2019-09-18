@@ -1,10 +1,10 @@
 package com.cgy.wandroid.util
 
 import android.text.TextUtils
+import com.cgy.wandroid.mvp.model.entity.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tencent.mmkv.MMKV
-import me.hegj.wandroid.mvp.model.entity.*
 
 object CacheUtil {
 

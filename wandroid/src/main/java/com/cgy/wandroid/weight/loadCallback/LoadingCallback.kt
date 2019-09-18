@@ -1,4 +1,4 @@
-package com.cgy.wandroid.weight
+package com.cgy.wandroid.weight.loadCallback
 
 import android.content.Context
 import android.view.View

@@ -107,10 +107,10 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
         }
     }
 
-    override fun onSucc(userinfo: UserInfoResponse) {
-        CacheUtil.setUser(userinfo)//保存账户信息
+    override fun onSuccess(userInfo: UserInfoResponse) {
+        CacheUtil.setUser(userInfo)//保存账户信息
         //保存账户与密码，在其他接口请求的时候当做Cookie传到Header中
-        LoginFreshEvent(true, userinfo.collectIds).post()//通知其他界面登录成功了，有收藏的地方需要刷新一下数据
+        LoginFreshEvent(true, userInfo.collectIds).post()//通知其他界面登录成功了，有收藏的地方需要刷新一下数据
         finish()
     }
 

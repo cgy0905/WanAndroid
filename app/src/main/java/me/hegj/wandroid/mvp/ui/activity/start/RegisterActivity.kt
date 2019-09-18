@@ -131,10 +131,10 @@ class RegisterActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
         }
     }
 
-    override fun onSucc(userinfo: UserInfoResponse) {
-        CacheUtil.setUser(userinfo)//保存账户信息
+    override fun onSuccess(userInfo: UserInfoResponse) {
+        CacheUtil.setUser(userInfo)//保存账户信息
         AppManager.getAppManager().killActivity(LoginActivity::class.java)
-        LoginFreshEvent(true, userinfo.collectIds).post()
+        LoginFreshEvent(true, userInfo.collectIds).post()
         finish()
     }
 

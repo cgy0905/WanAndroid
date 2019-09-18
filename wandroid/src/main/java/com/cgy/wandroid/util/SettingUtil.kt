@@ -98,20 +98,20 @@ object SettingUtil {
     }
 
     /**
-     * 设置shap文件的颜色
+     * 设置shape文件的颜色
      *
      * @param view
      * @param color
      */
-    fun setShapColor(view: View, color: Int) {
+    fun setShapeColor(view: View, color: Int) {
         val drawable = view.background as GradientDrawable
         drawable.setColor(color)
     }
 
     /**
-     * 设置shap的渐变颜色
+     * 设置shape的渐变颜色
      */
-    fun setShapColor(view: View, color:IntArray, orientation: GradientDrawable.Orientation){
+    fun setShapeColor(view: View, color:IntArray, orientation: GradientDrawable.Orientation){
         val drawable = view.background as GradientDrawable
         drawable.orientation = orientation//渐变方向
         drawable.colors = color//渐变颜色数组

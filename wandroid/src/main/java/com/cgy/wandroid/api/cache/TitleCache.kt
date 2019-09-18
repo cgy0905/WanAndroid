@@ -1,12 +1,13 @@
-package me.hegj.wandroid.mvp.model.api.cache
+package com.cgy.wandroid.api.cache
 
+import com.cgy.wandroid.mvp.model.entity.ApiResponse
+import com.cgy.wandroid.mvp.model.entity.ClassifyResponse
 import io.reactivex.Observable
 import io.rx_cache2.DynamicKey
 import io.rx_cache2.EvictProvider
 import io.rx_cache2.LifeCache
 import io.rx_cache2.Reply
-import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.ClassifyResponse
+
 import java.util.concurrent.TimeUnit
 
 interface TitleCache {

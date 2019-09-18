@@ -22,6 +22,7 @@ class LoginModel
 @Inject
 constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), LoginContract.Model{
 
+
     @Inject
     lateinit var mGson: Gson
     @Inject
@@ -30,20 +31,12 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun login(username: String, password: String): Observable<ApiResponse<UserInfoResponse>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .register(username, password, password))
-                .flatMap { apiResponseObservable ->
-                    apiResponseObservable
-                }
-    }
-
-    override fun register(username: String, password: String, password1: String): Observable<ApiResponse<Any>> {
-        return Observable.just(mRepositoryManager
-                .obtainRetrofitService(Api::class.java)
                 .login(username, password))
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

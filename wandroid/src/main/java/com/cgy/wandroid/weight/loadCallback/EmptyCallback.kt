@@ -1,7 +1,7 @@
-package me.hegj.wandroid.app.weight.loadCallBack
+package com.cgy.wandroid.weight.loadCallback
 
+import com.cgy.wandroid.R
 import com.kingja.loadsir.callback.Callback
-import me.hegj.wandroid.R
 
 /**
  * Description:TODO
