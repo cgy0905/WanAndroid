@@ -1,19 +1,19 @@
 package com.cgy.wandroid.di.module
 
-import com.jess.arms.di.scope.ActivityScope
+import com.jess.arms.di.scope.FragmentScope
 
 import dagger.Module
 import dagger.Provides
 
-import com.cgy.wandroid.mvp.contract.RegisterContract
-import com.cgy.wandroid.mvp.model.login.RegisterModel
+import com.cgy.wandroid.mvp.contract.HomeContract
+import com.cgy.wandroid.mvp.model.HomeModel
 
 
 /**
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 09/18/2019 14:00
+ * Created by MVPArmsTemplate on 09/19/2019 15:00
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -22,17 +22,17 @@ import com.cgy.wandroid.mvp.model.login.RegisterModel
  * ================================================
  */
 @Module
-//构建RegisterModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
-class RegisterModule(private val view: RegisterContract.View) {
-    @ActivityScope
+//构建HomeModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
+class HomeModule(private val view: HomeContract.View) {
+    @FragmentScope
     @Provides
-    fun provideRegisterView(): RegisterContract.View {
+    fun provideHomeView(): HomeContract.View {
         return this.view
     }
 
-    @ActivityScope
+    @FragmentScope
     @Provides
-    fun provideRegisterModel(model: RegisterModel): RegisterContract.Model {
+    fun provideHomeModel(model: HomeModel): HomeContract.Model {
         return model
     }
 }
