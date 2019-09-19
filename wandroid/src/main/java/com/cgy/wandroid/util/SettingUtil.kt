@@ -11,7 +11,7 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.preference.PreferenceManager
 import com.cgy.wandroid.R
-import com.cgy.wandroid.weight.LoadingCallback
+import com.cgy.wandroid.weight.loadCallback.LoadingCallback
 import com.jess.arms.utils.ArmsUtils
 import com.kingja.loadsir.core.LoadService
 import java.lang.reflect.InvocationTargetException

@@ -107,6 +107,7 @@ dependencies {
     implementation rootProject.ext.customLibs
 
     implementation 'cn.simonlee.widget:swipeback:1.0.15'
+    implementation 'com.blankj:utilcodex:1.25.9'
 }
 repositories {
     mavenCentral()

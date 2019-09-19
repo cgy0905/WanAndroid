@@ -62,5 +62,43 @@ constructor(model: LoginContract.Model, rootView: LoginContract.View) :
                 })
     }
 
+    fun register(username: String, password: String, confirmPwd: String) {
+        mModel.register(username, password, confirmPwd)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .doOnSubscribe {
+                    mRootView.showProgress()//显示加载框
+                }.subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
+                .doFinally {
+                    mRootView.closeProgress()//隐藏加载框
+                }
+                .flatMap {
+                    //转换，如果注册成功，直接调起登录，失败则跑出异常
+                    if (it.errorCode != -1) {
+                        mModel.login(username, password)
+                    } else {
+                        throw Exception(it.errorMsg)
+                    }
+                }
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<UserInfoResponse>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<UserInfoResponse>) {
+                        if (response.errorCode != -1) {
+                            mRootView.onSuccess(response.data)
+                        } else {
+                            mRootView.showMessage(response.errorMsg)
+                        }
+                    }
+                    override fun onError(t: Throwable) {
+                        super.onError(t)
+                        mRootView.showMessage(HttpUtils.getErrorText(t))
+                    }
+                })
+
+    }
+
 
 }

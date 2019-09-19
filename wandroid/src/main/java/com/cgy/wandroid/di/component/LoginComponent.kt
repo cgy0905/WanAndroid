@@ -2,6 +2,7 @@ package com.cgy.wandroid.di.component
 
 import com.cgy.wandroid.di.module.LoginModule
 import com.cgy.wandroid.ui.login.LoginActivity
+import com.cgy.wandroid.ui.login.RegisterActivity
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.di.scope.ActivityScope
 import dagger.Component
@@ -16,4 +17,6 @@ import dagger.Component
 interface LoginComponent {
 
     fun inject(activity: LoginActivity)
+
+    fun injectRegister(activity: RegisterActivity)
 }

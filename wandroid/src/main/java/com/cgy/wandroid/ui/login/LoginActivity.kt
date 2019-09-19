@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import butterknife.OnClick
+import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
 import com.cgy.wandroid.di.component.DaggerLoginComponent
@@ -17,7 +20,9 @@ import com.cgy.wandroid.mvp.model.entity.UserInfoResponse
 import com.cgy.wandroid.mvp.presenter.LoginPresenter
 import com.cgy.wandroid.util.CacheUtil
 import com.cgy.wandroid.util.SettingUtil
+import com.cgy.wandroid.weight.LoadingDialog
 import com.jess.arms.di.component.AppComponent
+import com.jess.arms.utils.Preconditions.checkNotNull
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 
@@ -27,7 +32,6 @@ import kotlinx.android.synthetic.main.include_toolbar.*
  * 2019/9/16 17:20
  */
 class LoginActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
-
 
     override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerLoginComponent.builder()
@@ -116,6 +120,30 @@ class LoginActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
                 startActivity(Intent(this, RegisterActivity::class.java))
             }
         }
+    }
+
+    override fun showProgress() {
+       LoadingDialog.show(this)
+    }
+
+    override fun closeProgress() {
+        LoadingDialog.dismiss()
+    }
+
+    override fun showMessage(message: String) {
+        if (TextUtils.isEmpty(message)) {
+            return
+        }
+        ToastUtils.showShort(message)
+    }
+
+    override fun launchActivity(intent: Intent) {
+        checkNotNull(intent)
+        ActivityUtils.startActivity(intent)
+    }
+
+    override fun killMyself() {
+        finish()
     }
 
     override fun onSuccess(userInfo: UserInfoResponse) {

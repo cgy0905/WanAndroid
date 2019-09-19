@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.main.MainActivity"></activity>
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,24 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:label="主页"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="登录"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-
         <activity android:name=".ui.error.ErrorActivity" />
-        <activity android:name=".ui.login.RegisterActivity" />
-
-
-        <!-- Arms 配置 -->
+        <activity android:name=".ui.login.RegisterActivity" /> <!-- Arms 配置 -->
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
@@ -51,13 +46,7 @@
             android:value="667" />
         <meta-data
             android:name="com.cgy.wandroid.app.GlobalConfiguration"
-            android:value="ConfigModule"/>
+            android:value="ConfigModule" />
     </application>
 
 </manifest>
-
-
-
-
-
-

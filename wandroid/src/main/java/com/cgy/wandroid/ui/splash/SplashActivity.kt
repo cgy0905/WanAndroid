@@ -6,9 +6,9 @@ import android.os.Build
 import android.os.Bundle
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import com.cgy.wandroid.MainActivity
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
+import com.cgy.wandroid.ui.main.MainActivity
 import com.cgy.wandroid.util.SettingUtil
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter

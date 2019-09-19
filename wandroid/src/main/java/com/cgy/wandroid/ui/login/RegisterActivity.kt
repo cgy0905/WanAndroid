@@ -1,26 +1,26 @@
 package com.cgy.wandroid.ui.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import butterknife.OnClick
+import com.blankj.utilcode.util.ToastUtils
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
-import com.cgy.wandroid.di.component.DaggerRegisterComponent
-import com.cgy.wandroid.di.module.RegisterModule
+import com.cgy.wandroid.di.component.DaggerLoginComponent
+import com.cgy.wandroid.di.module.LoginModule
 import com.cgy.wandroid.event.LoginFreshEvent
-import com.cgy.wandroid.mvp.contract.RegisterContract
+import com.cgy.wandroid.mvp.contract.LoginContract
 import com.cgy.wandroid.mvp.model.entity.UserInfoResponse
-import com.cgy.wandroid.mvp.presenter.RegisterPresenter
+import com.cgy.wandroid.mvp.presenter.LoginPresenter
 import com.cgy.wandroid.util.CacheUtil
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.weight.LoadingDialog
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.integration.AppManager
-import com.jess.arms.utils.ArmsUtils
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 
@@ -30,15 +30,15 @@ import kotlinx.android.synthetic.main.include_toolbar.*
  * @description:注册界面
  * @date: 2019/9/16 17:20
  */
-class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterContract.View {
+class RegisterActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
 
     override fun setupActivityComponent(appComponent: AppComponent) {
-        DaggerRegisterComponent //如找不到该类,请编译一下项目
+        DaggerLoginComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .registerModule(RegisterModule(this))
+                .loginModule(LoginModule(this))
                 .build()
-                .inject(this)
+                .injectRegister(this)
     }
 
 
@@ -152,8 +152,8 @@ class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterContract.Vie
         finish()
     }
 
-    override fun showProgress(message: String?) {
-        LoadingDialog.show(this, message)
+    override fun showProgress() {
+        LoadingDialog.show(this)
     }
 
     override fun closeProgress() {
@@ -161,14 +161,11 @@ class RegisterActivity : BaseActivity<RegisterPresenter>(), RegisterContract.Vie
     }
 
     override fun showMessage(message: String) {
-        ArmsUtils.snackbarText(message)
+        if (TextUtils.isEmpty(message)) {
+            return
+        }
+        ToastUtils.showShort(message)
     }
 
-    override fun launchActivity(intent: Intent) {
-        ArmsUtils.startActivity(intent)
-    }
 
-    override fun killMyself() {
-        finish()
-    }
 }
