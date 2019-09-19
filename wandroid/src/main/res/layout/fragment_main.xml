@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -19,4 +20,8 @@
         android:background="@color/white"
         app:menu="@menu/menu_navigation"/>
 
+=======
+    android:orientation="vertical">
+
+>>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 </LinearLayout>

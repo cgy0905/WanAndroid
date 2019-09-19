@@ -1,6 +1,7 @@
 package com.cgy.wandroid.mvp.presenter
 
 import android.app.Application
+<<<<<<< HEAD
 import com.cgy.wandroid.mvp.contract.MainContract
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.http.imageloader.ImageLoader
@@ -9,6 +10,18 @@ import com.jess.arms.mvp.BasePresenter
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import javax.inject.Inject
 
+=======
+
+import com.jess.arms.integration.AppManager
+import com.jess.arms.di.scope.ActivityScope
+import com.jess.arms.mvp.BasePresenter
+import com.jess.arms.http.imageloader.ImageLoader
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
+import javax.inject.Inject
+
+import com.cgy.wandroid.mvp.contract.MainContract
+
+>>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 
 /**
  * ================================================
@@ -22,7 +35,11 @@ import javax.inject.Inject
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
+<<<<<<< HEAD
 @FragmentScope
+=======
+@ActivityScope
+>>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 class MainPresenter
 @Inject
 constructor(model: MainContract.Model, rootView: MainContract.View) :

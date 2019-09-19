@@ -1,5 +1,5 @@
-package com.cgy.wandroid.ui.main.home
 
+package com.cgy.wandroid.ui.main.home
 
 import android.os.Bundle
 

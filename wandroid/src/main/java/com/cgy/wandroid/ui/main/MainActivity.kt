@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 package com.cgy.wandroid.ui.main
+=======
+package com.cgy.wandroid.ui
+>>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 
 import android.os.Bundle
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
 import com.cgy.wandroid.event.SettingChangeEvent
+<<<<<<< HEAD
+=======
+import com.cgy.wandroid.ui.fragment.MainFragment
+>>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 import com.cgy.wandroid.util.ShowUtil
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
