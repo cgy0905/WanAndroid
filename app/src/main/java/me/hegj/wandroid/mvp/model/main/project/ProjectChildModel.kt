@@ -10,7 +10,7 @@ import me.hegj.wandroid.mvp.contract.main.project.ProjectChildContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import javax.inject.Inject
 
 
@@ -29,7 +29,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
         super.onDestroy()
     }
 
-    override fun getProjects(pageNo: Int,cid:Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>> {
+    override fun getProjects(pageNo: Int,cid:Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getProjecDataByType(pageNo,cid))
@@ -38,7 +38,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
                 }
     }
 
-    override fun getNewProjects(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>> {
+    override fun getNewProjects(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getProjecNewData(pageNo))

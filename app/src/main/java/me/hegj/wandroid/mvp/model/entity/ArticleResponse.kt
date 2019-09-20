@@ -5,7 +5,7 @@ import java.io.Serializable
 /**
  * 文章
  */
-data class AriticleResponse(
+data class ArticleResponse(
         var apkLink: String,
         var author: String,//作者
         var chapterId: Int,

@@ -17,7 +17,7 @@ import javax.inject.Inject
 import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
 
@@ -58,8 +58,8 @@ constructor(model: TreeinfoContract.Model, rootView: TreeinfoContract.View) :
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))//fragment的绑定方式  使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>(mErrorHandler) {
-                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>) {
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>) {
                         if (response.isSucces()) {
                             mRootView.requestDataSucc(response.data)
                         } else {

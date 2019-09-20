@@ -1,4 +1,4 @@
-package com.cgy.wandroid.mvp.model
+package com.cgy.wandroid.mvp.model.main.pub
 
 import android.app.Application
 import com.google.gson.Gson
@@ -8,14 +8,14 @@ import com.jess.arms.mvp.BaseModel
 import com.jess.arms.di.scope.FragmentScope
 import javax.inject.Inject
 
-import com.cgy.wandroid.mvp.contract.HomeContract
+import com.cgy.wandroid.mvp.contract.PublicContract
 
 
 /**
  * ================================================
  * Description:
  * <p>
- * Created by MVPArmsTemplate on 09/19/2019 15:00
+ * Created by MVPArmsTemplate on 09/20/2019 11:31
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
@@ -24,9 +24,9 @@ import com.cgy.wandroid.mvp.contract.HomeContract
  * ================================================
  */
 @FragmentScope
-class HomeModel
+class PublicModel
 @Inject
-constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), HomeContract.Model {
+constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), PublicContract.Model {
     @Inject
     lateinit var mGson: Gson
     @Inject

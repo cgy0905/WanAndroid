@@ -2,7 +2,7 @@ package com.cgy.wandroid.di.module
 
 
 import com.cgy.wandroid.mvp.contract.MainContract
-import com.cgy.wandroid.mvp.model.MainModel
+import com.cgy.wandroid.mvp.model.main.MainModel
 import com.jess.arms.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides

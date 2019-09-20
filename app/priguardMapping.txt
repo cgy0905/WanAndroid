@@ -8917,14 +8917,14 @@ me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter -> me.hegj.wandroid.mvp.ui.adapt
     me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener mOnCollectViewClickListener -> K
     int access$getAriticle$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> a
     void convert(com.chad.library.adapter.base.BaseViewHolder,java.lang.Object) -> a
-    void convert(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.mvp.model.entity.AriticleResponse) -> a
+    void convert(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.mvp.model.entity.ArticleResponse) -> a
     void setOnCollectViewClickListener(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener) -> a
     me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener access$getMOnCollectViewClickListener$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> b
     int access$getProject$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> c
 me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$1 -> me.hegj.wandroid.mvp.ui.adapter.a:
     me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter this$0 -> d
     int getItemType(java.lang.Object) -> a
-    int getItemType(me.hegj.wandroid.mvp.model.entity.AriticleResponse) -> a
+    int getItemType(me.hegj.wandroid.mvp.model.entity.ArticleResponse) -> a
 me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener -> me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$a:
     void onClick(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.app.weight.CollectView,int) -> a
 me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$convert$2 -> me.hegj.wandroid.mvp.ui.adapter.b:
@@ -8987,7 +8987,7 @@ me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter$convert$$inlined$let$lambda$1 
     me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter this$0 -> f
     me.hegj.wandroid.mvp.model.entity.NavigationResponse $it$inlined -> e
     android.view.View getView(com.zhy.view.flowlayout.FlowLayout,int,java.lang.Object) -> a
-    android.view.View getView(com.zhy.view.flowlayout.FlowLayout,int,me.hegj.wandroid.mvp.model.entity.AriticleResponse) -> a
+    android.view.View getView(com.zhy.view.flowlayout.FlowLayout,int,me.hegj.wandroid.mvp.model.entity.ArticleResponse) -> a
 me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter$convert$$inlined$let$lambda$2 -> me.hegj.wandroid.mvp.ui.adapter.i:
     me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter this$0 -> b
     me.hegj.wandroid.mvp.model.entity.NavigationResponse $it$inlined -> a

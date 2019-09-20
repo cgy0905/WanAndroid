@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.Provides
 
 import com.cgy.wandroid.mvp.contract.HomeContract
-import com.cgy.wandroid.mvp.model.HomeModel
+import com.cgy.wandroid.mvp.model.main.home.HomeModel
 
 /**
  * Description

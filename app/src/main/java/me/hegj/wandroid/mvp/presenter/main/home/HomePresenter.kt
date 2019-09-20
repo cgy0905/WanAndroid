@@ -1,26 +1,25 @@
 package me.hegj.wandroid.mvp.presenter.main.home
 
 import android.app.Application
-import android.util.Log
-import androidx.lifecycle.LifecycleOwner
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
 import me.hegj.wandroid.app.utils.SettingUtil
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.home.HomeContract
-import me.hegj.wandroid.mvp.model.entity.*
+import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
+import me.hegj.wandroid.mvp.model.entity.ApiResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
+import me.hegj.wandroid.mvp.model.entity.BannerResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -53,7 +52,7 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
      * 获取首页banner数据
      */
     fun getBanner() {
-        mModel.getBannList()
+        mModel.getBannerList()
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -62,7 +61,7 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<MutableList<BannerResponse>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<MutableList<BannerResponse>>) {
                         if (response.isSucces()) {
-                            mRootView.requestBannerSucces(response.data)
+                            mRootView.requestBannerSuccess(response.data)
                         }
                     }
                 })
@@ -71,55 +70,55 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
     /**
      * 获取文章列表集合数据
      */
-    fun getAriList(pageNo: Int) {
-        var data: ApiPagerResponse<MutableList<AriticleResponse>>
-        mModel.getArilist(pageNo)
+    fun getArticleList(pageNo: Int) {
+        var data: ApiPagerResponse<MutableList<ArticleResponse>>
+        mModel.getArticleList(pageNo)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindUntilEvent(mRootView,FragmentEvent.DESTROY))//fragment的绑定方式 使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>(mErrorHandler) {
-                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>) {
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>) {
                         if (response.isSucces()) {
                             data = response.data
                             if (SettingUtil.getRequestTop(mApplication) && pageNo == 0) {
                                 //如果设置的时获取置顶文章，并且当前请求是第一页的话----获取首页置顶文章
-                                mModel.getTopArilist()
+                                mModel.getTopArticleList()
                                         .subscribeOn(Schedulers.io())
                                         .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                                         .subscribeOn(AndroidSchedulers.mainThread())
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .compose(RxLifecycleUtils.bindUntilEvent(mRootView,FragmentEvent.DESTROY))//使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                                        .subscribe(object : ErrorHandleSubscriber<ApiResponse<MutableList<AriticleResponse>>>(mErrorHandler) {
-                                            override fun onNext(response: ApiResponse<MutableList<AriticleResponse>>) {
+                                        .subscribe(object : ErrorHandleSubscriber<ApiResponse<MutableList<ArticleResponse>>>(mErrorHandler) {
+                                            override fun onNext(response: ApiResponse<MutableList<ArticleResponse>>) {
                                                 if (response.isSucces()) {
-                                                    //获取置顶文章成功，吧数据插到前面
+                                                    //获取置顶文章成功，把数据插到前面
                                                     data.datas.addAll(0, response.data)
-                                                    mRootView.requestAritilSucces(data)
+                                                    mRootView.requestArticleSuccess(data)
                                                 } else {
                                                     //获取置顶文章失败，那就不管他了
-                                                    mRootView.requestAritilSucces(data)
+                                                    mRootView.requestArticleSuccess(data)
                                                 }
                                             }
 
                                             override fun onError(t: Throwable) {
                                                 super.onError(t)
                                                 //获取置顶文章失败，那就不管他了
-                                                mRootView.requestAritilSucces(data)
+                                                mRootView.requestArticleSuccess(data)
                                             }
                                         })
                             } else {
-                                mRootView.requestAritilSucces(response.data)
+                                mRootView.requestArticleSuccess(response.data)
                             }
                         } else {
-                            mRootView.requestAritilFaild(response.errorMsg)
+                            mRootView.requestArticleFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestAritilFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestArticleFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -158,7 +157,7 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
      * 取消收藏
      */
     fun uncollect(id:Int,position:Int) {
-        mModel.uncollect(id)
+        mModel.unCollect(id)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())

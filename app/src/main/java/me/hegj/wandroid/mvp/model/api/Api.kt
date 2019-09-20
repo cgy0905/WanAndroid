@@ -56,13 +56,13 @@ interface Api {
      * 获取置顶文章集合数据
      */
     @GET("/article/top/json")
-    fun getTopAritrilList(): Observable<ApiResponse<MutableList<AriticleResponse>>>
+    fun getTopAritrilList(): Observable<ApiResponse<MutableList<ArticleResponse>>>
 
     /**
      * 获取首页文章数据
      */
     @GET("/article/list/{page}/json")
-    fun getAritrilList(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getAritrilList(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 收藏
@@ -87,13 +87,13 @@ interface Api {
      * 根据分类id获取项目数据
      */
     @GET("/project/list/{page}/json")
-    fun getProjecDataByType(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getProjecDataByType(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 获取最新项目数据
      */
     @GET("/article/listproject/{page}/json")
-    fun getProjecNewData(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getProjecNewData(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 公众号分类
@@ -105,7 +105,7 @@ interface Api {
      * 获取公众号数据
      */
     @GET("/wxarticle/list/{id}/{page}/json")
-    fun getPublicNewData(@Path("page") pageNo: Int, @Path("id") id: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getPublicNewData(@Path("page") pageNo: Int, @Path("id") id: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
 
     /**
@@ -118,7 +118,7 @@ interface Api {
      * 根据关键词搜索数据
      */
     @POST("/article/query/{page}/json")
-    fun getSearchDataByKey(@Path("page") pageNo: Int, @Query("k") searchKey: String): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getSearchDataByKey(@Path("page") pageNo: Int, @Query("k") searchKey: String): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 获取体系数据
@@ -130,7 +130,7 @@ interface Api {
      * 知识体系下的文章数据
      */
     @GET("/article/list/{page}/json")
-    fun getAritrilDataByTree(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>
+    fun getAritrilDataByTree(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 获取导航数据
@@ -165,7 +165,7 @@ interface Api {
     /**
      * 取消收藏
      */
-    @POST("/lg/uncollect/{id}/json")
+    @POST("/lg/unCollect/{id}/json")
     fun uncollectList(@Path("id") id: Int, @Query("originId") originId: Int): Observable<ApiResponse<Any>>
 
     /**

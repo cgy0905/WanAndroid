@@ -1,7 +1,6 @@
 package me.hegj.wandroid.app.weight
 
 import android.annotation.SuppressLint
-import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
@@ -10,11 +9,10 @@ import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.ProgressBar
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.include_recyclerview.*
-import kotlinx.android.synthetic.main.layout_fotter_loadmore.view.*
+import android.widget.ProgressBar
+import android.widget.TextView
+import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import me.hegj.wandroid.R
 import me.hegj.wandroid.app.utils.SettingUtil
 
@@ -28,7 +26,7 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
 
     private var mLoadMoreListener: SwipeRecyclerView.LoadMoreListener? = null
 
-    fun setmLoadMoreListener(mLoadMoreListener: SwipeRecyclerView.LoadMoreListener) {
+    fun setLoadMoreListener(mLoadMoreListener: SwipeRecyclerView.LoadMoreListener) {
         this.mLoadMoreListener = mLoadMoreListener
     }
 
@@ -109,7 +107,7 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
         visibility = View.VISIBLE
         mProgressBar.visibility = View.GONE
         mTvMessage.visibility = View.VISIBLE
-        // 这里要不直接设置错误信息，要不根据errorCode动态设置错误数据。
+        // 这里不直接设置错误信息，要根据errorCode动态设置错误数据
         mTvMessage.text = errorMessage
         Log.i("hgj","加载失败啦")
     }
@@ -126,10 +124,10 @@ class DefineLoadMoreView(context: Context) : LinearLayout(context), SwipeRecycle
             }
         }
     }
-    fun setLoadViewColor(colorstatelist: ColorStateList){
+    fun setLoadViewColor(colorStateList: ColorStateList){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.indeterminateTintMode = PorterDuff.Mode.SRC_ATOP
-            mProgressBar.indeterminateTintList = colorstatelist
+            mProgressBar.indeterminateTintList = colorStateList
         }
     }
 }

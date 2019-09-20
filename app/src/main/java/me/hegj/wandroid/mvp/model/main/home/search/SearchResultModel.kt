@@ -13,7 +13,7 @@ import me.hegj.wandroid.mvp.contract.main.home.search.SearchResultContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 
 
 /**
@@ -38,7 +38,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     lateinit var mApplication: Application
 
 
-    override fun getArilist(pageNo: Int,searchKey:String): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>> {
+    override fun getArilist(pageNo: Int,searchKey:String): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getSearchDataByKey(pageNo,searchKey))

@@ -32,7 +32,7 @@ import me.hegj.wandroid.di.component.main.home.search.DaggerSearchResultComponen
 import me.hegj.wandroid.di.module.main.home.search.SearchResultModule
 import me.hegj.wandroid.mvp.contract.main.home.search.SearchResultContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.home.search.SearchResultPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
@@ -163,7 +163,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
      * 获取文章数据成功
      */
     @SuppressLint("RestrictedApi")
-    override fun requestAritilSucces(ariticles: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestAritilSucces(ariticles: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && ariticles.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局

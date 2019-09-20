@@ -40,7 +40,7 @@ import me.hegj.wandroid.di.component.main.home.DaggerHomeComponent
 import me.hegj.wandroid.di.module.main.home.HomeModule
 import me.hegj.wandroid.mvp.contract.main.home.HomeContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.presenter.main.home.HomePresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
@@ -57,7 +57,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
     private var initPageNo = 0 //注意，主页的页码是从0开始的！！！！！
     var pageNo = initPageNo
     lateinit var adapter: AriticleAdapter
-    lateinit var loadsir: LoadService<Any>
+    lateinit var loadSir: LoadService<Any>
     private var footView: DefineLoadMoreView? = null
 
     companion object {
@@ -81,18 +81,18 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val rootview = inflater.inflate(R.layout.fragment_home, container, false)
-        //绑定loadsir
-        loadsir = LoadSir.getDefault().register(rootview.findViewById(R.id.swipeRefreshLayout)) {
+        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
+        //绑定loadSir
+        loadSir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipeRefreshLayout)) {
             //界面加载失败，或者没有数据时，点击重试的监听
-            loadsir.showCallback(LoadingCallback::class.java)
+            loadSir.showCallback(LoadingCallback::class.java)
             pageNo = initPageNo
             mPresenter?.getBanner()
-            mPresenter?.getAriList(pageNo)
+            mPresenter?.getArticleList(pageNo)
         }.apply {
             SettingUtil.setLoadingColor(_mActivity, this)
         }
-        return rootview
+        return rootView
     }
 
     /**
@@ -160,13 +160,13 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
             setOnRefreshListener {
                 //刷新
                 pageNo = initPageNo
-                mPresenter?.getAriList(pageNo)
+                mPresenter?.getArticleList(pageNo)
             }
         }
         //初始化recyclerview
         footView = RecyclerViewUtils().initRecyclerView(_mActivity, swiperecyclerview, SwipeRecyclerView.LoadMoreListener {
             //加载更多
-            mPresenter?.getAriList(pageNo)
+            mPresenter?.getArticleList(pageNo)
         }).apply {
             setLoadViewColor(SettingUtil.getOneColorStateList(_mActivity))
         }
@@ -189,16 +189,16 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
      */
     override fun onLazyInitView(savedInstanceState: Bundle?) {
         super.onLazyInitView(savedInstanceState)
-        loadsir.showCallback(LoadingCallback::class.java)//默认设置界面加载中
+        loadSir.showCallback(LoadingCallback::class.java)//默认设置界面加载中
         swiperecyclerview.adapter = adapter
         mPresenter?.getBanner()
-        mPresenter?.getAriList(pageNo)
+        mPresenter?.getArticleList(pageNo)
     }
 
     /**
      * 获取banner数据成功
      */
-    override fun requestBannerSucces(banners: MutableList<BannerResponse>) {
+    override fun requestBannerSuccess(banners: MutableList<BannerResponse>) {
         //获取banner页面，并赋值,设置监听
         val view = LayoutInflater.from(_mActivity).inflate(R.layout.include_banner, null).apply {
             banner.run {
@@ -230,23 +230,23 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
      * 获取文章数据成功
      */
     @SuppressLint("RestrictedApi")
-    override fun requestAritilSucces(ariticles: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestArticleSuccess(articles: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
-        if (pageNo == initPageNo && ariticles.datas.size == 0) {
+        if (pageNo == initPageNo && articles.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
-            loadsir.showCallback(EmptyCallback::class.java)
+            loadSir.showCallback(EmptyCallback::class.java)
         } else if (pageNo == initPageNo) {
-            loadsir.showSuccess()
+            loadSir.showSuccess()
             //如果是刷新的话，floatbutton就要隐藏了，因为这时候肯定是要在顶部的
             floatbtn.visibility = View.INVISIBLE
-            adapter.setNewData(ariticles.datas)
+            adapter.setNewData(articles.datas)
         } else {
             //不是第一页
-            loadsir.showSuccess()
-            adapter.addData(ariticles.datas)
+            loadSir.showSuccess()
+            adapter.addData(articles.datas)
         }
         pageNo++
-        if (ariticles.pageCount >= pageNo) {
+        if (articles.pageCount >= pageNo) {
             //如果总条数大于当前页数时 还有更多数据
             swiperecyclerview.loadMoreFinish(false, true)
         } else {
@@ -264,16 +264,16 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
     /**
      * 获取文章数据失败
      */
-    override fun requestAritilFaild(errorMsg: String) {
+    override fun requestArticleFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页
-            loadsir.setCallBack(ErrorCallback::class.java) { _, view ->
+            loadSir.setCallBack(ErrorCallback::class.java) { _, view ->
                 //设置错误页文字错误提示
                 view.findViewById<TextView>(R.id.error_text).text = errorMsg
             }
             //设置错误
-            loadsir.showCallback(ErrorCallback::class.java)
+            loadSir.showCallback(ErrorCallback::class.java)
         } else {
             //页码不是0 说明是加载更多时出现的错误，设置recyclerview加载错误，
             swiperecyclerview.loadMoreError(0, errorMsg)
@@ -344,7 +344,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
         toolbar.setBackgroundColor(SettingUtil.getColor(_mActivity))
         floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
         swipeRefreshLayout.setColorSchemeColors(SettingUtil.getColor(_mActivity))
-        SettingUtil.setLoadingColor(_mActivity, loadsir)
+        SettingUtil.setLoadingColor(_mActivity, loadSir)
         footView?.setLoadViewColor(SettingUtil.getOneColorStateList(_mActivity))
         if (SettingUtil.getListMode(_mActivity) != 0) {
             adapter.openLoadAnimation(SettingUtil.getListMode(_mActivity))

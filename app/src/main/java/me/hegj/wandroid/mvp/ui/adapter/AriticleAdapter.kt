@@ -9,37 +9,37 @@ import com.jess.arms.http.imageloader.glide.ImageConfigImpl
 import com.jess.arms.utils.ArmsUtils
 import me.hegj.wandroid.R
 import me.hegj.wandroid.app.weight.CollectView
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 
 
-class AriticleAdapter(data: ArrayList<AriticleResponse>?) : BaseQuickAdapter<AriticleResponse, BaseViewHolder>(data) {
+class AriticleAdapter(data: ArrayList<ArticleResponse>?) : BaseQuickAdapter<ArticleResponse, BaseViewHolder>(data) {
     private var mOnCollectViewClickListener: OnCollectViewClickListener? = null
-    private val Ariticle = 1//文章类型
+    private val Article = 1//文章类型
     private val Project = 2//项目类型 本来打算不区分文章和项目布局用统一布局的，但是布局完以后发现差异化蛮大的，所以还是分开吧
     private var showTag = false//是否展示标签 tag 一般主页才用的到
 
-    constructor(data: ArrayList<AriticleResponse>?, showTag: Boolean) : this(data) {
+    constructor(data: ArrayList<ArticleResponse>?, showTag: Boolean) : this(data) {
         this.showTag = showTag
     }
 
     init {
         //初始化
-        multiTypeDelegate = object : MultiTypeDelegate<AriticleResponse>() {
-            override fun getItemType(entity: AriticleResponse): Int {
+        multiTypeDelegate = object : MultiTypeDelegate<ArticleResponse>() {
+            override fun getItemType(entity: ArticleResponse): Int {
                 //根据是否有图片 判断为文章还是项目，好像有点low的感觉。。。我看实体类好像没有相关的字段，就用了这个，也有可能是我没发现
-                return if (TextUtils.isEmpty(entity.envelopePic)) Ariticle else Project
+                return if (TextUtils.isEmpty(entity.envelopePic)) Article else Project
             }
         }
         //注册多布局
         multiTypeDelegate
-                .registerItemType(Ariticle, R.layout.item_ariticle)
+                .registerItemType(Article, R.layout.item_article)
                 .registerItemType(Project, R.layout.item_project)
     }
 
-    override fun convert(helper: BaseViewHolder, item: AriticleResponse?) {
+    override fun convert(helper: BaseViewHolder, item: ArticleResponse?) {
         if (item != null) {
             when (helper.itemViewType) {
-                Ariticle -> {
+                Article -> {
                     //文章布局的赋值
                     item.run{
                         helper.setText(R.id.item_home_author, author)

@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 import com.cgy.wandroid.mvp.contract.ProjectContract
-import com.cgy.wandroid.mvp.model.ProjectModel
+import com.cgy.wandroid.mvp.model.main.project.ProjectModel
 
 
 /**

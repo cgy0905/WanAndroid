@@ -16,7 +16,6 @@ import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -35,7 +34,7 @@ import me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent
 import me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule
 import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
@@ -172,7 +171,7 @@ class TreeinfoFragment : BaseFragment<TreeinfoPresenter>(), TreeinfoContract.Vie
     }
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局

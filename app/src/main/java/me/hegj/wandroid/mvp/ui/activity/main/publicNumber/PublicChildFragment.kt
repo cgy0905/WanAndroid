@@ -34,7 +34,7 @@ import me.hegj.wandroid.di.component.main.publicNumber.DaggerPublicChildComponen
 import me.hegj.wandroid.di.module.main.publicNumber.PublicChildModule
 import me.hegj.wandroid.mvp.contract.main.publicNumber.PublicChildContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.publicNumber.PublicChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
@@ -172,7 +172,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
 
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局

@@ -14,9 +14,6 @@ import com.jess.arms.integration.AppManager
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_webview.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import me.hegj.wandroid.R
 import me.hegj.wandroid.app.event.CollectEvent
 import me.hegj.wandroid.app.event.LoginFreshEvent
@@ -24,12 +21,11 @@ import me.hegj.wandroid.app.utils.CacheUtil
 import me.hegj.wandroid.di.component.web.DaggerWebviewComponent
 import me.hegj.wandroid.di.module.web.WebviewModule
 import me.hegj.wandroid.mvp.contract.web.WebviewContract
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.model.entity.CollectResponse
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
 import me.hegj.wandroid.mvp.model.entity.enums.CollectType
-import me.hegj.wandroid.mvp.model.entity.enums.TodoType
 import me.hegj.wandroid.mvp.presenter.web.WebviewPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
 import me.hegj.wandroid.mvp.ui.activity.start.LoginActivity
@@ -64,7 +60,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
         //因为有多个地方进入详情且数据结构不同，如文章，轮播页，收藏文章列表，收藏网址列表等，做收藏的话需要判断，这里搞了感觉很多余的处理
         //点击文章进来的
         intent.getSerializableExtra("data")?.let {
-            it as AriticleResponse
+            it as ArticleResponse
             id = it.id
             //替换掉部分数据可能包含的网页标签
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")

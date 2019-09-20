@@ -1,4 +1,4 @@
-package com.cgy.wandroid.mvp.model
+package com.cgy.wandroid.mvp.model.main.project
 
 import android.app.Application
 import com.google.gson.Gson
