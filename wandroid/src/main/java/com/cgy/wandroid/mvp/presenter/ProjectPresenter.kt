@@ -1,7 +1,7 @@
 package com.cgy.wandroid.mvp.presenter
 
 import android.app.Application
-<<<<<<< HEAD
+
 import com.cgy.wandroid.mvp.contract.ProjectContract
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.http.imageloader.ImageLoader
@@ -9,19 +9,6 @@ import com.jess.arms.integration.AppManager
 import com.jess.arms.mvp.BasePresenter
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import javax.inject.Inject
-
-=======
-
-import com.jess.arms.integration.AppManager
-import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
-import com.jess.arms.http.imageloader.ImageLoader
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
-import com.cgy.wandroid.mvp.contract.ProjectContract
-
->>>>>>> 1bc58334706fab8674aff54e0b74facf453229f4
 
 /**
  * ================================================
