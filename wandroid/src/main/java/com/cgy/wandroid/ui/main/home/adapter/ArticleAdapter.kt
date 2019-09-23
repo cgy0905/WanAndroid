@@ -36,7 +36,16 @@ class ArticleAdapter(data : ArrayList<ArticleResponse>?) : BaseQuickAdapter<Arti
                 .registerItemType(ITEM_PROJECT, R.layout.item_project)
     }
 
-    override fun convert(helper: BaseViewHolder?, item: ArticleResponse?) {
-
+    override fun convert(helper: BaseViewHolder, item: ArticleResponse?) {
+        if (item != null) {
+            when (helper.itemViewType) {
+                ITEM_ARTICLE -> {
+                    //文章布局的赋值
+                    item.run {
+                        helper.setText(R.id.)
+                    }
+                }
+            }
+        }
     }
 }
