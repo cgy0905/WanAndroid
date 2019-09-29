@@ -121,8 +121,8 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     //点击爱心收藏执行操作
                     if (v.isChecked) {
-                        //注意了，这里因为我的recyclerview添加了头部，所以这个索引要减去头部的count才是实际的position
-                        mPresenter?.uncollect(data[position - swiperecyclerview.headerCount].id, position - swiperecyclerview.headerCount)
+                        //注意了，这里因为我的RecyclerView添加了头部，所以这个索引要减去头部的count才是实际的position
+                        mPresenter?.unCollect(data[position - swiperecyclerview.headerCount].id, position - swiperecyclerview.headerCount)
                     } else {
                         mPresenter?.collect(data[position - swiperecyclerview.headerCount].id, position - swiperecyclerview.headerCount)
                     }

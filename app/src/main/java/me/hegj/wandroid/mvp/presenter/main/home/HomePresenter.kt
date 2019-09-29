@@ -132,7 +132,7 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(RxLifecycleUtils.bindUntilEvent(mRootView,FragmentEvent.DESTROY))//fragment的绑定方式  使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
+                .compose(RxLifecycleUtils.bindUntilEvent(mRootView,FragmentEvent.DESTROY))//fragment的绑定方式  使用 RxLifecycle,使 Disposable 和 Activity 一起销毁
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
@@ -156,7 +156,7 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
     /**
      * 取消收藏
      */
-    fun uncollect(id:Int,position:Int) {
+    fun unCollect(id:Int, position:Int) {
         mModel.unCollect(id)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔

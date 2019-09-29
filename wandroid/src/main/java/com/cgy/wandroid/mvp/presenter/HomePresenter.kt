@@ -124,6 +124,69 @@ constructor(model: HomeContract.Model, rootView: HomeContract.View) :
                 })
     }
 
+
+    /**
+     * 收藏
+     */
+    fun collect(id: Int, position: Int) {
+        mModel.collect(id)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))//fragment的绑定方式  使用 RxLifecycle,使 Disposable 和 Activity 一起销毁
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<Any>) {
+                       if (response.isSucces()) {
+                           //收藏成功
+                           mRootView.collect(true, position)
+                       }  else {
+                           //收藏失败
+                           mRootView.collect(false, position)
+                           mRootView.showMessage(response.errorMsg)
+                       }
+                    }
+
+                    override fun onError(t: Throwable) {
+                        super.onError(t)
+                        //收藏失败
+                        mRootView.collect(false, position)
+                        mRootView.showMessage(HttpUtils.getErrorText(t))
+                    }
+                })
+    }
+
+    /**
+     * 取消收藏
+     */
+    fun unCollect(id: Int, position: Int) {
+        mModel.unCollect(id)
+                .subscribeOn(Schedulers.io())
+                .retryWhen(RetryWithDelay(1, 0))
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<Any>) {
+                        if (response.isSucces()) {
+                             //取消收藏成功
+                            mRootView.collect(false, position)
+                        } else {
+                            //取消收藏失败
+                            mRootView.collect(true, position)
+                            mRootView.showMessage(response.errorMsg)
+                        }
+                    }
+
+                    override fun onError(t: Throwable) {
+                        super.onError(t)
+                        //取消收藏失败
+                        mRootView.collect(true, position)
+                        mRootView.showMessage(HttpUtils.getErrorText(t))
+                    }
+                })
+    }
+
     override fun onDestroy() {
         super.onDestroy()
     }

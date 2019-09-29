@@ -1,13 +1,18 @@
-package me.hegj.wandroid.app.utils
+package com.cgy.wandroid.util
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cgy.wandroid.weight.DefineLoadMoreView
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import me.hegj.wandroid.app.weight.DefineLoadMoreView
 
+/**
+ * @author: cgy
+ * @description:
+ * @date: 2019/9/24 13:40
+ */
 class RecyclerViewUtils {
 
-    fun  initRecyclerView(context:Context, recyclerView:SwipeRecyclerView, loadMoreListener: SwipeRecyclerView.LoadMoreListener):DefineLoadMoreView{
+    fun initRecyclerView(context: Context, recyclerView : SwipeRecyclerView, loadMoreListener: SwipeRecyclerView.LoadMoreListener) : DefineLoadMoreView {
         val footerView = DefineLoadMoreView(context)
         recyclerView.addFooterView(footerView)
         recyclerView.setLoadMoreView(footerView)//添加加载更多尾部
@@ -21,5 +26,4 @@ class RecyclerViewUtils {
         })
         return footerView
     }
-
 }
