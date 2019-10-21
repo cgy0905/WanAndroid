@@ -38,14 +38,14 @@ import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.publicNumber.PublicChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
 class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildContract.View {
 
     lateinit var loadsir: LoadService<Any>
-    lateinit var adapter: AriticleAdapter
+    lateinit var adapter: ArticleAdapter
     private var initPageNo = 1 //注意，公众号页码从 1开始的 ！！！！
     private var pageNo: Int = initPageNo
     private var cid: Int = 0
@@ -98,14 +98,14 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
         }
 
         //初始化adapter
-        adapter = AriticleAdapter(arrayListOf()).apply {
+        adapter = ArticleAdapter(arrayListOf()).apply {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
             } else {
                 closeLoadAnimation()
             }
             //点击爱心收藏执行操作
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     if (v.isChecked) {
                         mPresenter?.uncollect(adapter.data[position].id, position)

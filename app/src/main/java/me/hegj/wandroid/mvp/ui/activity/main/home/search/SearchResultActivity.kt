@@ -36,7 +36,7 @@ import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.home.search.SearchResultPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
@@ -50,7 +50,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
     var pageNo = initPageNo
     lateinit var loadsir: LoadService<Any>
     lateinit var searchKey: String//搜索关键词
-    lateinit var ariticleAdapter: AriticleAdapter//适配器
+    lateinit var articleAdapter: ArticleAdapter//适配器
     private var footView: DefineLoadMoreView? = null
     override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerSearchResultComponent //如找不到该类,请编译一下项目
@@ -85,13 +85,13 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
             showCallback(LoadingCallback::class.java)
         }
         //初始化adapter 并设置监听
-        ariticleAdapter = AriticleAdapter(arrayListOf(), true).apply {
+        articleAdapter = ArticleAdapter(arrayListOf(), true).apply {
             if (SettingUtil.getListMode(this@SearchResultActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(this@SearchResultActivity))
             } else {
                 closeLoadAnimation()
             }
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     //点击爱心收藏执行操作
                     if (v.isChecked) {
@@ -145,7 +145,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
 
         //监听recyclerview滑动到顶部的时候，需要把向上返回顶部的按钮隐藏
         swiperecyclerview.run {
-            adapter = ariticleAdapter
+            adapter = articleAdapter
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 @SuppressLint("RestrictedApi")
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -172,11 +172,11 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
             loadsir.showSuccess()
             //如果是刷新的话，floatbutton就要隐藏了，因为这时候肯定是要在顶部的
             floatbtn.visibility = View.INVISIBLE
-            ariticleAdapter.setNewData(ariticles.datas)
+            articleAdapter.setNewData(ariticles.datas)
         } else {
             //不是第一页
             loadsir.showSuccess()
-            ariticleAdapter.addData(ariticles.datas)
+            articleAdapter.addData(ariticles.datas)
         }
         pageNo++
         if (ariticles.pageCount >= pageNo) {
@@ -217,7 +217,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
      * 收藏文章回调
      */
     override fun collect(collected: Boolean, position: Int) {
-        CollectEvent(collected, ariticleAdapter.data[position].id).post()
+        CollectEvent(collected, articleAdapter.data[position].id).post()
     }
 
     /**
@@ -228,7 +228,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
         //如果是登录了， 当前界面的数据与账户收藏集合id匹配的值需要设置已经收藏
         if (event.login) {
             event.collectIds.forEach {
-                for (item in ariticleAdapter.data) {
+                for (item in articleAdapter.data) {
                     if (item.id == it.toInt()) {
                         item.collect = true
                         break
@@ -237,11 +237,11 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
             }
         } else {
             //退出了，把所有的收藏全部变为未收藏
-            for (item in ariticleAdapter.data) {
+            for (item in articleAdapter.data) {
                 item.collect = false
             }
         }
-        ariticleAdapter.notifyDataSetChanged()
+        articleAdapter.notifyDataSetChanged()
     }
 
     /**
@@ -253,9 +253,9 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
         GlobalScope.launch {
             async {
                 var indexResult = -1
-                for (index in ariticleAdapter.data.indices) {
-                    if (ariticleAdapter.data[index].id == event.id) {
-                        ariticleAdapter.data[index].collect = event.collect
+                for (index in articleAdapter.data.indices) {
+                    if (articleAdapter.data[index].id == event.id) {
+                        articleAdapter.data[index].collect = event.collect
                         indexResult = index
                         break
                     }
@@ -263,7 +263,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
                 indexResult
             }.run {
                 if (await() != -1) {
-                    ariticleAdapter.notifyItemChanged(await())
+                    articleAdapter.notifyItemChanged(await())
                 }
             }
         }

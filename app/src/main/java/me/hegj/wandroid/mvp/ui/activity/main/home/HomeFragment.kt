@@ -46,7 +46,7 @@ import me.hegj.wandroid.mvp.presenter.main.home.HomePresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.main.home.search.SearchActivity
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
@@ -56,7 +56,7 @@ import org.greenrobot.eventbus.Subscribe
 class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
     private var initPageNo = 0 //注意，主页的页码是从0开始的！！！！！
     var pageNo = initPageNo
-    lateinit var adapter: AriticleAdapter
+    lateinit var adapter: ArticleAdapter
     lateinit var loadSir: LoadService<Any>
     private var footView: DefineLoadMoreView? = null
 
@@ -111,13 +111,13 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
                 true
             }
         }
-        adapter = AriticleAdapter(arrayListOf(), true).apply {
+        adapter = ArticleAdapter(arrayListOf(), true).apply {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
             } else {
                 closeLoadAnimation()
             }
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     //点击爱心收藏执行操作
                     if (v.isChecked) {

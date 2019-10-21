@@ -12,7 +12,7 @@ import me.hegj.wandroid.app.weight.CollectView
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 
 
-class AriticleAdapter(data: ArrayList<ArticleResponse>?) : BaseQuickAdapter<ArticleResponse, BaseViewHolder>(data) {
+class ArticleAdapter(data: ArrayList<ArticleResponse>?) : BaseQuickAdapter<ArticleResponse, BaseViewHolder>(data) {
     private var mOnCollectViewClickListener: OnCollectViewClickListener? = null
     private val Article = 1//文章类型
     private val Project = 2//项目类型 本来打算不区分文章和项目布局用统一布局的，但是布局完以后发现差异化蛮大的，所以还是分开吧

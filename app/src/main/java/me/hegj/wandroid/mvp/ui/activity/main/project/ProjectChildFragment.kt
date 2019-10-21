@@ -38,14 +38,14 @@ import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.project.ProjectChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
 class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChildContract.View {
 
     lateinit var loadsir: LoadService<Any>
-    lateinit var adapter: AriticleAdapter
+    lateinit var adapter: ArticleAdapter
     private var cid: Int = 0 //分类项目ID
     private var isNew = false//是否是最新项目
     private var initPageNo: Int = 1 //初始化页码，因为最新项目跟其他分类的初始页码不一样 最新 为0 分类项目为1
@@ -122,14 +122,14 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
             }
         }
         //初始化 adapter
-        adapter = AriticleAdapter(arrayListOf()).apply {
+        adapter = ArticleAdapter(arrayListOf()).apply {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
             } else {
                 closeLoadAnimation()
             }
             //点击爱心收藏执行操作
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     if (v.isChecked) {
                         mPresenter?.uncollect(adapter.data[position].id, position)

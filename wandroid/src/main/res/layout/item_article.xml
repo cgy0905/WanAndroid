@@ -121,7 +121,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_home_content" />
 
-        <me.hegj.wandroid.app.weight.CollectView
+        <com.cgy.wandroid.weight.CollectView
             android:id="@+id/cv_home_collect"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -130,10 +130,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_home_type2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_home_type2" />
-
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

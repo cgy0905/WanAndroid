@@ -19086,7 +19086,7 @@ me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment -> me.hegj.wandroid.mvp.
     int pageNo -> i
     cn.bingoogolapple.bgabanner.BGABanner bannerView -> l
     java.util.HashMap _$_findViewCache -> o
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter adapter -> j
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter adapter -> j
     com.kingja.loadsir.core.LoadService loadsir -> m
     me.hegj.wandroid.app.weight.DefineLoadMoreView footView -> n
     java.util.List bannerData -> k
@@ -19102,7 +19102,7 @@ me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment -> me.hegj.wandroid.mvp.
     void onLazyInitView(android.os.Bundle) -> c
     void requestAritilFaild(java.lang.String) -> c
     void _$_clearFindViewByIdCache() -> o
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter getAdapter() -> p
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> p
     java.util.List getBannerData() -> q
     com.kingja.loadsir.core.LoadService getLoadsir() -> r
     int getPageNo() -> s
@@ -19164,7 +19164,7 @@ me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment -> me.hegj.wa
     int pageNo -> k
     me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment$Companion Companion -> h
     java.util.HashMap _$_findViewCache -> p
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter adapter -> j
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter adapter -> j
     android.view.View _$_findCachedViewById(int) -> a
     int access$getCid$p(me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment) -> a
     void access$setPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment,int) -> a
@@ -19180,7 +19180,7 @@ me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment -> me.hegj.wa
     me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment) -> d
     boolean access$isNew$p(me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment) -> e
     void _$_clearFindViewByIdCache() -> o
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter getAdapter() -> p
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> p
     com.kingja.loadsir.core.LoadService getLoadsir() -> q
 me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.project.a$a:
     me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment newInstance(int,int) -> a
@@ -19247,7 +19247,7 @@ me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment -> me.heg
     int cid -> l
     java.util.HashMap _$_findViewCache -> n
     int pageNo -> k
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter adapter -> j
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter adapter -> j
     me.hegj.wandroid.app.weight.DefineLoadMoreView footView -> m
     android.view.View _$_findCachedViewById(int) -> a
     int access$getCid$p(me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment) -> a
@@ -19262,7 +19262,7 @@ me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment -> me.heg
     me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment) -> c
     void onLazyInitView(android.os.Bundle) -> c
     void _$_clearFindViewByIdCache() -> o
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter getAdapter() -> p
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> p
     com.kingja.loadsir.core.LoadService getLoadsir() -> q
 me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.publicNumber.a$a:
     me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment newInstance(int) -> a
@@ -19483,28 +19483,28 @@ me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity -> me.hegj.wandroid.mvp.ui.
     int initView(android.os.Bundle) -> b
 me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity$initData$1 -> me.hegj.wandroid.mvp.ui.activity.web.a:
     me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity this$0 -> a
-me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter -> me.hegj.wandroid.b.b.a.b:
+me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter -> me.hegj.wandroid.b.b.a.b:
     boolean showTag -> M
     int Project -> L
     int Ariticle -> K
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener mOnCollectViewClickListener -> J
-    int access$getAriticle$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> a
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$OnCollectViewClickListener mOnCollectViewClickListener -> J
+    int access$getAriticle$p(me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter) -> a
     void convert(com.chad.library.adapter.base.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.mvp.model.entity.ArticleResponse) -> a
-    void setOnCollectViewClickListener(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener) -> a
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener access$getMOnCollectViewClickListener$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> b
-    int access$getProject$p(me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter) -> c
-me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$1 -> me.hegj.wandroid.b.b.a.a:
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter this$0 -> d
+    void setOnCollectViewClickListener(me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$OnCollectViewClickListener) -> a
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$OnCollectViewClickListener access$getMOnCollectViewClickListener$p(me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter) -> b
+    int access$getProject$p(me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter) -> c
+me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$1 -> me.hegj.wandroid.b.b.a.a:
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter this$0 -> d
     int getItemType(java.lang.Object) -> a
     int getItemType(me.hegj.wandroid.mvp.model.entity.ArticleResponse) -> a
-me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$OnCollectViewClickListener -> me.hegj.wandroid.b.b.a.b$a:
+me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$OnCollectViewClickListener -> me.hegj.wandroid.b.b.a.b$a:
     void onClick(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.app.weight.CollectView,int) -> a
-me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$convert$1 -> me.hegj.wandroid.b.b.a.c:
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter this$0 -> a
+me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$convert$1 -> me.hegj.wandroid.b.b.a.c:
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter this$0 -> a
     com.chad.library.adapter.base.BaseViewHolder $helper -> b
-me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter$convert$2 -> me.hegj.wandroid.b.b.a.d:
-    me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter this$0 -> a
+me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter$convert$2 -> me.hegj.wandroid.b.b.a.d:
+    me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter this$0 -> a
     com.chad.library.adapter.base.BaseViewHolder $helper -> b
 me.jessyan.progressmanager.ProgressListener -> me.jessyan.progressmanager.a:
     void onError(long,java.lang.Exception) -> a
