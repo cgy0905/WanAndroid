@@ -31,7 +31,7 @@ import me.hegj.wandroid.mvp.contract.main.tree.NavigationContract
 import me.hegj.wandroid.mvp.model.entity.NavigationResponse
 import me.hegj.wandroid.mvp.presenter.main.tree.NavigationPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import org.greenrobot.eventbus.Subscribe
@@ -124,7 +124,7 @@ class NavigationFragment : BaseFragment<NavigationPresenter>(), NavigationContra
             setTagClickListener(object : NavigationAdapter.TagClicklistener {
                 override fun onClick(position: Int, childPosition: Int) {
                     // position = 点击了第几个item, childPosition 点击的第几个tag
-                    launchActivity(Intent(_mActivity, WebviewActivity::class.java).apply {
+                    launchActivity(Intent(_mActivity, WebViewActivity::class.java).apply {
                         putExtras(Bundle().also {
                             it.putSerializable("data", adapter.data[position].articles[childPosition])
                             it.putString("tag", this@NavigationFragment::class.java.simpleName)

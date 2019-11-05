@@ -6458,14 +6458,14 @@ me.hegj.wandroid.di.component.web.DaggerWebviewComponent -> me.hegj.wandroid.a.a
     javax.inject.Provider appManagerProvider -> i
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder builder() -> a
     void initialize(me.hegj.wandroid.di.module.web.WebviewModule,com.jess.arms.di.component.AppComponent) -> a
-    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> a
-    me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity injectWebviewActivity(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> b
+    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> a
+    me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity injectWebviewActivity(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> b
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$1 -> me.hegj.wandroid.a.a.f.a:
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder -> me.hegj.wandroid.a.a.f.b$a:
     com.jess.arms.di.component.AppComponent appComponent -> b
     me.hegj.wandroid.di.module.web.WebviewModule webviewModule -> a
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder appComponent(com.jess.arms.di.component.AppComponent) -> a
-    me.hegj.wandroid.di.component.web.WebviewComponent build() -> a
+    me.hegj.wandroid.di.component.web.WebViewComponent build() -> a
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder webviewModule(me.hegj.wandroid.di.module.web.WebviewModule) -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_appManager -> me.hegj.wandroid.a.a.f.b$b:
     com.jess.arms.di.component.AppComponent appComponent -> a
@@ -6479,8 +6479,8 @@ me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_compon
     com.jess.arms.di.component.AppComponent appComponent -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_rxErrorHandler -> me.hegj.wandroid.a.a.f.b$g:
     com.jess.arms.di.component.AppComponent appComponent -> a
-me.hegj.wandroid.di.component.web.WebviewComponent -> me.hegj.wandroid.a.a.f.c:
-    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> a
+me.hegj.wandroid.di.component.web.WebViewComponent -> me.hegj.wandroid.a.a.f.c:
+    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> a
 me.hegj.wandroid.di.module.MainModule -> me.hegj.wandroid.a.b.a:
     me.hegj.wandroid.mvp.contract.MainContract$View view -> a
     me.hegj.wandroid.mvp.contract.MainContract$Model provideMainModel(me.hegj.wandroid.mvp.model.MainModel) -> a
@@ -8894,7 +8894,7 @@ me.hegj.wandroid.mvp.ui.activity.todo.TodoActivity$requestDataFaild$1 -> me.hegj
     java.lang.String $errorMsg -> a
 me.hegj.wandroid.mvp.ui.activity.todo.TodoActivity$requestDataSucces$1 -> me.hegj.wandroid.mvp.ui.activity.todo.m:
     me.hegj.wandroid.mvp.ui.activity.todo.TodoActivity this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity -> me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity:
+me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity -> me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity:
     java.lang.String showTitle -> g
     java.lang.String url -> h
     int collectTYpe -> i
@@ -8908,8 +8908,8 @@ me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity -> me.hegj.wandroid.mvp.ui.
     void setupActivityComponent(com.jess.arms.di.component.AppComponent) -> a
     int initView(android.os.Bundle) -> b
     android.view.View _$_findCachedViewById(int) -> e
-me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.web.a:
-    me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.web.a:
+    me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity this$0 -> a
 me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter -> me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter:
     boolean showTag -> N
     int Ariticle -> L

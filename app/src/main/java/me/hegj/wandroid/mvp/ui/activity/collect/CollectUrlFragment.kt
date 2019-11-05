@@ -29,7 +29,7 @@ import me.hegj.wandroid.mvp.contract.collect.CollectUrlContract
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
 import me.hegj.wandroid.mvp.presenter.collect.CollectUrlPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.CollectUrlAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import org.greenrobot.eventbus.Subscribe
@@ -120,7 +120,7 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("collectUrl", adapter.data[position])
                     putString("tag", this@CollectUrlFragment::class.java.simpleName)

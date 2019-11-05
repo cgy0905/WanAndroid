@@ -32,7 +32,7 @@ import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.CollectResponse
 import me.hegj.wandroid.mvp.presenter.collect.CollectPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.CollectAdapter
 import org.greenrobot.eventbus.Subscribe
 
@@ -136,7 +136,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("collect", adapter.data[position])
                     putString("tag", this@CollectAriticleFragment::class.java.simpleName)

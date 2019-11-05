@@ -20,7 +20,7 @@ import me.hegj.wandroid.app.utils.*
 import me.hegj.wandroid.app.weight.IconPreference
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.ui.activity.start.LoginActivity
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 
 
 class GeneralPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -105,7 +105,7 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.
         }
         findPreference<Preference>("project")?.setOnPreferenceClickListener {
             val data = BannerResponse("", 0, "", 0, 0, "一位练习长达两年半的安卓练习生根据鸿神提供的WanAndroid开放Api来制作的产品级App", 0, findPreference<Preference>("project")?.summary.toString())
-            parentActivity.launchActivity(Intent(parentActivity, WebviewActivity::class.java).apply {
+            parentActivity.launchActivity(Intent(parentActivity, WebViewActivity::class.java).apply {
                 putExtras(Bundle().apply {
                     putSerializable("bannerdata", data)
                 })

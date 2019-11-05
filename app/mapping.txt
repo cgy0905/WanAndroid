@@ -18328,14 +18328,14 @@ me.hegj.wandroid.di.component.web.DaggerWebviewComponent -> me.hegj.wandroid.a.a
     javax.inject.Provider appManagerProvider -> i
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder builder() -> a
     void initialize(me.hegj.wandroid.di.module.web.WebviewModule,com.jess.arms.di.component.AppComponent) -> a
-    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> a
-    me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity injectWebviewActivity(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> b
+    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> a
+    me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity injectWebviewActivity(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> b
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$1 -> me.hegj.wandroid.a.a.c.a:
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder -> me.hegj.wandroid.a.a.c.b$a:
     com.jess.arms.di.component.AppComponent appComponent -> b
     me.hegj.wandroid.di.module.web.WebviewModule webviewModule -> a
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder appComponent(com.jess.arms.di.component.AppComponent) -> a
-    me.hegj.wandroid.di.component.web.WebviewComponent build() -> a
+    me.hegj.wandroid.di.component.web.WebViewComponent build() -> a
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder webviewModule(me.hegj.wandroid.di.module.web.WebviewModule) -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_appManager -> me.hegj.wandroid.a.a.c.b$b:
     com.jess.arms.di.component.AppComponent appComponent -> a
@@ -18349,8 +18349,8 @@ me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_compon
     com.jess.arms.di.component.AppComponent appComponent -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_rxErrorHandler -> me.hegj.wandroid.a.a.c.b$g:
     com.jess.arms.di.component.AppComponent appComponent -> a
-me.hegj.wandroid.di.component.web.WebviewComponent -> me.hegj.wandroid.a.a.c.c:
-    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity) -> a
+me.hegj.wandroid.di.component.web.WebViewComponent -> me.hegj.wandroid.a.a.c.c:
+    void inject(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> a
 me.hegj.wandroid.di.module.MainModule -> me.hegj.wandroid.a.b.a:
     me.hegj.wandroid.mvp.contract.MainContract$View view -> a
     me.hegj.wandroid.mvp.contract.MainContract$Model provideMainModel(me.hegj.wandroid.mvp.model.MainModel) -> a
@@ -19465,7 +19465,7 @@ me.hegj.wandroid.mvp.ui.activity.start.SplashActivity -> me.hegj.wandroid.mvp.ui
     void goToMainActivity() -> r
 me.hegj.wandroid.mvp.ui.activity.start.SplashActivity$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.start.p:
     me.hegj.wandroid.mvp.ui.activity.start.SplashActivity this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity -> me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity:
+me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity -> me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity:
     boolean collect -> m
     int id -> o
     int position -> l
@@ -19481,8 +19481,8 @@ me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity -> me.hegj.wandroid.mvp.ui.
     void setupActivityComponent(com.jess.arms.di.component.AppComponent) -> a
     android.view.View _$_findCachedViewById(int) -> b
     int initView(android.os.Bundle) -> b
-me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity$initData$1 -> me.hegj.wandroid.mvp.ui.activity.web.a:
-    me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity$initData$1 -> me.hegj.wandroid.mvp.ui.activity.web.a:
+    me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity this$0 -> a
 me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter -> me.hegj.wandroid.b.b.a.b:
     boolean showTag -> M
     int Project -> L

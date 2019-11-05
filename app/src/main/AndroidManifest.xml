@@ -44,7 +44,7 @@
             android:label="设置"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".mvp.ui.activity.web.WebviewActivity"
+            android:name=".mvp.ui.activity.web.WebViewActivity"
             android:label="网页"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />

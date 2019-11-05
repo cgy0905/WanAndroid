@@ -2,37 +2,34 @@ package com.cgy.wandroid.ui.web
 
 import android.content.Intent
 import android.os.Bundle
-
+import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
-import com.jess.arms.di.component.AppComponent
-import com.jess.arms.utils.ArmsUtils
-
 import com.cgy.wandroid.di.component.DaggerWebViewComponent
 import com.cgy.wandroid.di.module.WebViewModule
 import com.cgy.wandroid.mvp.contract.WebViewContract
+import com.cgy.wandroid.mvp.model.entity.ArticleResponse
+import com.cgy.wandroid.mvp.model.entity.BannerResponse
 import com.cgy.wandroid.mvp.presenter.WebViewPresenter
+import com.jess.arms.di.component.AppComponent
+import com.jess.arms.utils.ArmsUtils
+import com.just.agentweb.AgentWeb
+import me.hegj.wandroid.mvp.model.entity.enums.CollectType
 
-import com.cgy.wandroid.R
-
-
-/**
- * ================================================
- * Description:
- * <p>
- * Created by MVPArmsTemplate on 09/20/2019 15:41
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
- * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
- * ================================================
- */
 /**
  * @author: cgy
  * @description:
  * @date: 2019/09/20 15:41
  */
 class WebViewActivity : BaseActivity<WebViewPresenter>(), WebViewContract.View {
+
+    var collect = false//是否收藏
+    var id = 0 //id
+    lateinit var showTitle : String //标题
+    lateinit var url : String
+
+    var collectType = 0 //需要收藏的类型 具体参数说明请看 CollectType枚举类
+
+    private lateinit var mAgentWeb : AgentWeb
 
     override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerWebViewComponent //如找不到该类,请编译一下项目
@@ -50,6 +47,25 @@ class WebViewActivity : BaseActivity<WebViewPresenter>(), WebViewContract.View {
 
 
     override fun initData(savedInstanceState: Bundle?) {
+        //点击文章进来的
+        intent.getSerializableExtra("data")?.let {
+            it as ArticleResponse
+            id = it.id
+            //替换掉部分数据可能包含的网页标签
+            showTitle = it.title.replace("<em class='highlight'>", "").replace("</em>", "")
+            collect = it.collect
+            url = it.link
+            collectType = CollectType.Article.type
+        }
+        //点击首页轮播图进来的
+        intent.getSerializableExtra("bannerdata")?.let {
+            it as BannerResponse
+            id = it.id
+            showTitle = it.title.replace("<em class='highlight'>", "").replace("</em>", "")
+            collect = false //从首页轮播图 没法判断是否已经收藏过，所以直接默认没有收藏
+            url = it.url
+            collectType = CollectType.Url.type
+        }
 
     }
 

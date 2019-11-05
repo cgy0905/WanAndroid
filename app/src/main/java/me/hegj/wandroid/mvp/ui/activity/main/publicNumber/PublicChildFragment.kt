@@ -37,7 +37,7 @@ import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.publicNumber.PublicChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
@@ -116,7 +116,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("data", adapter.data[position])
                     putString("tag", this@PublicChildFragment::class.java.simpleName)

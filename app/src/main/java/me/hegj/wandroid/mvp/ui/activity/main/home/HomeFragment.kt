@@ -45,7 +45,7 @@ import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.presenter.main.home.HomePresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.main.home.search.SearchActivity
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
@@ -131,7 +131,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
             setOnItemClickListener { _, view, position ->
                 //点击了整行
                 //注意了，这里因为首页recyclerview添加了头部，所以这个索引要减去头部的count才是实际的position
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().also {
                     it.putSerializable("data", data[position - swiperecyclerview.headerCount])
                     it.putString("tag", this@HomeFragment::class.java.simpleName)
@@ -212,7 +212,7 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
                                     .build())
                 })
                 setDelegate { _, _, _, position ->
-                    launchActivity(Intent(_mActivity, WebviewActivity::class.java).apply {
+                    launchActivity(Intent(_mActivity, WebViewActivity::class.java).apply {
                         putExtras(Bundle().apply {
                             putSerializable("bannerdata", banners[position])
                             putString("tag", "banner")

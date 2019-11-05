@@ -18,7 +18,7 @@ import me.hegj.wandroid.R
 import me.hegj.wandroid.app.event.CollectEvent
 import me.hegj.wandroid.app.event.LoginFreshEvent
 import me.hegj.wandroid.app.utils.CacheUtil
-import me.hegj.wandroid.di.component.web.DaggerWebviewComponent
+import me.hegj.wandroid.di.component.web.DaggerWebViewComponent
 import me.hegj.wandroid.di.module.web.WebviewModule
 import me.hegj.wandroid.mvp.contract.web.WebviewContract
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
@@ -31,19 +31,19 @@ import me.hegj.wandroid.mvp.ui.BaseActivity
 import me.hegj.wandroid.mvp.ui.activity.start.LoginActivity
 import org.greenrobot.eventbus.Subscribe
 
-class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
+class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
 
     var collect = false//是否收藏
     var id = 0//id
     lateinit var showTitle:String//标题
     lateinit var url:String
 
-    var collectTYpe = 0 //需要收藏的类型 具体参数说明请看 CollectType 枚举类
+    var collectType = 0 //需要收藏的类型 具体参数说明请看 CollectType 枚举类
 
     private lateinit var mAgentWeb: AgentWeb
 
     override fun setupActivityComponent(appComponent: AppComponent) {
-        DaggerWebviewComponent //如找不到该类,请编译一下项目
+        DaggerWebViewComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
                 .webviewModule(WebviewModule(this))
@@ -66,7 +66,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")
             collect = it.collect
             url = it.link
-            collectTYpe = CollectType.Ariticle.type
+            collectType = CollectType.Ariticle.type
         }
         //点击首页轮播图进来的
         intent.getSerializableExtra("bannerdata")?.let {
@@ -75,7 +75,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")
             collect = false //从首页轮播图 没法判断是否已经收藏过，所以直接默认没有收藏
             url = it.url
-            collectTYpe = CollectType.Url.type
+            collectType = CollectType.Url.type
         }
         //从收藏文章列表点进来的
         intent.getSerializableExtra("collect")?.let {
@@ -85,7 +85,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")
             collect = true //从收藏列表过来的，肯定 是 true 了
             url = it.link
-            collectTYpe = CollectType.Ariticle.type
+            collectType = CollectType.Ariticle.type
         }
         //点击收藏网址列表进来的
         intent.getSerializableExtra("collectUrl")?.let {
@@ -95,7 +95,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.name.replace("<em class='highlight'>","").replace("</em>","")
             collect = true//从收藏列表过来的，肯定 是 true 了
             url = it.link
-            collectTYpe = CollectType.Url.type
+            collectType = CollectType.Url.type
         }
 
         toolbar.run {
@@ -152,7 +152,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
                 if (CacheUtil.isLogin()) {
                     //是否已经收藏了
                     if (collect) {
-                        if(collectTYpe==CollectType.Url.type){
+                        if(collectType==CollectType.Url.type){
                             //取消收藏网址
                             mPresenter?.uncollectUrl(id)
                         }else{
@@ -160,7 +160,7 @@ class WebviewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
                             mPresenter?.uncollect(id)
                         }
                     } else {
-                        if(collectTYpe==CollectType.Url.type){
+                        if(collectType==CollectType.Url.type){
                             //收藏网址
                             mPresenter?.collectUrl(showTitle,url)
                         }else{

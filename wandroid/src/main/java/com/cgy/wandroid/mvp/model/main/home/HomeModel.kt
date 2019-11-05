@@ -44,7 +44,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun getArticleList(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .getAritrilList(pageNo))
+                .getArticleList(pageNo))
                 .flatMap {
                     apiResponseObservable -> apiResponseObservable
                 }
@@ -54,7 +54,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun getTopArticleList(): Observable<ApiResponse<MutableList<ArticleResponse>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .getTopAritrilList())
+                .getTopArticleList())
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }
@@ -83,7 +83,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .uncollect(id))
+                .unCollect(id))
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }

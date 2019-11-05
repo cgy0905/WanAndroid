@@ -35,7 +35,7 @@ import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.home.search.SearchResultPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
@@ -104,7 +104,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
 
             setOnItemClickListener { _, view, position ->
                 //点击了整行
-                val intent = Intent(this@SearchResultActivity, WebviewActivity::class.java)
+                val intent = Intent(this@SearchResultActivity, WebViewActivity::class.java)
                 val bundle = Bundle().also {
                     it.putSerializable("data", data[position])
                     it.putString("tag", this@SearchResultActivity::class.java.simpleName)
