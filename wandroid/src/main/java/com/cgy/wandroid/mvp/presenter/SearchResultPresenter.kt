@@ -1,15 +1,13 @@
 package com.cgy.wandroid.mvp.presenter
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
+import com.cgy.wandroid.mvp.contract.SearchResultContract
 import com.jess.arms.di.scope.ActivityScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import javax.inject.Inject
-
-import com.cgy.wandroid.mvp.contract.SearchResultContract
 
 
 @ActivityScope
@@ -30,4 +28,19 @@ BasePresenter<SearchResultContract.Model, SearchResultContract.View>(model,rootV
     override fun onDestroy() {
           super.onDestroy()
     }
+
+    fun getArticleList(pageNo: Int, searchKey: String?) {
+
+    }
+
+    fun unCollect(id: Int, position: Int) {
+
+    }
+
+    fun collect(id: Int, position: Int) {
+
+    }
+
+
 }
+

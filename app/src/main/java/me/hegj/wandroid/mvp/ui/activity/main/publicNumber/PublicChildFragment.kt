@@ -108,7 +108,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
             setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     if (v.isChecked) {
-                        mPresenter?.uncollect(adapter.data[position].id, position)
+                        mPresenter?.unCollect(adapter.data[position].id, position)
                     } else {
                         mPresenter?.collect(adapter.data[position].id, position)
                     }
@@ -172,7 +172,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
 
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
+    override fun requestDataSuccess(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
@@ -203,7 +203,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页

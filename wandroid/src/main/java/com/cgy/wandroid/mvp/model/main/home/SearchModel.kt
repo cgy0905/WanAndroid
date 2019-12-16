@@ -1,14 +1,16 @@
 package com.cgy.wandroid.mvp.model.main.home
 
 import android.app.Application
+import com.cgy.wandroid.api.Api
+import com.cgy.wandroid.mvp.contract.SearchContract
+import com.cgy.wandroid.mvp.model.entity.ApiResponse
+import com.cgy.wandroid.mvp.model.entity.SearchResponse
 import com.google.gson.Gson
+import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.ActivityScope
+import io.reactivex.Observable
 import javax.inject.Inject
-
-import com.cgy.wandroid.mvp.contract.SearchContract
 
 
 /**
@@ -34,5 +36,14 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    override fun getHotData(): Observable<ApiResponse<MutableList<SearchResponse>>> {
+        return Observable.just(mRepositoryManager
+                .obtainRetrofitService(Api::class.java)
+                .getSearchData())
+                .flatMap { apiResponseObservable ->
+                    apiResponseObservable
+                }
     }
 }

@@ -27,21 +27,21 @@ android {
         }
     }
 
-    signingConfigs {
-        release {
-            keyAlias rootProject.ext.app.keyAlias
-            keyPassword rootProject.ext.app.keyPassword
-            storeFile file(rootProject.ext.app.storeFile)
-            storePassword rootProject.ext.app.storePassword
-            v2SigningEnabled true
-        }
-        debug {
-            keyAlias rootProject.ext.app.keyAlias
-            keyPassword rootProject.ext.app.keyPassword
-            storeFile file(rootProject.ext.app.storeFile)
-            storePassword rootProject.ext.app.storePassword
-        }
-    }
+//    signingConfigs {
+//        release {
+//            keyAlias rootProject.ext.app.keyAlias
+//            keyPassword rootProject.ext.app.keyPassword
+//            storeFile file(rootProject.ext.app.storeFile)
+//            storePassword rootProject.ext.app.storePassword
+//            v2SigningEnabled true
+//        }
+//        debug {
+//            keyAlias rootProject.ext.app.keyAlias
+//            keyPassword rootProject.ext.app.keyPassword
+//            storeFile file(rootProject.ext.app.storeFile)
+//            storePassword rootProject.ext.app.storePassword
+//        }
+//    }
 
 
     buildTypes {

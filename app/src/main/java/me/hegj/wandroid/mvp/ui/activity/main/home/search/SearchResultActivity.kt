@@ -95,7 +95,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     //点击爱心收藏执行操作
                     if (v.isChecked) {
-                        mPresenter?.uncollect(data[position].id, position)
+                        mPresenter?.unCollect(data[position].id, position)
                     } else {
                         mPresenter?.collect(data[position].id, position)
                     }
@@ -163,23 +163,23 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
      * 获取文章数据成功
      */
     @SuppressLint("RestrictedApi")
-    override fun requestAritilSucces(ariticles: ApiPagerResponse<MutableList<ArticleResponse>>) {
+    override fun requestArticleSuccess(articles: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
-        if (pageNo == initPageNo && ariticles.datas.size == 0) {
+        if (pageNo == initPageNo && articles.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
             loadsir.showCallback(EmptyCallback::class.java)
         } else if (pageNo == initPageNo) {
             loadsir.showSuccess()
             //如果是刷新的话，floatbutton就要隐藏了，因为这时候肯定是要在顶部的
             floatbtn.visibility = View.INVISIBLE
-            articleAdapter.setNewData(ariticles.datas)
+            articleAdapter.setNewData(articles.datas)
         } else {
             //不是第一页
             loadsir.showSuccess()
-            articleAdapter.addData(ariticles.datas)
+            articleAdapter.addData(articles.datas)
         }
         pageNo++
-        if (ariticles.pageCount >= pageNo) {
+        if (articles.pageCount >= pageNo) {
             //如果总条数大于当前页数时 还有更多数据
             swiperecyclerview.loadMoreFinish(false, true)
         } else {
@@ -197,7 +197,7 @@ class SearchResultActivity : BaseActivity<SearchResultPresenter>(), SearchResult
     /**
      * 获取文章数据失败
      */
-    override fun requestAritilFaild(errorMsg: String) {
+    override fun requestArticleFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页

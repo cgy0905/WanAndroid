@@ -1,12 +1,10 @@
 package com.cgy.wandroid.di.component
 
-import dagger.Component
-import com.jess.arms.di.component.AppComponent
-
 import com.cgy.wandroid.di.module.ProjectChildModule
-
+import com.cgy.wandroid.ui.main.project.ProjectChildFragment
+import com.jess.arms.di.component.AppComponent
 import com.jess.arms.di.scope.FragmentScope
-import com.cgy.wandroid.ui.main.project.fragment.ProjectChildFragment
+import dagger.Component
 
 
 /**

@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.main.project.fragment
+package com.cgy.wandroid.ui.main.project
 
 import android.annotation.SuppressLint
 import android.content.Intent

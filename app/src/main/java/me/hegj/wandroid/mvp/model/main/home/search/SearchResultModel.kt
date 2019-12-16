@@ -38,7 +38,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     lateinit var mApplication: Application
 
 
-    override fun getArilist(pageNo: Int,searchKey:String): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
+    override fun getArticleList(pageNo: Int, searchKey:String): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getSearchDataByKey(pageNo,searchKey))
@@ -48,7 +48,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     }
 
     //取消收藏
-    override fun uncollect(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollect(id))

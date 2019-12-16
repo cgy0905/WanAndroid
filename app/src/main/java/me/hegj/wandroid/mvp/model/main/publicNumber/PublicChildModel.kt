@@ -51,7 +51,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
 
 
     //取消收藏
-    override fun uncollect(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollect(id))

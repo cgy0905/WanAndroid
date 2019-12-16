@@ -17,7 +17,6 @@ import com.cgy.wandroid.event.SettingChangeEvent
 import com.cgy.wandroid.mvp.contract.ProjectContract
 import com.cgy.wandroid.mvp.model.entity.ClassifyResponse
 import com.cgy.wandroid.mvp.presenter.ProjectPresenter
-import com.cgy.wandroid.ui.main.project.fragment.ProjectChildFragment
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.weight.ScaleTransitionPagerTitleView
 import com.cgy.wandroid.weight.loadCallback.ErrorCallback

@@ -57,14 +57,14 @@ constructor(model: PublicChildContract.Model, rootView: PublicChildContract.View
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucc(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -102,8 +102,8 @@ constructor(model: PublicChildContract.Model, rootView: PublicChildContract.View
     /**
      * 取消收藏
      */
-    fun uncollect(id:Int,position:Int) {
-        mModel.uncollect(id)
+    fun unCollect(id:Int, position:Int) {
+        mModel.unCollect(id)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())

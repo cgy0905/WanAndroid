@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 import com.cgy.wandroid.mvp.contract.SearchResultContract
-import com.cgy.wandroid.mvp.model.SearchResultModel
+import com.cgy.wandroid.mvp.model.main.home.SearchResultModel
 
 
 @Module
@@ -20,7 +20,7 @@ class SearchResultModule(private val view:SearchResultContract.View) {
 
     @ActivityScope
     @Provides
-    fun provideSearchResultModel(model:SearchResultModel):SearchResultContract.Model{
+    fun provideSearchResultModel(model: SearchResultModel):SearchResultContract.Model{
         return model
     }
 }

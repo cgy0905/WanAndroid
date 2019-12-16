@@ -56,14 +56,14 @@ constructor(model: SearchContract.Model, rootView: SearchContract.View) :
                     override fun onNext(response: ApiResponse<MutableList<SearchResponse>>) {
                         if (response.isSucces()) {
                             CacheUtil.setSearchData( Gson().toJson(response.data))
-                            mRootView.requestSearchSucc(response.data)
+                            mRootView.requestSearchSuccess(response.data)
                         }else{
-                            mRootView.requestSearchSucc(CacheUtil.getSearchData())
+                            mRootView.requestSearchSuccess(CacheUtil.getSearchData())
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestSearchSucc(CacheUtil.getSearchData())
+                        mRootView.requestSearchSuccess(CacheUtil.getSearchData())
                     }
                 })
 

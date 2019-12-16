@@ -18,10 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+
         <activity android:name=".ui.web.WebViewActivity"></activity>
         <activity android:name=".ui.main.home.search.SearchActivity" />
-        <activity android:name=".ui.main.MainActivity" />
+        <activity android:name=".ui.main.home.search.SearchResultActivity" />
         <activity android:name=".ui.splash.SplashActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:label="主页"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -52,3 +56,6 @@
     </application>
 
 </manifest>
+
+
+

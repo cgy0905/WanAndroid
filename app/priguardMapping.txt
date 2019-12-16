@@ -8170,10 +8170,10 @@ me.hegj.wandroid.mvp.ui.activity.main.home.search.SearchActivity -> me.hegj.wand
     java.util.HashMap _$_findViewCache -> h
     java.util.List historyData -> f
     java.util.List mtagData -> e
-    me.hegj.wandroid.mvp.ui.adapter.SearchistoryAdapter adapter -> g
+    me.hegj.wandroid.mvp.ui.adapter.SearchHistoryAdapter adapter -> g
     void initData(android.os.Bundle) -> a
     void setupActivityComponent(com.jess.arms.di.component.AppComponent) -> a
-    me.hegj.wandroid.mvp.ui.adapter.SearchistoryAdapter getAdapter() -> b
+    me.hegj.wandroid.mvp.ui.adapter.SearchHistoryAdapter getAdapter() -> b
     int initView(android.os.Bundle) -> b
     java.util.List getHistoryData() -> c
     void requestSearchSucc(java.util.List) -> c
@@ -9000,7 +9000,7 @@ me.hegj.wandroid.mvp.ui.adapter.PriorityAdapter -> me.hegj.wandroid.mvp.ui.adapt
     int checkType -> K
     void convert(com.chad.library.adapter.base.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.mvp.model.entity.enums.TodoType) -> a
-me.hegj.wandroid.mvp.ui.adapter.SearchistoryAdapter -> me.hegj.wandroid.mvp.ui.adapter.SearchistoryAdapter:
+me.hegj.wandroid.mvp.ui.adapter.SearchHistoryAdapter -> me.hegj.wandroid.mvp.ui.adapter.SearchHistoryAdapter:
     void convert(com.chad.library.adapter.base.BaseViewHolder,java.lang.Object) -> a
     void convert(com.chad.library.adapter.base.BaseViewHolder,java.lang.String) -> a
 me.hegj.wandroid.mvp.ui.adapter.SystemAdapter -> me.hegj.wandroid.mvp.ui.adapter.SystemAdapter:

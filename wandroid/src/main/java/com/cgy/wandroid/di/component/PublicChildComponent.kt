@@ -1,16 +1,14 @@
 package com.cgy.wandroid.di.component
 
-import dagger.Component
+import com.cgy.wandroid.di.module.PublicChildModule
+import com.cgy.wandroid.ui.main.pub.PublicChildFragment
 import com.jess.arms.di.component.AppComponent
-
-import com.cgy.wandroid.di.module.publicChildModule
-
 import com.jess.arms.di.scope.FragmentScope
-import com.cgy.wandroid.ui.main.pub.publicChildFragment
+import dagger.Component
 
 
 @FragmentScope
-@Component(modules = arrayOf(publicChildModule::class), dependencies = arrayOf(AppComponent::class))
-interface publicChildComponent {
-    fun inject(fragment: publicChildFragment)
+@Component(modules = arrayOf(PublicChildModule::class), dependencies = arrayOf(AppComponent::class))
+interface PublicChildComponent {
+    fun inject(fragment: PublicChildFragment)
 }
