@@ -1,4 +1,4 @@
-package me.hegj.wandroid.mvp.ui.activity.main.tree
+package com.cgy.wandroid.ui.main.tree
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,43 +8,49 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
+import com.cgy.wandroid.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
+import com.jess.arms.utils.ArmsUtils
+
+import com.cgy.wandroid.di.component.DaggerSystemComponent
+import com.cgy.wandroid.di.module.SystemModule
+import com.cgy.wandroid.mvp.contract.SystemContract
+import com.cgy.wandroid.mvp.presenter.SystemPresenter
+
+import com.cgy.wandroid.R
+import com.cgy.wandroid.event.SettingChangeEvent
+import com.cgy.wandroid.mvp.model.entity.SystemResponse
+import com.cgy.wandroid.ui.main.tree.adapter.SystemAdapter
+import com.cgy.wandroid.ui.main.tree.treeinfo.TreeInfoActivity
+import com.cgy.wandroid.util.SettingUtil
+import com.cgy.wandroid.util.SpaceItemDecoration
+import com.cgy.wandroid.weight.loadCallback.ErrorCallback
+import com.cgy.wandroid.weight.loadCallback.LoadingCallback
 import com.kingja.loadsir.callback.SuccessCallback
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
-import me.hegj.wandroid.R
-import me.hegj.wandroid.app.event.SettingChangeEvent
-import me.hegj.wandroid.app.utils.SettingUtil
-import me.hegj.wandroid.app.utils.SpaceItemDecoration
-import me.hegj.wandroid.app.weight.loadCallBack.ErrorCallback
-import me.hegj.wandroid.app.weight.loadCallBack.LoadingCallback
-import me.hegj.wandroid.di.component.main.tree.DaggerSystemComponent
-import me.hegj.wandroid.di.module.main.tree.SystemModule
-import me.hegj.wandroid.mvp.contract.main.tree.SystemContract
-import me.hegj.wandroid.mvp.model.entity.SystemResponse
-import me.hegj.wandroid.mvp.presenter.main.tree.SystemPresenter
-import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoActivity
-import me.hegj.wandroid.mvp.ui.adapter.SystemAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import org.greenrobot.eventbus.Subscribe
 
+
 /**
- * 体系
+ * @author: cgy
+ * @description: 体系
+ * @date: 2019/12/17 11:25
  */
-
 class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
-    lateinit var loadsir: LoadService<Any>
-    lateinit var adapter: SystemAdapter
-
+    lateinit var loadSir : LoadService<Any>
+    lateinit var adapter : SystemAdapter
     companion object {
         fun newInstance(): SystemFragment {
             val fragment = SystemFragment()
             return fragment
         }
     }
+
 
     override fun setupFragmentComponent(appComponent: AppComponent) {
         DaggerSystemComponent //如找不到该类,请编译一下项目
@@ -57,9 +63,7 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val rootView = inflater.inflate(R.layout.fragment_list, container, false)
-        //绑定loadsir
-        loadsir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipeRefreshLayout)) {
-            loadsir.showCallback(LoadingCallback::class.java)
+        loadSir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipe_refresh_layout)) {
             //点击重试时请求
             mPresenter?.getSystemData()
         }.apply {
@@ -70,39 +74,39 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
 
     override fun initData(savedInstanceState: Bundle?) {
         //初始化swipeRefreshLayout
-        swipeRefreshLayout.run {
+        swipe_refresh_layout.run {
             //设置颜色
             setColorSchemeColors(SettingUtil.getColor(_mActivity))
-            //设置刷新监听回调
+            //设置刷新监听
             setOnRefreshListener {
                 mPresenter?.getSystemData()
             }
         }
-        floatbtn.run {
+        float_action_btn.run {
             backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
             setOnClickListener {
-                val layoutManager = swiperecyclerview.layoutManager as LinearLayoutManager
+                val layoutManager = swipe_recycler_view.layoutManager as LinearLayoutManager
                 //如果当前recyclerview 最后一个视图位置的索引大于等于40，则迅速返回顶部，否则带有滚动动画效果返回到顶部
                 if (layoutManager.findLastVisibleItemPosition() >= 40) {
-                    swiperecyclerview.scrollToPosition(0)//没有动画迅速返回到顶部(极快)
+                    swipe_recycler_view.scrollToPosition(0)//没有动画迅速返回到顶部(极快)
                 } else {
-                    swiperecyclerview.smoothScrollToPosition(0)//有滚动动画返回到顶部(有点慢)
+                    swipe_recycler_view.smoothScrollToPosition(0)//有滚动动画返回到顶部(有点慢)
                 }
             }
         }
-        //初始化recyclerview
-        swiperecyclerview.run {
+        //初始化recyclerView
+        swipe_recycler_view.run {
             layoutManager = LinearLayoutManager(_mActivity)
             setHasFixedSize(true)
             //设置item的行间距
             addItemDecoration(SpaceItemDecoration(0, UIUtil.dip2px(_mActivity, 8.0)))
-            //监听recyclerview滑动到顶部的时候，需要把向上返回顶部的按钮隐藏
+            //监听recyclerView滑动到顶部的时候,需要把向上返回顶部的按钮隐藏
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 @SuppressLint("RestrictedApi")
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if (!canScrollVertically(-1)) {
-                        floatbtn.visibility = View.INVISIBLE
+                        float_action_btn.visibility = View.INVISIBLE
                     }
                 }
             })
@@ -133,40 +137,38 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
                         })
                     })
                 }
+
             })
         }
     }
 
     override fun onLazyInitView(savedInstanceState: Bundle?) {
         super.onLazyInitView(savedInstanceState)
-        swiperecyclerview.adapter = adapter//设置适配器
-        loadsir.showCallback(LoadingCallback::class.java)//设置加载中
+        swipe_recycler_view.adapter = adapter//设置适配器
+        loadSir.showCallback(LoadingCallback::class.java)//设置加载中
         mPresenter?.getSystemData()//请求数据
     }
 
-    /**
-     * 获取体系数据回调
-     */
     override fun getSystemDataSuccess(data: MutableList<SystemResponse>) {
-        floatbtn.visibility = View.INVISIBLE
+        float_action_btn.visibility = View.INVISIBLE
         if (data.size == 0) {
-            //集合大小为0 说明肯定是第一次请求数据并且请求失败了，因为只要请求成功过一次就会有缓存数据
-            loadsir.showCallback(ErrorCallback::class.java)
+            //集合大小为0 说明肯定是第一次请求数据并且请求失败了,因为只要请求成功过一次就会有缓存数据
+            loadSir.showCallback(ErrorCallback::class.java)
         } else {
-            swipeRefreshLayout.isRefreshing = false
-            loadsir.showCallback(SuccessCallback::class.java)
+            swipe_refresh_layout.isRefreshing = false
+            loadSir.showCallback(SuccessCallback::class.java)
             adapter.setNewData(data)
         }
     }
 
     /**
-     * 接收到event时，重新设置当前界面控件的主题颜色和一些其他配置
+     * 接收到event时,重新设置当前界面控件的主题颜色和一些其他配置
      */
     @Subscribe
-    fun settingEvent(event: SettingChangeEvent) {
-        floatbtn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
-        SettingUtil.setLoadingColor(_mActivity, loadsir)
-        swipeRefreshLayout.setColorSchemeColors(SettingUtil.getColor(_mActivity))
+    fun settingEvent(event : SettingChangeEvent) {
+        float_action_btn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
+        SettingUtil.setLoadingColor(_mActivity, loadSir)
+        swipe_refresh_layout.setColorSchemeColors(SettingUtil.getColor(_mActivity))
         adapter.run {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
@@ -175,5 +177,6 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
             }
         }
     }
+
 
 }

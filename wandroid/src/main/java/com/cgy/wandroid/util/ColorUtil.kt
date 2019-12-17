@@ -8,7 +8,7 @@ import java.util.*
  * @date 2019/12/16 15:06
  * @description:
  */
-object ColorUtils {
+object ColorUtil {
     //自定义颜色,过滤掉与白色相近的颜色
     var ACCENT_COLORS = intArrayOf(
             Color.parseColor("#EF5350"),

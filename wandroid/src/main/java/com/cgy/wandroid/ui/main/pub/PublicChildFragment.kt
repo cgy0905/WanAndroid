@@ -10,10 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cgy.wandroid.R
-
 import com.cgy.wandroid.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
-
 import com.cgy.wandroid.di.component.DaggerpublicChildComponent
 import com.cgy.wandroid.di.module.PublicChildModule
 import com.cgy.wandroid.event.LoginFreshEvent
@@ -24,7 +22,6 @@ import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.mvp.presenter.PublicChildPresenter
 import com.cgy.wandroid.ui.main.home.adapter.ArticleAdapter
 
-import com.cgy.wandroid.ui.main.pub.R
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.RecyclerViewUtils
 import com.cgy.wandroid.util.SettingUtil
@@ -37,7 +34,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import kotlinx.android.synthetic.main.fragment_project_child.*
+import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -135,7 +132,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
                 startActivity(intent)
             }
         }
-        float_btn.run {
+        float_action_btn.run {
             backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
             setOnClickListener {
                 val layoutManager = swipe_recycler_view.layoutManager as LinearLayoutManager
@@ -161,7 +158,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if (!canScrollVertically(-1)) {
-                        float_btn.visibility = View.INVISIBLE
+                        float_action_btn.visibility = View.INVISIBLE
                     }
                 }
 
@@ -188,7 +185,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
         } else if (pageNo == initPageNo) {
             loadSir.showSuccess()
             //如果是刷新,floatBtn就隐藏,因为这时候肯定要在顶部
-            float_btn.visibility = View.INVISIBLE
+            float_action_btn.visibility = View.INVISIBLE
             adapter.setNewData(apiPagerResponse.datas)
         } else {
             //不是第一页,且有数据
@@ -288,7 +285,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
      */
     @Subscribe
     fun settingEvent(event: SettingChangeEvent) {
-        float_btn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
+        float_action_btn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
         swipe_refresh_layout.setColorSchemeColors(SettingUtil.getColor(_mActivity))
         SettingUtil.setLoadingColor(_mActivity, loadSir)
         footView?.setLoadViewColor(SettingUtil.getOneColorStateList(_mActivity))

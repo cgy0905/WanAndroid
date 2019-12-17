@@ -30,12 +30,12 @@ import me.hegj.wandroid.app.weight.DefineLoadMoreView
 import me.hegj.wandroid.app.weight.loadCallBack.EmptyCallback
 import me.hegj.wandroid.app.weight.loadCallBack.ErrorCallback
 import me.hegj.wandroid.app.weight.loadCallBack.LoadingCallback
-import me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent
-import me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule
-import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
+import me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeInfoComponent
+import me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule
+import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
-import me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter
+import me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
 import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
@@ -46,7 +46,7 @@ import org.greenrobot.eventbus.Subscribe
  * @Author:         hegaojian
  * @CreateDate:     2019/8/23 17:14
  */
-class TreeinfoFragment : BaseFragment<TreeinfoPresenter>(), TreeinfoContract.View {
+class TreeInfoFragment : BaseFragment<TreeInfoPresenter>(), TreeInfoContract.View {
     lateinit var loadsir: LoadService<Any>
     lateinit var adapter: ArticleAdapter
     private var initPageNo = 0 //注意，体系页码从 0开始的 ！！！！
@@ -55,10 +55,10 @@ class TreeinfoFragment : BaseFragment<TreeinfoPresenter>(), TreeinfoContract.Vie
     private var footView: DefineLoadMoreView? = null
 
     companion object {
-        fun newInstance(cid: Int): TreeinfoFragment {
+        fun newInstance(cid: Int): TreeInfoFragment {
             val args = Bundle()
             args.putInt("cid", cid)
-            val fragment = TreeinfoFragment()
+            val fragment = TreeInfoFragment()
             fragment.arguments = args
             return fragment
         }
@@ -66,10 +66,10 @@ class TreeinfoFragment : BaseFragment<TreeinfoPresenter>(), TreeinfoContract.Vie
 
 
     override fun setupFragmentComponent(appComponent: AppComponent) {
-        DaggerTreeinfoComponent //如找不到该类,请编译一下项目
+        DaggerTreeInfoComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .treeinfoModule(TreeinfoModule(this))
+                .treeinfoModule(TreeInfoModule(this))
                 .build()
                 .inject(this)
     }
@@ -120,7 +120,7 @@ class TreeinfoFragment : BaseFragment<TreeinfoPresenter>(), TreeinfoContract.Vie
                 val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("data", adapter.data[position])
-                    putString("tag", this@TreeinfoFragment::class.java.simpleName)
+                    putString("tag", this@TreeInfoFragment::class.java.simpleName)
                     putInt("position", position)
                     putInt("tab", cid)
                 }

@@ -1,21 +1,23 @@
-package me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo
+package com.cgy.wandroid.ui.main.tree.treeinfo
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import com.cgy.wandroid.R
+import com.cgy.wandroid.base.BaseActivity
+import com.cgy.wandroid.base.ViewPagerAdapter
+import com.cgy.wandroid.mvp.model.entity.SystemResponse
+import com.cgy.wandroid.util.SettingUtil
+import com.cgy.wandroid.weight.ScaleTransitionPagerTitleView
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
+import com.jess.arms.utils.ArmsUtils
 import kotlinx.android.synthetic.main.include_toolbar.*
 import kotlinx.android.synthetic.main.include_viewpager.*
-import me.hegj.wandroid.R
-import me.hegj.wandroid.app.utils.SettingUtil
-import me.hegj.wandroid.app.weight.ScaleTransitionPagerTitleView
-import me.hegj.wandroid.mvp.model.entity.SystemResponse
-import me.hegj.wandroid.mvp.ui.BaseActivity
-import me.hegj.wandroid.mvp.ui.adapter.ViewPagerAdapter
 import me.yokeyword.fragmentation.SupportFragment
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -27,31 +29,34 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
 
 
 /**
- * 主页体系-根据类型查询体系结果的activity
- * @Author:         hegaojian
- * @CreateDate:     2019/8/21 22:11
+ * @author: cgy
+ * @description: 主页体系-根据类型查询体系结果的activity
+ * @date: 2019/12/17 15:10
  */
 @SuppressLint("Registered")
 class TreeInfoActivity : BaseActivity<IPresenter>() {
 
-    var position = 0//从上级体系中，点击tag的索引
+    var position = 0 //从上级体系中,点击tag的索引
     lateinit var systemResponse: SystemResponse//从上级体系中得到的data
-    var fragments: MutableList<SupportFragment> = mutableListOf()
-    internal var pagerAdapter: ViewPagerAdapter? = null
+    var fragments : MutableList<SupportFragment> = mutableListOf()
+    internal var pagerAdapter : ViewPagerAdapter? = null
 
     override fun setupActivityComponent(appComponent: AppComponent) {
 
     }
 
+
     override fun initView(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_treeinfo
+        return R.layout.activity_tree_info //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
+
 
     override fun initData(savedInstanceState: Bundle?) {
         intent.run {
             systemResponse = getSerializableExtra("data") as SystemResponse
             position = getIntExtra("position", 0)
         }
+
         toolbar.run {
             setSupportActionBar(this)
             title = systemResponse.name
@@ -62,14 +67,10 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
         for (i in systemResponse.children.indices) {
             fragments.add(TreeInfoFragment.newInstance(systemResponse.children[i].id))
         }
-        viewpager_linear?.setBackgroundColor(SettingUtil.getColor(this))
-        pagerAdapter = ViewPagerAdapter(supportFragmentManager, fragments)
+        linear_viewpager?.setBackgroundColor(SettingUtil.getColor(this))
+        pagerAdapter = ViewPagerAdapter(supportFragmentManager,fragments)
         val commonNavigator = CommonNavigator(this)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
-            override fun getCount(): Int {
-                return systemResponse.children.size
-            }
-
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
                 return ScaleTransitionPagerTitleView(context).apply {
                     text = systemResponse.children[index].name
@@ -78,6 +79,10 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
                     selectedColor = Color.WHITE
                     setOnClickListener { view_pager.setCurrentItem(index, false) }
                 }
+            }
+
+            override fun getCount(): Int {
+                return systemResponse.children.size
             }
 
             override fun getIndicator(context: Context): IPagerIndicator {
@@ -97,5 +102,27 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
         view_pager.adapter = pagerAdapter
         view_pager.offscreenPageLimit = fragments.size
         view_pager.setCurrentItem(position, false)
+
+    }
+
+
+    override fun showLoading() {
+
+    }
+
+    override fun hideLoading() {
+
+    }
+
+    override fun showMessage(message: String) {
+        ArmsUtils.snackbarText(message)
+    }
+
+    override fun launchActivity(intent: Intent) {
+        ArmsUtils.startActivity(intent)
+    }
+
+    override fun killMyself() {
+        finish()
     }
 }

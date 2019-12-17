@@ -9,7 +9,7 @@ import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
 import javax.inject.Inject
 
-import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
+import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
@@ -30,7 +30,7 @@ import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 @FragmentScope
 class TreeinfoModel
 @Inject
-constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), TreeinfoContract.Model {
+constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), TreeInfoContract.Model {
     @Inject
     lateinit var mGson: Gson
     @Inject

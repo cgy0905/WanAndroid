@@ -45,7 +45,7 @@ class ProjectFragment : BaseFragment<ProjectPresenter>(), ProjectContract.View {
 
     var mDataList : MutableList<ClassifyResponse> = mutableListOf()
     var fragments : MutableList<SupportFragment> = mutableListOf()
-    internal var papgerAdapter : ViewPagerAdapter? = null
+    internal var pagerAdapter : ViewPagerAdapter? = null
     lateinit var loadSir : LoadService<Any>
 
 
@@ -67,7 +67,7 @@ class ProjectFragment : BaseFragment<ProjectPresenter>(), ProjectContract.View {
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-       val rootView =  inflater.inflate(R.layout.fragment_project, container, false)
+       val rootView =  inflater.inflate(R.layout.fragment_viewpager, container, false)
         //绑定loadSir
         loadSir = LoadSir.getDefault().register(rootView.findViewById(R.id.view_pager)) {
             loadSir.showCallback(LoadingCallback::class.java)
@@ -86,8 +86,8 @@ class ProjectFragment : BaseFragment<ProjectPresenter>(), ProjectContract.View {
 
     override fun onLazyInitView(savedInstanceState: Bundle?) {
         super.onLazyInitView(savedInstanceState)
-        papgerAdapter = ViewPagerAdapter(childFragmentManager, fragments)
-        view_pager.adapter = papgerAdapter
+        pagerAdapter = ViewPagerAdapter(childFragmentManager, fragments)
+        view_pager.adapter = pagerAdapter
         val commonNavigator = CommonNavigator(_mActivity)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {
@@ -142,7 +142,7 @@ class ProjectFragment : BaseFragment<ProjectPresenter>(), ProjectContract.View {
                 fragments.add(0, ProjectChildFragment.newInstance(true, 0))//最新项目页码从0开始
             }
             //如果viewpager和magicIndicator不为空的话,刷新它们 为空的话 说明用户还没有进来这个fragment
-            papgerAdapter?.notifyDataSetChanged()
+            pagerAdapter?.notifyDataSetChanged()
             magic_indicator?.navigator?.notifyDataSetChanged()
             view_pager?.offscreenPageLimit = fragments.size
         }

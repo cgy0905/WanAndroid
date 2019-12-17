@@ -5,7 +5,7 @@ import com.jess.arms.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides
 
-import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
+import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel
 
 
@@ -22,17 +22,17 @@ import me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel
  * ================================================
  */
 @Module
-//构建TreeinfoModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
-class TreeinfoModule(private val view: TreeinfoContract.View) {
+//构建TreeInfoModule时,将View的实现类传进来,这样就可以提供View的实现类给presenter
+class TreeInfoModule(private val view: TreeInfoContract.View) {
     @FragmentScope
     @Provides
-    fun provideTreeinfoView(): TreeinfoContract.View {
+    fun provideTreeInfoView(): TreeInfoContract.View {
         return this.view
     }
 
     @FragmentScope
     @Provides
-    fun provideTreeinfoModel(model: TreeinfoModel): TreeinfoContract.Model {
+    fun provideTreeInfoModel(model: TreeinfoModel): TreeInfoContract.Model {
         return model
     }
 }

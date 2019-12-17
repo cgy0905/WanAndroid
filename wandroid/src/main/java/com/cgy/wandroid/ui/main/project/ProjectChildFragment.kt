@@ -33,7 +33,7 @@ import com.jess.arms.di.component.AppComponent
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
-import kotlinx.android.synthetic.main.fragment_project_child.*
+import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -88,7 +88,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val rootView = inflater.inflate(R.layout.fragment_project_child, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_list, container, false)
         //绑定loadSir
         loadSir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipe_refresh_layout)) {
             loadSir.showCallback(LoadingCallback::class.java)
@@ -158,7 +158,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
 
             }
         }
-        float_btn.run {
+        float_action_btn.run {
             backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
             setOnClickListener {
                 val layoutManager = swipe_recycler_view.layoutManager as LinearLayoutManager
@@ -188,7 +188,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     if (!canScrollVertically(-1)) {
-                        float_btn.visibility = View.INVISIBLE
+                        float_action_btn.visibility = View.INVISIBLE
                     }
                 }
             })
@@ -218,7 +218,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
         } else if (pageNo == initPageNo) {
             loadSir.showSuccess()
             //如果是刷新的话,floatButton就要隐藏,因为这是后肯定是要在顶部的
-            float_btn.visibility = View.INVISIBLE
+            float_action_btn.visibility = View.INVISIBLE
             adapter.setNewData(data.datas)
         } else {
             //不是第一页 且有数据
@@ -315,7 +315,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
      */
     @Subscribe
     fun settingEvent(event : SettingChangeEvent) {
-        float_btn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
+        float_action_btn.backgroundTintList = SettingUtil.getOneColorStateList(_mActivity)
         swipe_refresh_layout.setColorSchemeColors(SettingUtil.getColor(_mActivity))
         SettingUtil.setLoadingColor(_mActivity, loadSir)
         footView?.setLoadViewColor(SettingUtil.getOneColorStateList(_mActivity))

@@ -24,7 +24,6 @@ import com.jess.arms.di.component.AppComponent
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import kotlinx.android.synthetic.main.include_viewpager.*
-import kotlinx.coroutines.flow.DEFAULT_CONCURRENCY
 import me.yokeyword.fragmentation.SupportFragment
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.UIUtil
@@ -66,7 +65,7 @@ class PublicFragment : BaseFragment<PublicPresenter>(), PublicContract.View {
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        val rootView = inflater.inflate(R.layout.fragment_public, container, false);
+        val rootView = inflater.inflate(R.layout.fragment_viewpager, container, false)
         //绑定loadsir
         loadSir = LoadSir.getDefault().register(rootView.findViewById(R.id.view_pager)) {
             mPresenter?.getProjectTitles()
@@ -74,7 +73,7 @@ class PublicFragment : BaseFragment<PublicPresenter>(), PublicContract.View {
             SettingUtil.setLoadingColor(_mActivity, this)
         }
 
-        return inflater.inflate(R.layout.fragment_public, container, false)
+        return rootView
     }
 
     override fun initData(savedInstanceState: Bundle?) {

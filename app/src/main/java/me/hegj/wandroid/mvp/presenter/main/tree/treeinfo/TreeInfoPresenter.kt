@@ -14,7 +14,7 @@ import me.hegj.wandroid.app.utils.HttpUtils
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import javax.inject.Inject
 
-import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract
+import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
@@ -35,10 +35,10 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay
  * ================================================
  */
 @FragmentScope
-class TreeinfoPresenter
+class TreeInfoPresenter
 @Inject
-constructor(model: TreeinfoContract.Model, rootView: TreeinfoContract.View) :
-        BasePresenter<TreeinfoContract.Model, TreeinfoContract.View>(model, rootView) {
+constructor(model: TreeInfoContract.Model, rootView: TreeInfoContract.View) :
+        BasePresenter<TreeInfoContract.Model, TreeInfoContract.View>(model, rootView) {
     @Inject
     lateinit var mErrorHandler: RxErrorHandler
     @Inject

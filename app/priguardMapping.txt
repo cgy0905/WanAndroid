@@ -6313,16 +6313,16 @@ me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent -> me.h
     javax.inject.Provider treeinfoPresenterProvider -> j
     javax.inject.Provider appManagerProvider -> i
     me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$Builder builder() -> a
-    void initialize(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule,com.jess.arms.di.component.AppComponent) -> a
-    void inject(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> a
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment injectTreeinfoFragment(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> b
+    void initialize(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,com.jess.arms.di.component.AppComponent) -> a
+    void inject(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> a
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment injectTreeinfoFragment(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> b
 me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$1 -> me.hegj.wandroid.a.a.c.e.a.a:
 me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$Builder -> me.hegj.wandroid.a.a.c.e.a.b$a:
-    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule treeinfoModule -> a
+    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule treeinfoModule -> a
     com.jess.arms.di.component.AppComponent appComponent -> b
     me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$Builder appComponent(com.jess.arms.di.component.AppComponent) -> a
-    me.hegj.wandroid.di.component.main.tree.treeinfo.TreeinfoComponent build() -> a
-    me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$Builder treeinfoModule(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule) -> a
+    me.hegj.wandroid.di.component.main.tree.treeinfo.TreeInfoComponent build() -> a
+    me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$Builder treeinfoModule(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule) -> a
 me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$com_jess_arms_di_component_AppComponent_appManager -> me.hegj.wandroid.a.a.c.e.a.b$b:
     com.jess.arms.di.component.AppComponent appComponent -> a
 me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$com_jess_arms_di_component_AppComponent_application -> me.hegj.wandroid.a.a.c.e.a.b$c:
@@ -6335,8 +6335,8 @@ me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$com_jes
     com.jess.arms.di.component.AppComponent appComponent -> a
 me.hegj.wandroid.di.component.main.tree.treeinfo.DaggerTreeinfoComponent$com_jess_arms_di_component_AppComponent_rxErrorHandler -> me.hegj.wandroid.a.a.c.e.a.b$g:
     com.jess.arms.di.component.AppComponent appComponent -> a
-me.hegj.wandroid.di.component.main.tree.treeinfo.TreeinfoComponent -> me.hegj.wandroid.a.a.c.e.a.c:
-    void inject(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> a
+me.hegj.wandroid.di.component.main.tree.treeinfo.TreeInfoComponent -> me.hegj.wandroid.a.a.c.e.a.c:
+    void inject(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> a
 me.hegj.wandroid.di.component.start.DaggerLoginComponent -> me.hegj.wandroid.a.a.d.b:
     javax.inject.Provider loginModelProvider -> d
     javax.inject.Provider applicationProvider -> c
@@ -6663,19 +6663,19 @@ me.hegj.wandroid.di.module.main.tree.SystemModule_ProvideSystemViewFactory -> me
     me.hegj.wandroid.di.module.main.tree.SystemModule module -> a
     me.hegj.wandroid.di.module.main.tree.SystemModule_ProvideSystemViewFactory create(me.hegj.wandroid.di.module.main.tree.SystemModule) -> a
     me.hegj.wandroid.mvp.contract.main.tree.SystemContract$View provideSystemView(me.hegj.wandroid.di.module.main.tree.SystemModule) -> b
-me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule -> me.hegj.wandroid.a.b.c.e.a.a:
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$View view -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$Model provideTreeinfoModel(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$View provideTreeinfoView() -> a
+me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule -> me.hegj.wandroid.a.b.c.e.a.a:
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View view -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View provideTreeinfoView() -> a
 me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoModelFactory -> me.hegj.wandroid.a.b.c.e.a.b:
-    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule module -> a
+    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule module -> a
     javax.inject.Provider modelProvider -> b
-    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoModelFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule,javax.inject.Provider) -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$Model provideTreeinfoModel(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule,me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
+    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoModelFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,javax.inject.Provider) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
 me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoViewFactory -> me.hegj.wandroid.a.b.c.e.a.c:
-    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule module -> a
-    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoViewFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule) -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$View provideTreeinfoView(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule) -> b
+    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule module -> a
+    me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoViewFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View provideTreeinfoView(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule) -> b
 me.hegj.wandroid.di.module.start.LoginModule -> me.hegj.wandroid.a.b.d.a:
     me.hegj.wandroid.mvp.contract.start.LoginContract$View view -> a
     me.hegj.wandroid.mvp.contract.start.LoginContract$Model provideLoginModel(me.hegj.wandroid.mvp.model.start.LoginModel) -> a
@@ -6814,11 +6814,11 @@ me.hegj.wandroid.mvp.contract.main.tree.SystemContract$Model -> me.hegj.wandroid
     io.reactivex.Observable getSystemData() -> c
 me.hegj.wandroid.mvp.contract.main.tree.SystemContract$View -> me.hegj.wandroid.b.a.c.e.d:
     void getSystemDataSucc(java.util.List) -> d
-me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$Model -> me.hegj.wandroid.b.a.c.e.a.a:
+me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model -> me.hegj.wandroid.b.a.c.e.a.a:
     io.reactivex.Observable uncollect(int) -> a
     io.reactivex.Observable collect(int) -> b
     io.reactivex.Observable getTreeInfoDatas(int,int) -> c
-me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$View -> me.hegj.wandroid.b.a.c.e.a.b:
+me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View -> me.hegj.wandroid.b.a.c.e.a.b:
     void collect(boolean,int) -> a
     void requestDataSucc(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> a
     void requestDataFaild(java.lang.String) -> b
@@ -7647,24 +7647,24 @@ me.hegj.wandroid.mvp.presenter.main.tree.SystemPresenter_MembersInjector -> me.h
     void injectMApplication(me.hegj.wandroid.mvp.presenter.main.tree.SystemPresenter,android.app.Application) -> a
     void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.main.tree.SystemPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
     void injectMImageLoader(me.hegj.wandroid.mvp.presenter.main.tree.SystemPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
-me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter:
+me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter:
     me.jessyan.rxerrorhandler.core.RxErrorHandler mErrorHandler -> e
     com.jess.arms.integration.AppManager mAppManager -> h
     android.app.Application mApplication -> f
     com.jess.arms.http.imageloader.ImageLoader mImageLoader -> g
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeinfoContract$View access$getMRootView$p(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View access$getMRootView$p(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter) -> a
     void collect(int,int) -> a
     void getTreeInfoDataByType(int,int) -> b
     void uncollect(int,int) -> c
-me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter$collect$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.a:
-    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter$collect$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.a:
+    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter this$0 -> a
     int $position -> b
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
-me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter$getTreeInfoDataByType$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.b:
-    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter$getTreeInfoDataByType$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.b:
+    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter this$0 -> a
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
-me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter$uncollect$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.c:
-    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter$uncollect$1 -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.c:
+    me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter this$0 -> a
     int $position -> b
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
 me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter_Factory -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.d:
@@ -7676,10 +7676,10 @@ me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter_Factory -> m
     javax.inject.Provider modelProvider -> a
     me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter_Factory create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
 me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter_MembersInjector -> me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.e:
-    void injectMAppManager(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter,com.jess.arms.integration.AppManager) -> a
-    void injectMApplication(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter,android.app.Application) -> a
-    void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
-    void injectMImageLoader(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeinfoPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
+    void injectMAppManager(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter,com.jess.arms.integration.AppManager) -> a
+    void injectMApplication(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter,android.app.Application) -> a
+    void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
+    void injectMImageLoader(me.hegj.wandroid.mvp.presenter.main.tree.treeinfo.TreeInfoPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
 me.hegj.wandroid.mvp.presenter.start.LoginPresenter -> me.hegj.wandroid.mvp.presenter.start.LoginPresenter:
     com.jess.arms.integration.AppManager mAppManager -> g
     me.jessyan.rxerrorhandler.core.RxErrorHandler mErrorHandler -> e
@@ -8611,35 +8611,35 @@ me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoActivity$initData$3 
 me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoActivity$initData$3$getTitleView$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.b:
     me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoActivity$initData$3 this$0 -> a
     int $index$inlined -> b
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment:
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment:
     int cid -> n
     me.hegj.wandroid.app.weight.DefineLoadMoreView footView -> o
     com.kingja.loadsir.core.LoadService loadsir -> j
     int initPageNo -> l
     int pageNo -> m
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$Companion Companion -> i
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$Companion Companion -> i
     java.util.HashMap _$_findViewCache -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter adapter -> k
-    int access$getCid$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> a
-    void access$setPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment,int) -> a
+    int access$getCid$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> a
+    void access$setPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment,int) -> a
     void collect(boolean,int) -> a
     void initData(android.os.Bundle) -> a
     android.view.View initView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     void requestDataSucc(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> a
     void setupFragmentComponent(com.jess.arms.di.component.AppComponent) -> a
-    int access$getInitPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> b
+    int access$getInitPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> b
     void requestDataFaild(java.lang.String) -> b
-    int access$getPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> c
+    int access$getPageNo$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> c
     void onLazyInitView(android.os.Bundle) -> c
-    me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment) -> d
+    me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment) -> d
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> q
     com.kingja.loadsir.core.LoadService getLoadsir() -> r
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$a:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment newInstance(int) -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChange$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChange$1:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> i
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$a:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment newInstance(int) -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> i
     kotlinx.coroutines.CoroutineScope p$ -> e
     java.lang.Object L$0 -> f
     java.lang.Object L$1 -> g
@@ -8648,34 +8648,34 @@ me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChan
     kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation) -> a
     java.lang.Object invoke(java.lang.Object,java.lang.Object) -> a
     java.lang.Object invokeSuspend(java.lang.Object) -> b
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChange$1$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChange$1$1:
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1$1:
     kotlinx.coroutines.CoroutineScope p$ -> e
     int label -> f
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$collectChange$1 this$0 -> g
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1 this$0 -> g
     kotlin.coroutines.Continuation create(java.lang.Object,kotlin.coroutines.Continuation) -> a
     java.lang.Object invoke(java.lang.Object,java.lang.Object) -> a
     java.lang.Object invokeSuspend(java.lang.Object) -> b
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.d:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.d:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
     void onClick(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.app.weight.CollectView,int) -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$apply$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.e:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.f:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$run$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.g:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$run$lambda$3 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$$inlined$run$lambda$3:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> b
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$apply$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.e:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.f:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$run$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.g:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$run$lambda$3 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$$inlined$run$lambda$3:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> b
     com.yanzhenjie.recyclerview.SwipeRecyclerView $this_run -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initData$4 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.h:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initData$4 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.h:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
     void onLoadMore() -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initView$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$initView$1:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$requestDataFaild$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.i:
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initView$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$initView$1:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$requestDataFaild$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.i:
     java.lang.String $errorMsg -> a
-me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment$requestDataSucc$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.j:
-    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$requestDataSucc$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.j:
+    me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment this$0 -> a
 me.hegj.wandroid.mvp.ui.activity.setting.GeneralPreferenceFragment -> me.hegj.wandroid.mvp.ui.activity.setting.GeneralPreferenceFragment:
     me.hegj.wandroid.app.weight.IconPreference colorPreview -> a
     me.hegj.wandroid.mvp.ui.activity.setting.SettingActivity parentActivity -> b

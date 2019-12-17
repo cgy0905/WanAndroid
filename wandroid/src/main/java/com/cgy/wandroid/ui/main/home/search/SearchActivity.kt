@@ -20,7 +20,7 @@ import com.cgy.wandroid.R
 import com.cgy.wandroid.mvp.model.entity.SearchResponse
 import com.cgy.wandroid.ui.main.home.adapter.SearchHistoryAdapter
 import com.cgy.wandroid.util.CacheUtil
-import com.cgy.wandroid.util.ColorUtils
+import com.cgy.wandroid.util.ColorUtil
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.util.ShowUtil
 import com.google.gson.Gson
@@ -179,7 +179,7 @@ class SearchActivity : BaseActivity<SearchPresenter>(), SearchContract.View {
                 return LayoutInflater.from(parent?.context).inflate(R.layout.flow_layout, search_flow_layout, false)
                         .apply {
                             flow_tag.text = hotSearchBean?.name
-                            flow_tag.setTextColor(ColorUtils.randomColor())
+                            flow_tag.setTextColor(ColorUtil.randomColor())
                         }
             }
         }

@@ -3,10 +3,10 @@ package me.hegj.wandroid.di.component.main.tree.treeinfo
 import dagger.Component
 import com.jess.arms.di.component.AppComponent
 
-import me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule
+import me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule
 
 import com.jess.arms.di.scope.FragmentScope
-import me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment
+import me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment
 
 
 /**
@@ -22,7 +22,7 @@ import me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeinfoFragment
  * ================================================
  */
 @FragmentScope
-@Component(modules = arrayOf(TreeinfoModule::class), dependencies = arrayOf(AppComponent::class))
-interface TreeinfoComponent {
-    fun inject(fragment: TreeinfoFragment)
+@Component(modules = arrayOf(TreeInfoModule::class), dependencies = arrayOf(AppComponent::class))
+interface TreeInfoComponent {
+    fun inject(fragment: TreeInfoFragment)
 }
