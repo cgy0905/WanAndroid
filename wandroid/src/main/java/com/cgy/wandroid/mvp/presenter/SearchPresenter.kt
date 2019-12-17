@@ -1,9 +1,8 @@
-package com.cgy.wandr
+package com.cgy.wandroid.mvp.presenter
 
 import com.cgy.wandroid.util.CacheUtil
 import com.google.gson.Gson
 
-()oid.mvp.presenter
 
 import android.app.Application
 import com.cgy.wandroid.mvp.contract.SearchContract

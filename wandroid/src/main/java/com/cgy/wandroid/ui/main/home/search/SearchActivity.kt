@@ -9,12 +9,8 @@ import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
-import com.cgy.wandr.SearchPresenter
-
 import com.cgy.wandroid.base.BaseActivity
 import com.jess.arms.di.component.AppComponent
-import com.jess.arms.utils.ArmsUtils
-
 import com.cgy.wandroid.di.component.DaggerSearchComponent
 import com.cgy.wandroid.di.module.SearchModule
 import com.cgy.wandroid.mvp.contract.SearchContract
@@ -80,6 +76,7 @@ class SearchActivity : BaseActivity<SearchPresenter>(), SearchContract.View {
                     adapter.setNewData(historyData)
                     CacheUtil.setSearchHistoryData(Gson().toJson(historyData))
                 }
+                negativeButton(R.string.cancel)
             }
         }
         search_flow_layout.run {
