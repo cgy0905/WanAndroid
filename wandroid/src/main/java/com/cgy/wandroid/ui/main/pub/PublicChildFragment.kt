@@ -53,7 +53,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
 
     lateinit var loadSir: LoadService<Any>
     lateinit var adapter: ArticleAdapter
-    private var initPageNo = 1;//注意公众号页码从 1开始的
+    private var initPageNo = 1//注意公众号页码从 1开始的
     private var pageNo: Int = initPageNo
     private var cid: Int = 0
     private var footView: DefineLoadMoreView? = null

@@ -2,17 +2,15 @@ package me.hegj.wandroid.mvp.model.web
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.ActivityScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
-import me.hegj.wandroid.mvp.contract.web.WebviewContract
+import me.hegj.wandroid.mvp.contract.web.WebViewContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
+import javax.inject.Inject
 
 
 /**
@@ -28,9 +26,9 @@ import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
  * ================================================
  */
 @ActivityScope
-class WebviewModel
+class WebViewModel
 @Inject
-constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), WebviewContract.Model {
+constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), WebViewContract.Model {
 
 
     @Inject

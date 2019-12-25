@@ -19,19 +19,19 @@ import me.hegj.wandroid.app.event.CollectEvent
 import me.hegj.wandroid.app.event.LoginFreshEvent
 import me.hegj.wandroid.app.utils.CacheUtil
 import me.hegj.wandroid.di.component.web.DaggerWebViewComponent
-import me.hegj.wandroid.di.module.web.WebviewModule
-import me.hegj.wandroid.mvp.contract.web.WebviewContract
+import me.hegj.wandroid.di.module.web.WebViewModule
+import me.hegj.wandroid.mvp.contract.web.WebViewContract
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.model.entity.CollectResponse
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
 import me.hegj.wandroid.mvp.model.entity.enums.CollectType
-import me.hegj.wandroid.mvp.presenter.web.WebviewPresenter
+import me.hegj.wandroid.mvp.presenter.web.WebViewPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
 import me.hegj.wandroid.mvp.ui.activity.start.LoginActivity
 import org.greenrobot.eventbus.Subscribe
 
-class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
+class WebViewActivity : BaseActivity<WebViewPresenter>(), WebViewContract.View {
 
     var collect = false//是否收藏
     var id = 0//id
@@ -46,7 +46,7 @@ class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
         DaggerWebViewComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .webviewModule(WebviewModule(this))
+                .webviewModule(WebViewModule(this))
                 .build()
                 .inject(this)
     }
@@ -66,7 +66,7 @@ class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")
             collect = it.collect
             url = it.link
-            collectType = CollectType.Ariticle.type
+            collectType = CollectType.Article.type
         }
         //点击首页轮播图进来的
         intent.getSerializableExtra("bannerdata")?.let {
@@ -85,7 +85,7 @@ class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
             showTitle = it.title.replace("<em class='highlight'>","").replace("</em>","")
             collect = true //从收藏列表过来的，肯定 是 true 了
             url = it.link
-            collectType = CollectType.Ariticle.type
+            collectType = CollectType.Article.type
         }
         //点击收藏网址列表进来的
         intent.getSerializableExtra("collectUrl")?.let {
@@ -197,7 +197,7 @@ class WebViewActivity : BaseActivity<WebviewPresenter>(), WebviewContract.View {
     /**
      * 收藏网址成功回调
      */
-    override fun collectUrlSucc(collected: Boolean, data: CollectUrlResponse) {
+    override fun collectUrlSuccess(collected: Boolean, data: CollectUrlResponse) {
         collect = collected
         //刷新一下menu
         window.invalidatePanelMenu(Window.FEATURE_OPTIONS_PANEL)

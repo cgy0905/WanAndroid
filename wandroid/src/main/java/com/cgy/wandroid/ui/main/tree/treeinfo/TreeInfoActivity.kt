@@ -2,7 +2,6 @@ package com.cgy.wandroid.ui.main.tree.treeinfo
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.animation.AccelerateInterpolator
@@ -15,7 +14,6 @@ import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.weight.ScaleTransitionPagerTitleView
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
-import com.jess.arms.utils.ArmsUtils
 import kotlinx.android.synthetic.main.include_toolbar.*
 import kotlinx.android.synthetic.main.include_viewpager.*
 import me.yokeyword.fragmentation.SupportFragment
@@ -103,26 +101,5 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
         view_pager.offscreenPageLimit = fragments.size
         view_pager.setCurrentItem(position, false)
 
-    }
-
-
-    override fun showLoading() {
-
-    }
-
-    override fun hideLoading() {
-
-    }
-
-    override fun showMessage(message: String) {
-        ArmsUtils.snackbarText(message)
-    }
-
-    override fun launchActivity(intent: Intent) {
-        ArmsUtils.startActivity(intent)
-    }
-
-    override fun killMyself() {
-        finish()
     }
 }

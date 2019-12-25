@@ -44,7 +44,7 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_treeinfo
+        return R.layout.activity_tree_info
     }
 
     override fun initData(savedInstanceState: Bundle?) {

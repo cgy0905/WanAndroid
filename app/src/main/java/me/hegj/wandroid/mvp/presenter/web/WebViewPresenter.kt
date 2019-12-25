@@ -1,24 +1,21 @@
 package me.hegj.wandroid.mvp.presenter.web
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.ActivityScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
-import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
-import me.hegj.wandroid.mvp.contract.web.WebviewContract
+import me.hegj.wandroid.mvp.contract.web.WebViewContract
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -34,10 +31,10 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay
  * ================================================
  */
 @ActivityScope
-class WebviewPresenter
+class WebViewPresenter
 @Inject
-constructor(model: WebviewContract.Model, rootView: WebviewContract.View) :
-        BasePresenter<WebviewContract.Model, WebviewContract.View>(model, rootView) {
+constructor(model: WebViewContract.Model, rootView: WebViewContract.View) :
+        BasePresenter<WebViewContract.Model, WebViewContract.View>(model, rootView) {
     @Inject
     lateinit var mErrorHandler: RxErrorHandler
     @Inject
@@ -91,7 +88,7 @@ constructor(model: WebviewContract.Model, rootView: WebviewContract.View) :
                     override fun onNext(response: ApiResponse<CollectUrlResponse>) {
                         if (response.isSucces()) {
                             //收藏成功
-                            mRootView.collectUrlSucc(true,response.data)
+                            mRootView.collectUrlSuccess(true,response.data)
                         }else{
                             //收藏失败
                             mRootView.collect(false)

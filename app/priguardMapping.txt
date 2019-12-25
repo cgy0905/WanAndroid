@@ -6457,16 +6457,16 @@ me.hegj.wandroid.di.component.web.DaggerWebviewComponent -> me.hegj.wandroid.a.a
     javax.inject.Provider webviewPresenterProvider -> j
     javax.inject.Provider appManagerProvider -> i
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder builder() -> a
-    void initialize(me.hegj.wandroid.di.module.web.WebviewModule,com.jess.arms.di.component.AppComponent) -> a
+    void initialize(me.hegj.wandroid.di.module.web.WebViewModule,com.jess.arms.di.component.AppComponent) -> a
     void inject(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> a
     me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity injectWebviewActivity(me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity) -> b
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$1 -> me.hegj.wandroid.a.a.f.a:
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder -> me.hegj.wandroid.a.a.f.b$a:
     com.jess.arms.di.component.AppComponent appComponent -> b
-    me.hegj.wandroid.di.module.web.WebviewModule webviewModule -> a
+    me.hegj.wandroid.di.module.web.WebViewModule webviewModule -> a
     me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder appComponent(com.jess.arms.di.component.AppComponent) -> a
     me.hegj.wandroid.di.component.web.WebViewComponent build() -> a
-    me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder webviewModule(me.hegj.wandroid.di.module.web.WebviewModule) -> a
+    me.hegj.wandroid.di.component.web.DaggerWebviewComponent$Builder webviewModule(me.hegj.wandroid.di.module.web.WebViewModule) -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_appManager -> me.hegj.wandroid.a.a.f.b$b:
     com.jess.arms.di.component.AppComponent appComponent -> a
 me.hegj.wandroid.di.component.web.DaggerWebviewComponent$com_jess_arms_di_component_AppComponent_application -> me.hegj.wandroid.a.a.f.b$c:
@@ -6665,13 +6665,13 @@ me.hegj.wandroid.di.module.main.tree.SystemModule_ProvideSystemViewFactory -> me
     me.hegj.wandroid.mvp.contract.main.tree.SystemContract$View provideSystemView(me.hegj.wandroid.di.module.main.tree.SystemModule) -> b
 me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule -> me.hegj.wandroid.a.b.c.e.a.a:
     me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View view -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel) -> a
     me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$View provideTreeinfoView() -> a
 me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoModelFactory -> me.hegj.wandroid.a.b.c.e.a.b:
     me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule module -> a
     javax.inject.Provider modelProvider -> b
     me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoModelFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,javax.inject.Provider) -> a
-    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel) -> a
+    me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract$Model provideTreeinfoModel(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule,me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel) -> a
 me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoViewFactory -> me.hegj.wandroid.a.b.c.e.a.c:
     me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule module -> a
     me.hegj.wandroid.di.module.main.tree.treeinfo.TreeinfoModule_ProvideTreeinfoViewFactory create(me.hegj.wandroid.di.module.main.tree.treeinfo.TreeInfoModule) -> a
@@ -6715,19 +6715,19 @@ me.hegj.wandroid.di.module.todo.TodoModule_ProvideTodoViewFactory -> me.hegj.wan
     me.hegj.wandroid.di.module.todo.TodoModule module -> a
     me.hegj.wandroid.di.module.todo.TodoModule_ProvideTodoViewFactory create(me.hegj.wandroid.di.module.todo.TodoModule) -> a
     me.hegj.wandroid.mvp.contract.todo.TodoContract$View provideTodoView(me.hegj.wandroid.di.module.todo.TodoModule) -> b
-me.hegj.wandroid.di.module.web.WebviewModule -> me.hegj.wandroid.a.b.f.a:
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$View view -> a
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$Model provideWebviewModel(me.hegj.wandroid.mvp.model.web.WebviewModel) -> a
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$View provideWebviewView() -> a
+me.hegj.wandroid.di.module.web.WebViewModule -> me.hegj.wandroid.a.b.f.a:
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$View view -> a
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$Model provideWebviewModel(me.hegj.wandroid.mvp.model.web.WebViewModel) -> a
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$View provideWebviewView() -> a
 me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewModelFactory -> me.hegj.wandroid.a.b.f.b:
     javax.inject.Provider modelProvider -> b
-    me.hegj.wandroid.di.module.web.WebviewModule module -> a
-    me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewModelFactory create(me.hegj.wandroid.di.module.web.WebviewModule,javax.inject.Provider) -> a
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$Model provideWebviewModel(me.hegj.wandroid.di.module.web.WebviewModule,me.hegj.wandroid.mvp.model.web.WebviewModel) -> a
+    me.hegj.wandroid.di.module.web.WebViewModule module -> a
+    me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewModelFactory create(me.hegj.wandroid.di.module.web.WebViewModule,javax.inject.Provider) -> a
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$Model provideWebviewModel(me.hegj.wandroid.di.module.web.WebViewModule,me.hegj.wandroid.mvp.model.web.WebViewModel) -> a
 me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewViewFactory -> me.hegj.wandroid.a.b.f.c:
-    me.hegj.wandroid.di.module.web.WebviewModule module -> a
-    me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewViewFactory create(me.hegj.wandroid.di.module.web.WebviewModule) -> a
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$View provideWebviewView(me.hegj.wandroid.di.module.web.WebviewModule) -> b
+    me.hegj.wandroid.di.module.web.WebViewModule module -> a
+    me.hegj.wandroid.di.module.web.WebviewModule_ProvideWebviewViewFactory create(me.hegj.wandroid.di.module.web.WebViewModule) -> a
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$View provideWebviewView(me.hegj.wandroid.di.module.web.WebViewModule) -> b
 me.hegj.wandroid.mvp.contract.MainContract$Model -> me.hegj.wandroid.b.a.a:
 me.hegj.wandroid.mvp.contract.MainContract$View -> me.hegj.wandroid.b.a.b:
 me.hegj.wandroid.mvp.contract.collect.CollectContract$Model -> me.hegj.wandroid.b.a.a.a:
@@ -6843,12 +6843,12 @@ me.hegj.wandroid.mvp.contract.todo.TodoContract$View -> me.hegj.wandroid.b.a.e.d
     void requestDataSucces(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> c
     void updateTodoDataFaild(java.lang.String) -> d
     void updateTodoDataSucc(int) -> d
-me.hegj.wandroid.mvp.contract.web.WebviewContract$Model -> me.hegj.wandroid.b.a.f.a:
+me.hegj.wandroid.mvp.contract.web.WebViewContract$Model -> me.hegj.wandroid.b.a.f.a:
     io.reactivex.Observable uncollect(int) -> a
     io.reactivex.Observable collect(int) -> b
     io.reactivex.Observable collectUrl(java.lang.String,java.lang.String) -> b
     io.reactivex.Observable uncollectUrl(int) -> d
-me.hegj.wandroid.mvp.contract.web.WebviewContract$View -> me.hegj.wandroid.b.a.f.b:
+me.hegj.wandroid.mvp.contract.web.WebViewContract$View -> me.hegj.wandroid.b.a.f.b:
     void collect(boolean) -> a
     void collectUrlSucc(boolean,me.hegj.wandroid.mvp.model.entity.CollectUrlResponse) -> a
 me.hegj.wandroid.mvp.model.MainModel -> me.hegj.wandroid.mvp.model.MainModel:
@@ -7147,20 +7147,20 @@ me.hegj.wandroid.mvp.model.main.tree.SystemModel_Factory -> me.hegj.wandroid.mvp
 me.hegj.wandroid.mvp.model.main.tree.SystemModel_MembersInjector -> me.hegj.wandroid.mvp.model.main.tree.f:
     void injectMApplication(me.hegj.wandroid.mvp.model.main.tree.SystemModel,android.app.Application) -> a
     void injectMGson(me.hegj.wandroid.mvp.model.main.tree.SystemModel,com.google.gson.Gson) -> a
-me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel:
+me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel:
     android.app.Application mApplication -> c
     com.google.gson.Gson mGson -> b
     io.reactivex.Observable uncollect(int) -> a
     io.reactivex.Observable collect(int) -> b
     io.reactivex.Observable getTreeInfoDatas(int,int) -> c
-me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$collect$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.a:
-    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$collect$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$collect$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.a:
+    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$collect$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
-me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$getTreeInfoDatas$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.b:
-    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$getTreeInfoDatas$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$getTreeInfoDatas$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.b:
+    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$getTreeInfoDatas$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
-me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$uncollect$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.c:
-    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel$uncollect$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$uncollect$1 -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.c:
+    me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel$uncollect$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
 me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel_Factory -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.d:
     javax.inject.Provider mApplicationProvider -> c
@@ -7168,8 +7168,8 @@ me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel_Factory -> me.hegj.w
     javax.inject.Provider repositoryManagerProvider -> a
     me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel_Factory create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
 me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel_MembersInjector -> me.hegj.wandroid.mvp.model.main.tree.treeinfo.e:
-    void injectMApplication(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel,android.app.Application) -> a
-    void injectMGson(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel,com.google.gson.Gson) -> a
+    void injectMApplication(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel,android.app.Application) -> a
+    void injectMGson(me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel,com.google.gson.Gson) -> a
 me.hegj.wandroid.mvp.model.start.LoginModel -> me.hegj.wandroid.mvp.model.start.LoginModel:
     android.app.Application mApplication -> c
     com.google.gson.Gson mGson -> b
@@ -7231,24 +7231,24 @@ me.hegj.wandroid.mvp.model.todo.TodoModel_Factory -> me.hegj.wandroid.mvp.model.
 me.hegj.wandroid.mvp.model.todo.TodoModel_MembersInjector -> me.hegj.wandroid.mvp.model.todo.i:
     void injectMApplication(me.hegj.wandroid.mvp.model.todo.TodoModel,android.app.Application) -> a
     void injectMGson(me.hegj.wandroid.mvp.model.todo.TodoModel,com.google.gson.Gson) -> a
-me.hegj.wandroid.mvp.model.web.WebviewModel -> me.hegj.wandroid.mvp.model.web.WebviewModel:
+me.hegj.wandroid.mvp.model.web.WebViewModel -> me.hegj.wandroid.mvp.model.web.WebViewModel:
     android.app.Application mApplication -> c
     com.google.gson.Gson mGson -> b
     io.reactivex.Observable uncollect(int) -> a
     io.reactivex.Observable collect(int) -> b
     io.reactivex.Observable collectUrl(java.lang.String,java.lang.String) -> b
     io.reactivex.Observable uncollectUrl(int) -> d
-me.hegj.wandroid.mvp.model.web.WebviewModel$collect$1 -> me.hegj.wandroid.mvp.model.web.a:
-    me.hegj.wandroid.mvp.model.web.WebviewModel$collect$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.web.WebViewModel$collect$1 -> me.hegj.wandroid.mvp.model.web.a:
+    me.hegj.wandroid.mvp.model.web.WebViewModel$collect$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
-me.hegj.wandroid.mvp.model.web.WebviewModel$collectUrl$1 -> me.hegj.wandroid.mvp.model.web.b:
-    me.hegj.wandroid.mvp.model.web.WebviewModel$collectUrl$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.web.WebViewModel$collectUrl$1 -> me.hegj.wandroid.mvp.model.web.b:
+    me.hegj.wandroid.mvp.model.web.WebViewModel$collectUrl$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
-me.hegj.wandroid.mvp.model.web.WebviewModel$uncollect$1 -> me.hegj.wandroid.mvp.model.web.c:
-    me.hegj.wandroid.mvp.model.web.WebviewModel$uncollect$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.web.WebViewModel$uncollect$1 -> me.hegj.wandroid.mvp.model.web.c:
+    me.hegj.wandroid.mvp.model.web.WebViewModel$uncollect$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
-me.hegj.wandroid.mvp.model.web.WebviewModel$uncollectUrl$1 -> me.hegj.wandroid.mvp.model.web.d:
-    me.hegj.wandroid.mvp.model.web.WebviewModel$uncollectUrl$1 INSTANCE -> a
+me.hegj.wandroid.mvp.model.web.WebViewModel$uncollectUrl$1 -> me.hegj.wandroid.mvp.model.web.d:
+    me.hegj.wandroid.mvp.model.web.WebViewModel$uncollectUrl$1 INSTANCE -> a
     io.reactivex.Observable apply(io.reactivex.Observable) -> a
 me.hegj.wandroid.mvp.model.web.WebviewModel_Factory -> me.hegj.wandroid.mvp.model.web.e:
     javax.inject.Provider mApplicationProvider -> c
@@ -7256,8 +7256,8 @@ me.hegj.wandroid.mvp.model.web.WebviewModel_Factory -> me.hegj.wandroid.mvp.mode
     javax.inject.Provider repositoryManagerProvider -> a
     me.hegj.wandroid.mvp.model.web.WebviewModel_Factory create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
 me.hegj.wandroid.mvp.model.web.WebviewModel_MembersInjector -> me.hegj.wandroid.mvp.model.web.f:
-    void injectMApplication(me.hegj.wandroid.mvp.model.web.WebviewModel,android.app.Application) -> a
-    void injectMGson(me.hegj.wandroid.mvp.model.web.WebviewModel,com.google.gson.Gson) -> a
+    void injectMApplication(me.hegj.wandroid.mvp.model.web.WebViewModel,android.app.Application) -> a
+    void injectMGson(me.hegj.wandroid.mvp.model.web.WebViewModel,com.google.gson.Gson) -> a
 me.hegj.wandroid.mvp.presenter.MainPresenter -> me.hegj.wandroid.mvp.presenter.MainPresenter:
     me.jessyan.rxerrorhandler.core.RxErrorHandler mErrorHandler -> e
     com.jess.arms.integration.AppManager mAppManager -> h
@@ -7800,27 +7800,27 @@ me.hegj.wandroid.mvp.presenter.todo.TodoPresenter_MembersInjector -> me.hegj.wan
     void injectMApplication(me.hegj.wandroid.mvp.presenter.todo.TodoPresenter,android.app.Application) -> a
     void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.todo.TodoPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
     void injectMImageLoader(me.hegj.wandroid.mvp.presenter.todo.TodoPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
-me.hegj.wandroid.mvp.presenter.web.WebviewPresenter -> me.hegj.wandroid.mvp.presenter.web.WebviewPresenter:
+me.hegj.wandroid.mvp.presenter.web.WebViewPresenter -> me.hegj.wandroid.mvp.presenter.web.WebViewPresenter:
     me.jessyan.rxerrorhandler.core.RxErrorHandler mErrorHandler -> e
     com.jess.arms.integration.AppManager mAppManager -> h
     android.app.Application mApplication -> f
     com.jess.arms.http.imageloader.ImageLoader mImageLoader -> g
-    me.hegj.wandroid.mvp.contract.web.WebviewContract$View access$getMRootView$p(me.hegj.wandroid.mvp.presenter.web.WebviewPresenter) -> a
+    me.hegj.wandroid.mvp.contract.web.WebViewContract$View access$getMRootView$p(me.hegj.wandroid.mvp.presenter.web.WebViewPresenter) -> a
     void collect(int) -> a
     void collectUrl(java.lang.String,java.lang.String) -> a
     void uncollect(int) -> b
     void uncollectUrl(int) -> c
-me.hegj.wandroid.mvp.presenter.web.WebviewPresenter$collect$1 -> me.hegj.wandroid.mvp.presenter.web.a:
-    me.hegj.wandroid.mvp.presenter.web.WebviewPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.web.WebViewPresenter$collect$1 -> me.hegj.wandroid.mvp.presenter.web.a:
+    me.hegj.wandroid.mvp.presenter.web.WebViewPresenter this$0 -> a
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
-me.hegj.wandroid.mvp.presenter.web.WebviewPresenter$collectUrl$1 -> me.hegj.wandroid.mvp.presenter.web.b:
-    me.hegj.wandroid.mvp.presenter.web.WebviewPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.web.WebViewPresenter$collectUrl$1 -> me.hegj.wandroid.mvp.presenter.web.b:
+    me.hegj.wandroid.mvp.presenter.web.WebViewPresenter this$0 -> a
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
-me.hegj.wandroid.mvp.presenter.web.WebviewPresenter$uncollect$1 -> me.hegj.wandroid.mvp.presenter.web.c:
-    me.hegj.wandroid.mvp.presenter.web.WebviewPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.web.WebViewPresenter$uncollect$1 -> me.hegj.wandroid.mvp.presenter.web.c:
+    me.hegj.wandroid.mvp.presenter.web.WebViewPresenter this$0 -> a
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
-me.hegj.wandroid.mvp.presenter.web.WebviewPresenter$uncollectUrl$1 -> me.hegj.wandroid.mvp.presenter.web.d:
-    me.hegj.wandroid.mvp.presenter.web.WebviewPresenter this$0 -> a
+me.hegj.wandroid.mvp.presenter.web.WebViewPresenter$uncollectUrl$1 -> me.hegj.wandroid.mvp.presenter.web.d:
+    me.hegj.wandroid.mvp.presenter.web.WebViewPresenter this$0 -> a
     void onNext(me.hegj.wandroid.mvp.model.entity.ApiResponse) -> a
 me.hegj.wandroid.mvp.presenter.web.WebviewPresenter_Factory -> me.hegj.wandroid.mvp.presenter.web.e:
     javax.inject.Provider mApplicationProvider -> d
@@ -7831,10 +7831,10 @@ me.hegj.wandroid.mvp.presenter.web.WebviewPresenter_Factory -> me.hegj.wandroid.
     javax.inject.Provider modelProvider -> a
     me.hegj.wandroid.mvp.presenter.web.WebviewPresenter_Factory create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
 me.hegj.wandroid.mvp.presenter.web.WebviewPresenter_MembersInjector -> me.hegj.wandroid.mvp.presenter.web.f:
-    void injectMAppManager(me.hegj.wandroid.mvp.presenter.web.WebviewPresenter,com.jess.arms.integration.AppManager) -> a
-    void injectMApplication(me.hegj.wandroid.mvp.presenter.web.WebviewPresenter,android.app.Application) -> a
-    void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.web.WebviewPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
-    void injectMImageLoader(me.hegj.wandroid.mvp.presenter.web.WebviewPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
+    void injectMAppManager(me.hegj.wandroid.mvp.presenter.web.WebViewPresenter,com.jess.arms.integration.AppManager) -> a
+    void injectMApplication(me.hegj.wandroid.mvp.presenter.web.WebViewPresenter,android.app.Application) -> a
+    void injectMErrorHandler(me.hegj.wandroid.mvp.presenter.web.WebViewPresenter,me.jessyan.rxerrorhandler.core.RxErrorHandler) -> a
+    void injectMImageLoader(me.hegj.wandroid.mvp.presenter.web.WebViewPresenter,com.jess.arms.http.imageloader.ImageLoader) -> a
 me.hegj.wandroid.mvp.ui.BaseActivity -> me.hegj.wandroid.mvp.ui.BaseActivity:
     com.jess.arms.mvp.IPresenter mPresenter -> d
     butterknife.Unbinder mUnbinder -> c
@@ -7918,7 +7918,7 @@ me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment -> me.hegj.wand
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.CollectAdapter getAdapter() -> q
     int getInitPageNo() -> r
-    com.kingja.loadsir.core.LoadService getLoadsir() -> s
+    com.kingja.loadsir.core.LoadService getLoadSir() -> s
     int getPageNo() -> t
 me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$a:
     me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment newInstance() -> a
@@ -7960,7 +7960,7 @@ me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment -> me.hegj.wandroid.
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.CollectUrlAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment$a:
     me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment newInstance() -> a
 me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.k:
@@ -8005,7 +8005,7 @@ me.hegj.wandroid.mvp.ui.activity.integral.IntegralActivity -> me.hegj.wandroid.m
     void initData(android.os.Bundle) -> a
     void setupActivityComponent(com.jess.arms.di.component.AppComponent) -> a
     int access$getPageNo$p(me.hegj.wandroid.mvp.ui.activity.integral.IntegralActivity) -> b
-    com.kingja.loadsir.core.LoadService getLoadsir() -> b
+    com.kingja.loadsir.core.LoadService getLoadSir() -> b
     int initView(android.os.Bundle) -> b
     void requestDataFaild(java.lang.String) -> b
     void requestDataSucces(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> c
@@ -8041,7 +8041,7 @@ me.hegj.wandroid.mvp.ui.activity.integral.IntegralHistoryActivity -> me.hegj.wan
     void initData(android.os.Bundle) -> a
     void setupActivityComponent(com.jess.arms.di.component.AppComponent) -> a
     int access$getPageNo$p(me.hegj.wandroid.mvp.ui.activity.integral.IntegralHistoryActivity) -> b
-    com.kingja.loadsir.core.LoadService getLoadsir() -> b
+    com.kingja.loadsir.core.LoadService getLoadSir() -> b
     int initView(android.os.Bundle) -> b
     void requestDataFaild(java.lang.String) -> b
     void requestDataSucces(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> c
@@ -8111,7 +8111,7 @@ me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment -> me.hegj.wandroid.mvp.
     void setPageNo(int) -> f
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
     int getPageNo() -> s
 me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.home.HomeFragment newInstance() -> a
@@ -8216,7 +8216,7 @@ me.hegj.wandroid.mvp.ui.activity.main.home.search.SearchResultActivity -> me.heg
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getArticleAdapter() -> b
     int initView(android.os.Bundle) -> b
     void requestAritilSucces(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> b
-    com.kingja.loadsir.core.LoadService getLoadsir() -> c
+    com.kingja.loadsir.core.LoadService getLoadSir() -> c
     void requestAritilFaild(java.lang.String) -> c
     android.view.View _$_findCachedViewById(int) -> e
     void setPageNo(int) -> f
@@ -8329,7 +8329,7 @@ me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment -> me.hegj.wa
     boolean access$isNew$p(me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment newInstance(int,int) -> a
     me.hegj.wandroid.mvp.ui.activity.main.project.ProjectChildFragment newInstance(boolean,int) -> a
@@ -8385,7 +8385,7 @@ me.hegj.wandroid.mvp.ui.activity.main.project.ProjectFragment -> me.hegj.wandroi
     void onLazyInitView(android.os.Bundle) -> c
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
-    com.kingja.loadsir.core.LoadService getLoadsir() -> q
+    com.kingja.loadsir.core.LoadService getLoadSir() -> q
     java.util.List getMDataList() -> r
 me.hegj.wandroid.mvp.ui.activity.main.project.ProjectFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.project.ProjectFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.project.ProjectFragment newInstance() -> a
@@ -8423,7 +8423,7 @@ me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment -> me.heg
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment newInstance(int) -> a
 me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment$collectChange$1 -> me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicChildFragment$collectChange$1:
@@ -8478,7 +8478,7 @@ me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicFragment -> me.hegj.wan
     void onLazyInitView(android.os.Bundle) -> c
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
-    com.kingja.loadsir.core.LoadService getLoadsir() -> q
+    com.kingja.loadsir.core.LoadService getLoadSir() -> q
     java.util.List getMDataList() -> r
 me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.publicNumber.PublicFragment newInstance() -> a
@@ -8506,7 +8506,7 @@ me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment -> me.hegj.wandroi
     void getNavigationDataSucc(java.util.List) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment newInstance() -> a
 me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment$collectChange$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.NavigationFragment$collectChange$1:
@@ -8550,7 +8550,7 @@ me.hegj.wandroid.mvp.ui.activity.main.tree.SystemFragment -> me.hegj.wandroid.mv
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.SystemAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.main.tree.SystemFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.tree.SystemFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.tree.SystemFragment newInstance() -> a
 me.hegj.wandroid.mvp.ui.activity.main.tree.SystemFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.d:
@@ -8635,7 +8635,7 @@ me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment -> me.hegj.
     android.view.View _$_findCachedViewById(int) -> e
     void _$_clearFindViewByIdCache() -> p
     me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter getAdapter() -> q
-    com.kingja.loadsir.core.LoadService getLoadsir() -> r
+    com.kingja.loadsir.core.LoadService getLoadSir() -> r
 me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$a:
     me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment newInstance(int) -> a
 me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1 -> me.hegj.wandroid.mvp.ui.activity.main.tree.treeinfo.TreeInfoFragment$collectChange$1:
@@ -8861,7 +8861,7 @@ me.hegj.wandroid.mvp.ui.activity.todo.TodoActivity -> me.hegj.wandroid.mvp.ui.ac
     int initView(android.os.Bundle) -> b
     void requestDataFaild(java.lang.String) -> b
     void deleteTodoDataSucc(int) -> c
-    com.kingja.loadsir.core.LoadService getLoadsir() -> c
+    com.kingja.loadsir.core.LoadService getLoadSir() -> c
     void requestDataSucces(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> c
     void updateTodoDataFaild(java.lang.String) -> d
     void updateTodoDataSucc(int) -> d

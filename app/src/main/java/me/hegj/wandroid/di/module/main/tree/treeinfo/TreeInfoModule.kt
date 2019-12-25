@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
-import me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeinfoModel
+import me.hegj.wandroid.mvp.model.main.tree.treeinfo.TreeInfoModel
 
 
 /**
@@ -32,7 +32,7 @@ class TreeInfoModule(private val view: TreeInfoContract.View) {
 
     @FragmentScope
     @Provides
-    fun provideTreeInfoModel(model: TreeinfoModel): TreeInfoContract.Model {
+    fun provideTreeInfoModel(model: TreeInfoModel): TreeInfoContract.Model {
         return model
     }
 }

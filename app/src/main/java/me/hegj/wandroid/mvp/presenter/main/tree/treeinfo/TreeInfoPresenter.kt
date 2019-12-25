@@ -1,25 +1,23 @@
 package me.hegj.wandroid.mvp.presenter.main.tree.treeinfo
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -107,7 +105,7 @@ constructor(model: TreeInfoContract.Model, rootView: TreeInfoContract.View) :
      * 取消收藏
      */
     fun uncollect(id:Int,position:Int) {
-        mModel.uncollect(id)
+        mModel.unCollect(id)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())

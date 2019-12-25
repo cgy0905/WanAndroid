@@ -3,7 +3,7 @@ package me.hegj.wandroid.di.component.web
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.di.scope.ActivityScope
 import dagger.Component
-import me.hegj.wandroid.di.module.web.WebviewModule
+import me.hegj.wandroid.di.module.web.WebViewModule
 import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 
 
@@ -20,7 +20,7 @@ import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
  * ================================================
  */
 @ActivityScope
-@Component(modules = arrayOf(WebviewModule::class), dependencies = arrayOf(AppComponent::class))
+@Component(modules = arrayOf(WebViewModule::class), dependencies = arrayOf(AppComponent::class))
 interface WebViewComponent {
     fun inject(activity: WebViewActivity)
 }

@@ -2,18 +2,16 @@ package me.hegj.wandroid.mvp.model.main.tree.treeinfo
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.tree.treeinfo.TreeInfoContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.ArticleResponse
+import javax.inject.Inject
 
 /**
  * ================================================
@@ -28,7 +26,7 @@ import me.hegj.wandroid.mvp.model.entity.ArticleResponse
  * ================================================
  */
 @FragmentScope
-class TreeinfoModel
+class TreeInfoModel
 @Inject
 constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager), TreeInfoContract.Model {
     @Inject
@@ -47,7 +45,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
 
 
     //取消收藏
-    override fun uncollect(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollect(id))

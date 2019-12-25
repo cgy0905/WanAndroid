@@ -32,7 +32,7 @@ interface TreeInfoContract {
     interface Model : IModel{
         fun getTreeInfoDatas(pageNo:Int,cid:Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
         fun collect(id:Int): Observable<ApiResponse<Any>>
-        fun uncollect(id:Int): Observable<ApiResponse<Any>>
+        fun unCollect(id:Int): Observable<ApiResponse<Any>>
     }
 
 }

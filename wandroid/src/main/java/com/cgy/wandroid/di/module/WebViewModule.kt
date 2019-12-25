@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 
 import com.cgy.wandroid.mvp.contract.WebViewContract
-import com.cgy.wandroid.mvp.model.WebViewModel
+import com.cgy.wandroid.mvp.model.web.WebViewModel
 
 
 /**

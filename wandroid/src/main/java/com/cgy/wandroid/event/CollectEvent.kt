@@ -1,6 +1,4 @@
-package me.hegj.wandroid.app.event
-
-import com.cgy.wandroid.event.BaseEvent
+package com.cgy.wandroid.event
 
 
 class CollectEvent : BaseEvent {
