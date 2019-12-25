@@ -1,25 +1,22 @@
 package me.hegj.wandroid.mvp.presenter.main.tree
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.CacheUtil
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.tree.NavigationContract
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.NavigationResponse
-import me.hegj.wandroid.mvp.model.entity.SystemResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -62,16 +59,16 @@ constructor(model: NavigationContract.Model, rootView: NavigationContract.View) 
                             //请求成功 保存数据
                             CacheUtil.setNavigationHistoryData(response.data)
                             //回调数据给activity
-                            mRootView.getNavigationDataSucc(response.data)
+                            mRootView.getNavigationDataSuccess(response.data)
                         } else {
                             //请求失败，回调缓存数据给activity
-                            mRootView.getNavigationDataSucc(CacheUtil.getNavigationHistoryData())
+                            mRootView.getNavigationDataSuccess(CacheUtil.getNavigationHistoryData())
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
                         //请求失败，回调缓存数据给activity
-                        mRootView.getNavigationDataSucc(CacheUtil.getNavigationHistoryData())
+                        mRootView.getNavigationDataSuccess(CacheUtil.getNavigationHistoryData())
                     }
                 })
     }

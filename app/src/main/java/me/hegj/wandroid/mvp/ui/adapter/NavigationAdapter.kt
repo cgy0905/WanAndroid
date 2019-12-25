@@ -15,8 +15,8 @@ import me.hegj.wandroid.mvp.model.entity.NavigationResponse
 
 class NavigationAdapter(data: MutableList<NavigationResponse>?) : BaseQuickAdapter<NavigationResponse, BaseViewHolder>(R.layout.item_system, data) {
 
-    lateinit var tagClicklistener:TagClicklistener
-    
+    lateinit var tagClickListener: OnTagClickListener
+
     override fun convert(helper: BaseViewHolder?, item: NavigationResponse?) {
         item?.let {
             helper?.setText(R.id.item_system_title, it.name)
@@ -31,20 +31,20 @@ class NavigationAdapter(data: MutableList<NavigationResponse>?) : BaseQuickAdapt
                     }
                 }
                 setOnTagClickListener { view, position, parent ->
-                    tagClicklistener?.onClick(helper.adapterPosition,position)
+                    tagClickListener?.onClick(helper.adapterPosition, position)
                     false
                 }
             }
         }
     }
 
-    fun setTagClickListener(tagClicklistener:TagClicklistener) {
-        this.tagClicklistener = tagClicklistener
+    fun setOnTagClickListener(tagClickListener: OnTagClickListener) {
+        this.tagClickListener = tagClickListener
     }
-    
-     interface TagClicklistener{
-         fun onClick(position:Int,childPosition:Int)
-     }
+
+    interface OnTagClickListener {
+        fun onClick(position: Int, childPosition: Int)
+    }
 
 
 }
