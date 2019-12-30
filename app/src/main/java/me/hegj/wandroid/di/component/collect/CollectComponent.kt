@@ -6,8 +6,7 @@ import com.jess.arms.di.component.AppComponent
 import me.hegj.wandroid.di.module.collect.CollectModule
 
 import com.jess.arms.di.scope.FragmentScope
-import me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment
-import me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment
+import me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment
 
 
 /**
@@ -25,5 +24,5 @@ import me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment
 @FragmentScope
 @Component(modules = arrayOf(CollectModule::class), dependencies = arrayOf(AppComponent::class))
 interface CollectComponent {
-    fun inject(fragment: CollectAriticleFragment)
+    fun inject(fragment: CollectArticleFragment)
 }

@@ -5831,7 +5831,7 @@ me.hegj.wandroid.di.component.DaggerMainComponent$com_jess_arms_di_component_App
 me.hegj.wandroid.di.component.MainComponent -> me.hegj.wandroid.a.a.c:
     void inject(me.hegj.wandroid.mvp.ui.activity.main.MainFragment) -> a
 me.hegj.wandroid.di.component.collect.CollectComponent -> me.hegj.wandroid.a.a.a.a:
-    void inject(me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment) -> a
+    void inject(me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment) -> a
 me.hegj.wandroid.di.component.collect.CollectUrlComponent -> me.hegj.wandroid.a.a.a.b:
     void inject(me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment) -> a
 me.hegj.wandroid.di.component.collect.DaggerCollectComponent -> me.hegj.wandroid.a.a.a.d:
@@ -5847,8 +5847,8 @@ me.hegj.wandroid.di.component.collect.DaggerCollectComponent -> me.hegj.wandroid
     javax.inject.Provider appManagerProvider -> i
     me.hegj.wandroid.di.component.collect.DaggerCollectComponent$Builder builder() -> a
     void initialize(me.hegj.wandroid.di.module.collect.CollectModule,com.jess.arms.di.component.AppComponent) -> a
-    void inject(me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment) -> a
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment injectCollectAriticleFragment(me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment) -> b
+    void inject(me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment) -> a
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment injectCollectAriticleFragment(me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment) -> b
 me.hegj.wandroid.di.component.collect.DaggerCollectComponent$1 -> me.hegj.wandroid.a.a.a.c:
 me.hegj.wandroid.di.component.collect.DaggerCollectComponent$Builder -> me.hegj.wandroid.a.a.a.d$a:
     me.hegj.wandroid.di.module.collect.CollectModule collectModule -> a
@@ -7896,15 +7896,15 @@ me.hegj.wandroid.mvp.ui.activity.collect.CollectActivity$initData$3 -> me.hegj.w
 me.hegj.wandroid.mvp.ui.activity.collect.CollectActivity$initData$3$getTitleView$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.b:
     me.hegj.wandroid.mvp.ui.activity.collect.CollectActivity$initData$3 this$0 -> a
     int $index$inlined -> b
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment -> me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment:
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment -> me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment:
     com.kingja.loadsir.core.LoadService loadsir -> j
     int initPageNo -> l
     int pageNo -> m
     me.hegj.wandroid.mvp.ui.adapter.CollectAdapter adapter -> k
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$Companion Companion -> i
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$Companion Companion -> i
     java.util.HashMap _$_findViewCache -> o
     me.hegj.wandroid.app.weight.DefineLoadMoreView footView -> n
-    me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment) -> a
+    me.yokeyword.fragmentation.SupportActivity access$get_mActivity$p(me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment) -> a
     void initData(android.os.Bundle) -> a
     android.view.View initView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     void requestDataSucc(me.hegj.wandroid.mvp.model.entity.ApiPagerResponse) -> a
@@ -7920,29 +7920,29 @@ me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment -> me.hegj.wand
     int getInitPageNo() -> r
     com.kingja.loadsir.core.LoadService getLoadSir() -> s
     int getPageNo() -> t
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$a:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment newInstance() -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.d:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$Companion -> me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$a:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment newInstance() -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$apply$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.d:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
     void onClick(com.chad.library.adapter.base.BaseViewHolder,me.hegj.wandroid.app.weight.CollectView,int) -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$apply$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.collect.e:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.f:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$run$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.collect.g:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$run$lambda$3 -> me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$$inlined$run$lambda$3:
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$apply$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.collect.e:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$run$lambda$1 -> me.hegj.wandroid.mvp.ui.activity.collect.f:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$run$lambda$2 -> me.hegj.wandroid.mvp.ui.activity.collect.g:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$run$lambda$3 -> me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$$inlined$run$lambda$3:
     com.yanzhenjie.recyclerview.SwipeRecyclerView $this_run -> a
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> b
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initData$3 -> me.hegj.wandroid.mvp.ui.activity.collect.h:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> b
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initData$3 -> me.hegj.wandroid.mvp.ui.activity.collect.h:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
     void onLoadMore() -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initView$1 -> me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$initView$1:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$requestDataFaild$1 -> me.hegj.wandroid.mvp.ui.activity.collect.i:
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initView$1 -> me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$initView$1:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$requestDataFaild$1 -> me.hegj.wandroid.mvp.ui.activity.collect.i:
     java.lang.String $errorMsg -> a
-me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment$requestDataSucc$1 -> me.hegj.wandroid.mvp.ui.activity.collect.j:
-    me.hegj.wandroid.mvp.ui.activity.collect.CollectAriticleFragment this$0 -> a
+me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment$requestDataSucc$1 -> me.hegj.wandroid.mvp.ui.activity.collect.j:
+    me.hegj.wandroid.mvp.ui.activity.collect.CollectArticleFragment this$0 -> a
 me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment -> me.hegj.wandroid.mvp.ui.activity.collect.CollectUrlFragment:
     com.kingja.loadsir.core.LoadService loadsir -> j
     java.util.HashMap _$_findViewCache -> l

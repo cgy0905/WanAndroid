@@ -1,7 +1,7 @@
 package me.hegj.wandroid.mvp.contract.main.me
 
-import com.jess.arms.mvp.IView
 import com.jess.arms.mvp.IModel
+import com.jess.arms.mvp.IView
 import io.reactivex.Observable
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.IntegralResponse
@@ -23,8 +23,8 @@ interface MeContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View : IView {
         //获取积分回调
-        fun getIntegralSucc(integral: IntegralResponse)
-        fun getIntegralFaild(errorMsg: String)
+        fun getIntegralSuccess(integral: IntegralResponse)
+        fun getIntegralFailed(errorMsg: String)
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

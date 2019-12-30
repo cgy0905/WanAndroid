@@ -1,25 +1,23 @@
 package me.hegj.wandroid.mvp.presenter.collect
 
 import android.app.Application
-import androidx.annotation.FractionRes
-
-import com.jess.arms.integration.AppManager
-import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.collect.CollectContract
-import me.hegj.wandroid.mvp.model.entity.*
+import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
+import me.hegj.wandroid.mvp.model.entity.ApiResponse
+import me.hegj.wandroid.mvp.model.entity.CollectResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -49,7 +47,7 @@ constructor(model: CollectContract.Model, rootView: CollectContract.View) :
     lateinit var mAppManager: AppManager
 
     fun getCollectDataByType(pageNo: Int) {
-        mModel.getCollectDatas(pageNo)
+        mModel.getCollectData(pageNo)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -58,14 +56,14 @@ constructor(model: CollectContract.Model, rootView: CollectContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucc(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -75,7 +73,7 @@ constructor(model: CollectContract.Model, rootView: CollectContract.View) :
      * 取消收藏
      */
     fun uncollect(id:Int,originId:Int,position:Int) {
-        mModel.uncollectList(id,originId)
+        mModel.unCollectList(id,originId)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                 .subscribeOn(AndroidSchedulers.mainThread())
@@ -85,17 +83,17 @@ constructor(model: CollectContract.Model, rootView: CollectContract.View) :
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
                             //取消收藏成功
-                            mRootView.uncollect(position)
+                            mRootView.unCollect(position)
                         }else{
                             //取消收藏失败
-                            mRootView.uncollectFaild(position)
+                            mRootView.unCollectFailed(position)
                             mRootView.showMessage(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
                         //取消收藏失败
-                        mRootView.uncollectFaild(position)
+                        mRootView.unCollectFailed(position)
                         mRootView.showMessage(HttpUtils.getErrorText(t))
                     }
                 })

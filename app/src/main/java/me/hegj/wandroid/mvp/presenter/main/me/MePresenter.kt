@@ -1,28 +1,22 @@
 package me.hegj.wandroid.mvp.presenter.main.me
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
-import com.jess.arms.utils.ArmsUtils
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import me.hegj.wandroid.app.utils.CacheUtil
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.me.MeContract
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.IntegralResponse
-import me.hegj.wandroid.mvp.model.entity.SystemResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -62,14 +56,14 @@ constructor(model: MeContract.Model, rootView: MeContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<IntegralResponse>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<IntegralResponse>) {
                         if (response.isSucces()) {
-                            mRootView.getIntegralSucc(response.data)
+                            mRootView.getIntegralSuccess(response.data)
                         } else {
-                            mRootView.getIntegralFaild(response.errorMsg)
+                            mRootView.getIntegralFailed(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.getIntegralFaild(HttpUtils.getErrorText(t))
+                        mRootView.getIntegralFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }

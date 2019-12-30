@@ -41,7 +41,7 @@ import org.greenrobot.eventbus.Subscribe
  * @Author:         hegaojian
  * @CreateDate:     2019/8/29 19:30
  */
-class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContract.View {
+class CollectArticleFragment : BaseFragment<CollectPresenter>(), CollectContract.View {
     lateinit var loadsir: LoadService<Any>
     lateinit var adapter: CollectAdapter
     var initPageNo = 0 //分页页码初始值 收藏文章列表是从0开始的
@@ -49,8 +49,8 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
     private var footView: DefineLoadMoreView? = null
 
     companion object {
-        fun newInstance(): CollectAriticleFragment {
-            return CollectAriticleFragment()
+        fun newInstance(): CollectArticleFragment {
+            return CollectArticleFragment()
         }
     }
 
@@ -139,7 +139,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
                 val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("collect", adapter.data[position])
-                    putString("tag", this@CollectAriticleFragment::class.java.simpleName)
+                    putString("tag", this@CollectArticleFragment::class.java.simpleName)
                     putInt("position", position)
                 }
                 intent.putExtras(bundle)
@@ -157,7 +157,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
 
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<CollectResponse>>) {
+    override fun requestDataSuccess(apiPagerResponse: ApiPagerResponse<MutableList<CollectResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
@@ -188,7 +188,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页
@@ -204,7 +204,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
         }
     }
 
-    override fun uncollect(position: Int) {
+    override fun unCollect(position: Int) {
         //通知点其他的页面刷新一下这个数据
         CollectEvent(false, adapter.data[position].originId, this::class.java.simpleName).post()
         //当前收藏数据大于1条的时候，直接删除
@@ -216,7 +216,7 @@ class CollectAriticleFragment : BaseFragment<CollectPresenter>(), CollectContrac
         }
     }
 
-    override fun uncollectFaild(position: Int) {
+    override fun unCollectFailed(position: Int) {
 
         adapter.notifyItemChanged(position)
     }

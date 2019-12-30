@@ -1,6 +1,11 @@
-package me.hegj.wandroid.mvp.presenter.collect
+package com.cgy.wandroid.mvp.presenter
 
 import android.app.Application
+import com.cgy.wandroid.mvp.contract.CollectContract
+import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
+import com.cgy.wandroid.mvp.model.entity.ApiResponse
+import com.cgy.wandroid.mvp.model.entity.CollectResponse
+import com.cgy.wandroid.util.HttpUtils
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.integration.AppManager
@@ -9,33 +14,17 @@ import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import me.hegj.wandroid.app.utils.HttpUtils
-import me.hegj.wandroid.mvp.contract.collect.CollectUrlContract
-import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
 import javax.inject.Inject
 
 
-/**
- * ================================================
- * Description:
- * <p>
- * Created by MVPArmsTemplate on 08/31/2019 11:27
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
- * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
- * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
- * ================================================
- */
 @FragmentScope
-class CollectUrlPresenter
+class CollectPresenter
 @Inject
-constructor(model: CollectUrlContract.Model, rootView: CollectUrlContract.View) :
-        BasePresenter<CollectUrlContract.Model, CollectUrlContract.View>(model, rootView) {
+constructor(model: CollectContract.Model, rootView: CollectContract.View) :
+        BasePresenter<CollectContract.Model, CollectContract.View>(model, rootView) {
     @Inject
     lateinit var mErrorHandler: RxErrorHandler
     @Inject
@@ -45,17 +34,17 @@ constructor(model: CollectUrlContract.Model, rootView: CollectUrlContract.View) 
     @Inject
     lateinit var mAppManager: AppManager
 
-    fun getCollectUrlData() {
-        mModel.getCollectUrlData()
+    fun getCollectDataByType(pageNo: Int) {
+        mModel.getCollectData(pageNo)
                 .subscribeOn(Schedulers.io())
-                .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .retryWhen(RetryWithDelay(1, 0))
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))//fragment的绑定方式  使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<MutableList<CollectUrlResponse>>>(mErrorHandler) {
-                    override fun onNext(response: ApiResponse<MutableList<CollectUrlResponse>>) {
+                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>>(mErrorHandler){
+                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataUrlSuccess(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
                             mRootView.requestDataFailed(response.errorMsg)
                         }
@@ -65,20 +54,29 @@ constructor(model: CollectUrlContract.Model, rootView: CollectUrlContract.View) 
                         super.onError(t)
                         mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
+
                 })
+
+
+    }
+
+
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     /**
      * 取消收藏
      */
-    fun unCollect(id: Int, position: Int) {
-        mModel.unCollectList(id)
+    fun unCollect(id: Int, originId: Int, position: Int) {
+        mModel.unCollectList(id, originId)
                 .subscribeOn(Schedulers.io())
-                .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                .retryWhen(RetryWithDelay(1, 0))
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))//fragment的绑定方式  使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
+                .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler){
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
                             //取消收藏成功
@@ -97,9 +95,6 @@ constructor(model: CollectUrlContract.Model, rootView: CollectUrlContract.View) 
                         mRootView.showMessage(HttpUtils.getErrorText(t))
                     }
                 })
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
     }
 }
