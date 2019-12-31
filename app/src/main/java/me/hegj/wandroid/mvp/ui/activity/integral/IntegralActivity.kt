@@ -154,23 +154,23 @@ class IntegralActivity : BaseActivity<IntegralPresenter>(), IntegralContract.Vie
 
     }
 
-    override fun requestDataSucces(ariticles: ApiPagerResponse<MutableList<IntegralResponse>>) {
+    override fun requestDataSuccess(articles: ApiPagerResponse<MutableList<IntegralResponse>>) {
         swipeRefreshLayout.isRefreshing = false
-        if (pageNo == initPageNo && ariticles.datas.size == 0) {
+        if (pageNo == initPageNo && articles.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
             loadsir.showCallback(EmptyCallback::class.java)
         } else if (pageNo == initPageNo) {
             loadsir.showSuccess()
             //如果是刷新的话，floatbutton就要隐藏了，因为这时候肯定是要在顶部的
             floatbtn.visibility = View.INVISIBLE
-            adapter.setNewData(ariticles.datas)
+            adapter.setNewData(articles.datas)
         } else {
             //不是第一页
             loadsir.showSuccess()
-            adapter.addData(ariticles.datas)
+            adapter.addData(articles.datas)
         }
         pageNo++
-        if (ariticles.pageCount >= pageNo) {
+        if (articles.pageCount >= pageNo) {
             //如果总条数大于当前页数时 还有更多数据
             swiperecyclerview.loadMoreFinish(false, true)
         } else {
@@ -185,7 +185,7 @@ class IntegralActivity : BaseActivity<IntegralPresenter>(), IntegralContract.Vie
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页
@@ -216,6 +216,6 @@ class IntegralActivity : BaseActivity<IntegralPresenter>(), IntegralContract.Vie
         return super.onOptionsItemSelected(item)
     }
 
-    override fun requestHistoryDataSucces(ariticles: ApiPagerResponse<MutableList<IntegralHistoryResponse>>) {
+    override fun requestHistoryDataSuccess(articles: ApiPagerResponse<MutableList<IntegralHistoryResponse>>) {
     }
 }
