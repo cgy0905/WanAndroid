@@ -3,15 +3,24 @@ package com.cgy.wandroid.ui.setting
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.color.colorChooser
+import com.afollestad.materialdialogs.list.listItemsSingleChoice
 import com.cgy.wandroid.R
 import com.cgy.wandroid.event.LoginFreshEvent
+import com.cgy.wandroid.event.SettingChangeEvent
+import com.cgy.wandroid.mvp.model.entity.BannerResponse
 import com.cgy.wandroid.ui.login.LoginActivity
-import com.cgy.wandroid.util.CacheUtil
+import com.cgy.wandroid.ui.web.WebViewActivity
+import com.cgy.wandroid.util.*
 import com.cgy.wandroid.weight.IconPreference
 import com.jess.arms.integration.AppManager
+import com.jess.arms.utils.ArmsUtils
+import com.tencent.bugly.beta.Beta
 
 /**
  * @author: cgy
@@ -44,13 +53,100 @@ class GeneralPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.
             }
             false
         }
+        findPreference<Preference>("clearCache")?.setOnPreferenceClickListener {
+            MaterialDialog(parentActivity).show {
+                title(R.string.title)
+                message(text = "确定清除缓存吗？")
+                positiveButton(text = "清除") {
+                    CacheDataManager.clearAllCache(parentActivity)
+                    ArmsUtils.snackbarText("清理成功")
+                    setText()
+                }
+                negativeButton(R.string.cancel)
+            }
+            false
+        }
+        findPreference<Preference>("mode")?.setOnPreferenceClickListener {
+            MaterialDialog(parentActivity).show {
+                listItemsSingleChoice(R.array.setting_modes, initialSelection = SettingUtil.getListMode(parentActivity)) {
+                    dialog, index, text ->
+                    SettingUtil.setListMode(parentActivity, index)
+                    it.summary = text
+                    //通知其他界面立马修改配置
+                    SettingChangeEvent().post()
+                }
+                title(text = "设置列表动画")
+                positiveButton(R.string.confirm)
+                negativeButton(R.string.cancel)
+            }
+            false
+        }
+        findPreference<IconPreference>("color")?.setOnPreferenceClickListener {
+            MaterialDialog(parentActivity).show {
+                title(R.string.choose_theme_color)
+                colorChooser(ColorUtil.ACCENT_COLORS, initialSelection = SettingUtil.getColor(parentActivity), subColors = ColorUtil.PRIMARY_COLORS_SUB) { dialog, color ->
+                    SettingUtil.setColor(parentActivity, color)
+                    //通知其他界面立马修改配置
+                    SettingChangeEvent().post()
+                }
+                positiveButton(R.string.done)
+                negativeButton(R.string.cancel)
+            }
+            false
+        }
+        findPreference<Preference>("version")?.setOnPreferenceClickListener {
+            Beta.checkUpgrade(true, false)
+            false
+        }
+        findPreference<Preference>("copyRight")?.setOnPreferenceClickListener {
+            ShowUtil.showDialog(parentActivity, ArmsUtils.getString(activity, R.string.copyright_tip))
+            false
+        }
+        findPreference<Preference>("author")?.setOnPreferenceClickListener {
+            ShowUtil.showDialog(parentActivity, "扣 扣：1020110023\n\n 微 信：cgykb240905 \n\n邮 箱：1020110023@qq.com", "联系我")
+            false
+        }
+        findPreference<Preference>("project")?.setOnPreferenceClickListener {
+            val data = BannerResponse("", 0, "", 0, 0, "一位练习长达两年半的安卓练习生根据鸿神提供的WanAndroid开放Api来制作的产品级App", 0, findPreference<Preference>("project")?.summary.toString())
+            parentActivity.launchActivity(Intent(parentActivity, WebViewActivity::class.java).apply {
+                putExtras(Bundle().apply {
+                    putSerializable("bannerdata", data)
+                })
+            })
+            false
+        }
+        findPreference<Preference>("open")?.setOnPreferenceClickListener {
+            parentActivity.launchActivity(Intent(parentActivity, OpenProjectActivity::class.java))
+            false
+        }
     }
 
+    /**
+     * 初始化设值
+     */
     private fun setText() {
+        findPreference<CheckBoxPreference>("top")?.isChecked = SettingUtil.getRequestTop(parentActivity)
+        findPreference<SwitchPreferenceCompat>("slidable")?.isChecked = SettingUtil.getSlidable(parentActivity)
+        findPreference<Preference>("clearCache")?.summary = CacheDataManager.getTotalCacheSize(parentActivity)
+        val version = "当前版本 " + parentActivity.packageManager.getPackageInfo(parentActivity.packageName, 0).versionName
+        findPreference<Preference>("version")?.summary = version
+        val modes = parentActivity.resources.getStringArray(R.array.setting_modes)
+        findPreference<Preference>("mode")?.summary = modes[SettingUtil.getListMode(parentActivity)]
+    }
 
+    override fun onResume() {
+        super.onResume()
+        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (key == "color") {
+            colorPreview?.setView()
+        }
     }
 }

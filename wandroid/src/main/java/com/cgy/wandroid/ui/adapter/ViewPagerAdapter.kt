@@ -1,4 +1,4 @@
-package com.cgy.wandroid.base
+package com.cgy.wandroid.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

@@ -20,7 +20,7 @@ import com.cgy.wandroid.mvp.contract.PublicChildContract
 import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.mvp.presenter.PublicChildPresenter
-import com.cgy.wandroid.ui.main.home.adapter.ArticleAdapter
+import com.cgy.wandroid.ui.adapter.ArticleAdapter
 
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.RecyclerViewUtils

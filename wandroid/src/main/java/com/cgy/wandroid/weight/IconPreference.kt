@@ -27,7 +27,7 @@ class IconPreference(context: Context, attrs : AttributeSet) : Preference(contex
         circleImageView?.border = color
     }
 
-    override fun setViewId(viewId: Int) {
+    fun setView() {
         val color = SettingUtil.getColor(context)
         circleImageView?.color = color
         circleImageView?.border = color

@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.main.tree.adapter
+package com.cgy.wandroid.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

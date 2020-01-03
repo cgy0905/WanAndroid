@@ -18,7 +18,7 @@ import com.cgy.wandroid.mvp.presenter.SearchPresenter
 
 import com.cgy.wandroid.R
 import com.cgy.wandroid.mvp.model.entity.SearchResponse
-import com.cgy.wandroid.ui.main.home.adapter.SearchHistoryAdapter
+import com.cgy.wandroid.ui.adapter.SearchHistoryAdapter
 import com.cgy.wandroid.util.CacheUtil
 import com.cgy.wandroid.util.ColorUtil
 import com.cgy.wandroid.util.SettingUtil

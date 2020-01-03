@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.integral.adapter
+package com.cgy.wandroid.ui.adapter
 
 import com.cgy.wandroid.R
 import com.cgy.wandroid.mvp.model.entity.IntegralHistoryResponse

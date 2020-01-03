@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.integral.IntegralHistoryActivity"></activity>
+        <activity android:name=".ui.setting.OpenProjectActivity"></activity>
+        <activity android:name=".ui.integral.IntegralHistoryActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.integral.IntegralActivity" />
         <activity android:name=".ui.todo.TodoActivity" />

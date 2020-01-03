@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.cgy.wandroid.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
-import com.jess.arms.utils.ArmsUtils
 
 import com.cgy.wandroid.di.component.DaggerNavigationComponent
 import com.cgy.wandroid.di.module.NavigationModule
@@ -23,7 +22,7 @@ import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.event.LoginFreshEvent
 import com.cgy.wandroid.event.SettingChangeEvent
 import com.cgy.wandroid.mvp.model.entity.NavigationResponse
-import com.cgy.wandroid.ui.main.tree.adapter.NavigationAdapter
+import com.cgy.wandroid.ui.adapter.NavigationAdapter
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.util.SpaceItemDecoration
@@ -34,7 +33,6 @@ import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.android.synthetic.main.include_recyclerview.*
-import kotlinx.android.synthetic.main.layout_footer_loadmore.view.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

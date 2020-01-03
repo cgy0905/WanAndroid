@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.main.home.adapter
+package com.cgy.wandroid.ui.adapter
 
 import com.cgy.wandroid.R
 import com.chad.library.adapter.base.BaseQuickAdapter

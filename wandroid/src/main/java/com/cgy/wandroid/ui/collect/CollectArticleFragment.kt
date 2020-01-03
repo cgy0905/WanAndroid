@@ -22,7 +22,7 @@ import com.cgy.wandroid.R
 import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.CollectResponse
-import com.cgy.wandroid.ui.collect.adapter.CollectAdapter
+import com.cgy.wandroid.ui.adapter.CollectAdapter
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.RecyclerViewUtils
 import com.cgy.wandroid.util.SettingUtil

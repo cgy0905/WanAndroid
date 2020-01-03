@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.main.home.adapter
+package com.cgy.wandroid.ui.adapter
 
 import android.text.Html
 import android.text.TextUtils

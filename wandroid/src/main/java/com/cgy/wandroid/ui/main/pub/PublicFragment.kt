@@ -10,7 +10,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseFragment
-import com.cgy.wandroid.base.ViewPagerAdapter
+import com.cgy.wandroid.ui.adapter.ViewPagerAdapter
 import com.cgy.wandroid.di.component.DaggerPublicComponent
 import com.cgy.wandroid.di.module.PublicModule
 import com.cgy.wandroid.event.SettingChangeEvent

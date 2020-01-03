@@ -17,7 +17,7 @@ import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.IntegralHistoryResponse
 import com.cgy.wandroid.mvp.model.entity.IntegralResponse
 import com.cgy.wandroid.mvp.presenter.IntegralPresenter
-import com.cgy.wandroid.ui.integral.adapter.IntegralHistoryAdapter
+import com.cgy.wandroid.ui.adapter.IntegralHistoryAdapter
 import com.cgy.wandroid.util.RecyclerViewUtils
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.weight.DefineLoadMoreView

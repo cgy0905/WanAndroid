@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.cgy.wandroid.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
-import com.jess.arms.utils.ArmsUtils
 
 import com.cgy.wandroid.di.component.DaggerSystemComponent
 import com.cgy.wandroid.di.module.SystemModule
@@ -21,7 +20,7 @@ import com.cgy.wandroid.mvp.presenter.SystemPresenter
 import com.cgy.wandroid.R
 import com.cgy.wandroid.event.SettingChangeEvent
 import com.cgy.wandroid.mvp.model.entity.SystemResponse
-import com.cgy.wandroid.ui.main.tree.adapter.SystemAdapter
+import com.cgy.wandroid.ui.adapter.SystemAdapter
 import com.cgy.wandroid.ui.main.tree.treeinfo.TreeInfoActivity
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.util.SpaceItemDecoration

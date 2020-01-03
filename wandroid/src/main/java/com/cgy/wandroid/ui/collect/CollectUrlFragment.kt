@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.cgy.wandroid.base.BaseFragment
 import com.jess.arms.di.component.AppComponent
-import com.jess.arms.utils.ArmsUtils
 
 import com.cgy.wandroid.di.component.DaggerCollectUrlComponent
 import com.cgy.wandroid.di.module.CollectUrlModule
@@ -22,7 +21,7 @@ import com.cgy.wandroid.mvp.presenter.CollectUrlPresenter
 import com.cgy.wandroid.R
 import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.mvp.model.entity.CollectUrlResponse
-import com.cgy.wandroid.ui.collect.adapter.CollectUrlAdapter
+import com.cgy.wandroid.ui.adapter.CollectUrlAdapter
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.util.SpaceItemDecoration

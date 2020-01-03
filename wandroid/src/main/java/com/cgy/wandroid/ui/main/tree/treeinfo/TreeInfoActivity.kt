@@ -8,7 +8,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
-import com.cgy.wandroid.base.ViewPagerAdapter
+import com.cgy.wandroid.ui.adapter.ViewPagerAdapter
 import com.cgy.wandroid.mvp.model.entity.SystemResponse
 import com.cgy.wandroid.util.SettingUtil
 import com.cgy.wandroid.weight.ScaleTransitionPagerTitleView
@@ -66,7 +66,7 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
             fragments.add(TreeInfoFragment.newInstance(systemResponse.children[i].id))
         }
         linear_viewpager?.setBackgroundColor(SettingUtil.getColor(this))
-        pagerAdapter = ViewPagerAdapter(supportFragmentManager,fragments)
+        pagerAdapter = ViewPagerAdapter(supportFragmentManager, fragments)
         val commonNavigator = CommonNavigator(this)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getTitleView(context: Context, index: Int): IPagerTitleView {

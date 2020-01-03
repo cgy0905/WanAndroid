@@ -1,4 +1,4 @@
-package com.cgy.wandroid.ui.integral.adapter
+package com.cgy.wandroid.ui.adapter
 
 import androidx.core.content.ContextCompat
 import com.cgy.wandroid.R
