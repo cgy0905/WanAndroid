@@ -1,7 +1,7 @@
 package com.cgy.wandroid.mvp.presenter
 
 import android.app.Application
-import com.cgy.wandroid.mvp.contract.TodoContract
+import com.cgy.wandroid.mvp.contract.AddTodoContract
 import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.integration.AppManager
@@ -11,10 +11,10 @@ import javax.inject.Inject
 
 
 @ActivityScope
-class TodoPresenter
+class AddTodoPresenter
 @Inject
-constructor(model: TodoContract.Model, rootView: TodoContract.View) :
-        BasePresenter<TodoContract.Model, TodoContract.View>(model, rootView) {
+constructor(model: AddTodoContract.Model, rootView: AddTodoContract.View) :
+        BasePresenter<AddTodoContract.Model, AddTodoContract.View>(model, rootView) {
     @Inject
     lateinit var mErrorHandler: RxErrorHandler
     @Inject
@@ -27,9 +27,5 @@ constructor(model: TodoContract.Model, rootView: TodoContract.View) :
 
     override fun onDestroy() {
         super.onDestroy()
-    }
-
-    fun getTodoData(pageNo: Int) {
-
     }
 }
