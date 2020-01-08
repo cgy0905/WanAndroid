@@ -45,15 +45,15 @@ constructor(model: TodoContract.Model, rootView: TodoContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<TodoResponse>>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<TodoResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucces(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -75,15 +75,15 @@ constructor(model: TodoContract.Model, rootView: TodoContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
-                            mRootView.deleteTodoDataSucc(position)
+                            mRootView.deleteTodoDataSuccess(position)
                         } else {
-                            mRootView.updateTodoDataFaild(response.errorMsg)
+                            mRootView.updateTodoDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.updateTodoDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.updateTodoDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -104,15 +104,15 @@ constructor(model: TodoContract.Model, rootView: TodoContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
-                            mRootView.updateTodoDataSucc(position)
+                            mRootView.updateTodoDataSuccess(position)
                         } else {
-                            mRootView.updateTodoDataFaild(response.errorMsg)
+                            mRootView.updateTodoDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.updateTodoDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.updateTodoDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }

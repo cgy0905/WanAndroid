@@ -168,23 +168,23 @@ class TodoActivity : BaseActivity<TodoPresenter>(), TodoContract.View {
         mPresenter?.getTodoData(pageNo)
     }
 
-    override fun requestDataSucces(ariticles: ApiPagerResponse<MutableList<TodoResponse>>) {
+    override fun requestDataSuccess(articles: ApiPagerResponse<MutableList<TodoResponse>>) {
         swipeRefreshLayout.isRefreshing = false
-        if (pageNo == initPageNo && ariticles.datas.size == 0) {
+        if (pageNo == initPageNo && articles.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
             loadsir.showCallback(EmptyCallback::class.java)
         } else if (pageNo == initPageNo) {
             loadsir.showSuccess()
             //如果是刷新的话，floatbutton就要隐藏了，因为这时候肯定是要在顶部的
             floatbtn.visibility = View.INVISIBLE
-            adapter.setNewData(ariticles.datas)
+            adapter.setNewData(articles.datas)
         } else {
             //不是第一页
             loadsir.showSuccess()
-            adapter.addData(ariticles.datas)
+            adapter.addData(articles.datas)
         }
         pageNo++
-        if (ariticles.pageCount >= pageNo) {
+        if (articles.pageCount >= pageNo) {
             //如果总条数大于当前页数时 还有更多数据
             swiperecyclerview.loadMoreFinish(false, true)
         } else {
@@ -199,7 +199,7 @@ class TodoActivity : BaseActivity<TodoPresenter>(), TodoContract.View {
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页
@@ -215,13 +215,13 @@ class TodoActivity : BaseActivity<TodoPresenter>(), TodoContract.View {
         }
     }
 
-    override fun updateTodoDataSucc(position: Int) {
+    override fun updateTodoDataSuccess(position: Int) {
         //完成 待办清单 成功
         adapter.data[position].status = 1
         adapter.notifyItemChanged(position)
     }
 
-    override fun deleteTodoDataSucc(position: Int) {
+    override fun deleteTodoDataSuccess(position: Int) {
         //删除 待办清单 成功
         adapter.remove(position)
         if (adapter.data.size == 0) {
@@ -230,7 +230,7 @@ class TodoActivity : BaseActivity<TodoPresenter>(), TodoContract.View {
         }
     }
 
-    override fun updateTodoDataFaild(errorMsg: String) {
+    override fun updateTodoDataFailed(errorMsg: String) {
         //删除或完成 待办清单 失败
         showMessage(errorMsg)
     }

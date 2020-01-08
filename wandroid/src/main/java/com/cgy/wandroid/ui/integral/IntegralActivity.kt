@@ -214,7 +214,7 @@ class IntegralActivity : BaseActivity<IntegralPresenter>(), IntegralContract.Vie
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.integral_menu, menu)
+        menuInflater.inflate(R.menu.menu_integral, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

@@ -1,4 +1,4 @@
-package me.hegj.wandroid.app.utils;
+package com.cgy.wandroid.util;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,17 +8,19 @@ import android.graphics.Rect;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
- * Created by Haozi on 2018/10/10 0023.
+ * @author: cgy
+ * @date 2020/1/8 15:20
+ * @description:
  */
-
 public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Paint mPaint;
-    private int mDividerWidth;          //您所需指定的间隔宽度，主要为第一列和最后一列与父控件的间隔；行间距，列间距将动态分配
+    private int mDividerWidth;          //所需指定的间隔宽度,主要为第一列和最后一列与父控件的间隔;行间距,列间距将动态分配
     private int mFirstRowTopMargin = 0; //第一行顶部是否需要间隔
     private boolean isNeedSpace = false;//第一列和最后一列是否需要指定间隔(默认不指定)
     private boolean isLastRowNeedSpace = false;//最后一行是否需要间隔(默认不需要)
@@ -26,26 +28,32 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     private Context mContext;
 
     /**
+     *
+     * @param context
      * @param dividerWidth 间隔宽度
-     * @param isNeedSpace  第一列和最后一列是否需要间隔
+     * @param isNeedSpace 第一列和最后一列是否需要间隔
      */
     public GridDividerItemDecoration(Context context, int dividerWidth, boolean isNeedSpace) {
         this(context, dividerWidth, 0, isNeedSpace, false);
     }
 
     /**
-     * @param dividerWidth      间隔宽度
-     * @param isNeedSpace       第一列和最后一列是否需要间隔
+     *
+     * @param context
+     * @param dividerWidth 间隔宽度
      * @param firstRowTopMargin 第一行顶部是否需要间隔(根据间隔大小判断)
+     * @param isNeedSpace 第一列和最后一列是否需要间隔
      */
     public GridDividerItemDecoration(Context context, int dividerWidth, int firstRowTopMargin, boolean isNeedSpace) {
         this(context, dividerWidth, firstRowTopMargin, isNeedSpace, false);
     }
 
     /**
-     * @param dividerWidth       间隔宽度
-     * @param firstRowTopMargin  第一行顶部是否需要间隔
-     * @param isNeedSpace        第一列和最后一列是否需要间隔
+     *
+     * @param context
+     * @param dividerWidth 间隔宽度
+     * @param firstRowTopMargin 第一行顶部是否需要间隔
+     * @param isNeedSpace 第一列和最后一列是否需要间隔
      * @param isLastRowNeedSpace 最后一行是否需要间隔
      */
     public GridDividerItemDecoration(Context context, int dividerWidth, int firstRowTopMargin, boolean isNeedSpace, boolean isLastRowNeedSpace) {
@@ -53,10 +61,13 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     /**
-     * @param dividerWidth       间隔宽度
-     * @param firstRowTopMargin  第一行顶部是否需要间隔
-     * @param isNeedSpace        第一列和最后一列是否需要间隔
+     *
+     * @param context
+     * @param dividerWidth 间隔宽度
+     * @param firstRowTopMargin 第一行顶部是否需要间隔
+     * @param isNeedSpace 第一列和最后一列是否需要间隔
      * @param isLastRowNeedSpace 最后一行是否需要间隔
+     * @param color
      */
     public GridDividerItemDecoration(Context context, int dividerWidth, int firstRowTopMargin, boolean isNeedSpace, boolean isLastRowNeedSpace, @ColorInt int color) {
         mDividerWidth = dividerWidth;
@@ -70,9 +81,8 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         mPaint.setStyle(Paint.Style.FILL);
     }
 
-
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
 
         int top = 0;
@@ -80,15 +90,14 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
         int right = 0;
         int bottom = 0;
 
-        int itemPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewLayoutPosition();
+        int itemPosition = ((RecyclerView.LayoutParams)view.getLayoutParams()).getViewLayoutPosition();
         spanCount = getSpanCount(parent);
         int childCount = parent.getAdapter().getItemCount();
-        int maxAllDividerWidth = getMaxDividerWidth(view); //
+        int maxAllDividerWidth = getMaxDividerWidth(view);
 
-        int spaceWidth = 0;//首尾两列与父布局之间的间隔
+        int spaceWidth = 0; //首尾两列与父布局之间的间隔
         if (isNeedSpace)
             spaceWidth = mDividerWidth;
-
         int eachItemWidth = maxAllDividerWidth / spanCount;//每个Item left+right
         int dividerItemWidth = (maxAllDividerWidth - 2 * spaceWidth) / (spanCount - 1);//item与item之间的距离
 

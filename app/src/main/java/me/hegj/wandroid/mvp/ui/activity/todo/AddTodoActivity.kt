@@ -132,12 +132,12 @@ class AddTodoActivity : BaseActivity<AddTodoPresenter>(), AddTodoContract.View {
         }
     }
 
-    override fun addTodoSucc() {
+    override fun addTodoSuccess() {
         AddTodoEvent().post()
         finish()
     }
 
-    override fun addTodoFaild(errorMsg: String) {
+    override fun addTodoFailed(errorMsg: String) {
         showMessage(errorMsg)
     }
 }

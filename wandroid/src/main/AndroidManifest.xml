@@ -18,18 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.todo.AddTodoActivity"></activity>
-        <activity android:name=".ui.setting.OpenProjectActivity" />
-        <activity android:name=".ui.integral.IntegralHistoryActivity" />
-        <activity android:name=".ui.setting.SettingActivity" />
-        <activity android:name=".ui.integral.IntegralActivity" />
-        <activity android:name=".ui.todo.TodoActivity" />
-        <activity android:name=".ui.todo.todoActivity" />
-        <activity android:name=".ui.collect.CollectActivity" />
-        <activity android:name=".ui.main.tree.treeinfo.TreeInfoActivity" />
-        <activity android:name=".ui.web.WebViewActivity" />
-        <activity android:name=".ui.main.home.search.SearchActivity" />
-        <activity android:name=".ui.main.home.search.SearchResultActivity" />
+
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,8 +36,87 @@
             android:label="登录"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.error.ErrorActivity" />
-        <activity android:name=".ui.login.RegisterActivity" /> <!-- Arms 配置 -->
+
+        <activity
+            android:name=".ui.login.RegisterActivity"
+            android:label="注册"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.main.tree.treeinfo.TreeInfoActivity"
+            android:label="主页体系-根据类型查询体系结果的activity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:label="设置"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.web.WebViewActivity"
+            android:label="网页"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.collect.CollectActivity"
+            android:label="收藏"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.main.home.search.SearchActivity"
+            android:label="搜索"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.main.home.search.SearchResultActivity"
+            android:label="搜索结果"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.integral.IntegralActivity"
+            android:label="积分排行"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.integral.IntegralHistoryActivity"
+            android:label="积分获取结果"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.todo.TodoActivity"
+            android:label="待办清单"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.todo.AddTodoActivity"
+            android:label="添加待办清单"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.setting.OpenProjectActivity"
+            android:label="开源项目"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".ui.error.ErrorActivity"
+            android:label="错误页面"
+            android:launchMode="singleTask"
+            android:process=":error_activity"
+            android:screenOrientation="portrait" />
+
+
+        <!-- Arms 配置 -->
         <meta-data
             android:name="design_width_in_dp"
             android:value="375" />
