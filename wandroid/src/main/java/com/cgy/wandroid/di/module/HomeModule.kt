@@ -1,7 +1,9 @@
 package com.cgy.wandroid.di.module
 
 import com.cgy.wandroid.mvp.contract.HomeContract
+import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.mvp.model.main.home.HomeModel
+import com.cgy.wandroid.ui.adapter.ArticleAdapter
 import com.jess.arms.di.scope.FragmentScope
 import dagger.Module
 import dagger.Provides
@@ -29,5 +31,17 @@ class HomeModule(private val view: HomeContract.View) {
     @Provides
     fun provideHomeModel(model: HomeModel): HomeContract.Model {
         return model
+    }
+
+    @FragmentScope
+    @Provides
+    fun getData() : MutableList<ArticleResponse> {
+        return mutableListOf()
+    }
+
+    @FragmentScope
+    @Provides
+    fun getAdapter(data : MutableList<ArticleResponse>) : ArticleAdapter {
+        return ArticleAdapter(data, true)
     }
 }

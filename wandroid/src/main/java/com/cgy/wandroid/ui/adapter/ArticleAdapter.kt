@@ -1,9 +1,12 @@
 package com.cgy.wandroid.ui.adapter
 
+import android.content.Intent
 import android.text.Html
 import android.text.TextUtils
+import android.widget.TextView
 import com.cgy.wandroid.R
 import com.cgy.wandroid.mvp.model.entity.ArticleResponse
+import com.cgy.wandroid.ui.share.ShareByIdActivity
 import com.cgy.wandroid.weight.CollectView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -16,14 +19,20 @@ import com.jess.arms.utils.ArmsUtils
  * @description:
  * @date: 2019/9/20 15:48
  */
-class ArticleAdapter(data : ArrayList<ArticleResponse>?) : BaseQuickAdapter<ArticleResponse, BaseViewHolder>(data) {
+class ArticleAdapter(data : MutableList<ArticleResponse>?) : BaseQuickAdapter<ArticleResponse, BaseViewHolder>(data) {
     private var mOnCollectViewClickListener : OnCollectViewClickListener?  = null
     private val ITEM_ARTICLE = 1//文章类型
     private val ITEM_PROJECT = 2 //项目类型
     private var showTag = false//是否展示标签 tag 一般主页才用的到
+    private var clickable = true //点击作者是否能跳转查看Ta的信息
 
-    constructor(data: ArrayList<ArticleResponse>?, showTag : Boolean) : this(data) {
+    constructor(data: MutableList<ArticleResponse>?, showTag : Boolean) : this(data) {
         this.showTag = showTag
+    }
+
+    constructor(data: MutableList<ArticleResponse>?, showTag : Boolean, clickable: Boolean) : this(data) {
+        this.showTag = showTag
+        this.clickable = clickable
     }
 
     init {
@@ -73,11 +82,18 @@ class ArticleAdapter(data : ArrayList<ArticleResponse>?) : BaseQuickAdapter<Arti
                         }
 
                     })
+                    helper.getView<TextView>(R.id.tv_home_author).setOnClickListener {
+                        if (clickable) {
+                            mContext.startActivity(Intent(mContext, ShareByIdActivity::class.java).apply {
+                                putExtra("id", item?.userId)
+                            })
+                        }
+                    }
                 }
                 ITEM_PROJECT -> {
                     //项目布局的赋值
                     item.run {
-                        helper.setText(R.id.tv_project_author, author)
+                        helper.setText(R.id.tv_project_author, if (author.isNullOrEmpty()) author else shareUser)
                         helper.setText(R.id.tv_project_title, Html.fromHtml(title))
                         helper.setText(R.id.tv_project_content, Html.fromHtml(desc))
                         helper.setText(R.id.tv_project_type1, "$superChapterName·$chapterName")
@@ -115,6 +131,13 @@ class ArticleAdapter(data : ArrayList<ArticleResponse>?) : BaseQuickAdapter<Arti
                         }
 
                     })
+                    helper.getView<TextView>(R.id.tv_project_author).setOnClickListener {
+                        if (clickable) {
+                            mContext.startActivity(Intent(mContext, ShareByIdActivity::class.java).apply {
+                                putExtra("id", item?.userId)
+                            })
+                        }
+                    }
                 }
             }
         }

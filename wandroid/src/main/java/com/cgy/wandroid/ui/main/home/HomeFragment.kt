@@ -18,6 +18,7 @@ import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseFragment
 import com.cgy.wandroid.di.component.DaggerHomeComponent
 import com.cgy.wandroid.di.module.HomeModule
+import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.event.LoginFreshEvent
 import com.cgy.wandroid.event.SettingChangeEvent
 import com.cgy.wandroid.mvp.contract.HomeContract
@@ -51,6 +52,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import me.hegj.wandroid.app.event.CollectEvent
 import org.greenrobot.eventbus.Subscribe
+import javax.inject.Inject
 
 
 /**
@@ -63,7 +65,10 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
 
     private var initPageNo = 0 //注意,首页的页码是从0开始的
     var pageNo = initPageNo
+
+    @Inject
     lateinit var adapter: ArticleAdapter
+
     lateinit var loadSir: LoadService<Any>
     private var footView: DefineLoadMoreView? = null
 
@@ -269,12 +274,6 @@ class HomeFragment : BaseFragment<HomePresenter>(), HomeContract.View {
         }
     }
 
-    override fun showMessage(message: String) {
-        if (TextUtils.isEmpty(message)) {
-            return
-        }
-        ToastUtils.showShort(message)
-    }
 
     /**
      * 获取文章数据失败
