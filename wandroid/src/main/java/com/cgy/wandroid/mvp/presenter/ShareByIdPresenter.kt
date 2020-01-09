@@ -28,4 +28,16 @@ constructor(model: ShareByIdContract.Model, rootView: ShareByIdContract.View) :
     override fun onDestroy() {
         super.onDestroy()
     }
+
+    fun getShareData(pageNo: Int, id: Int) {
+
+    }
+
+    fun unCollect(id: Int, position: Int) {
+
+    }
+
+    fun collect(id: Int, position: Int) {
+
+    }
 }
