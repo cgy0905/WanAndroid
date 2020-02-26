@@ -9,19 +9,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import com.cgy.wandroid.base.BaseFragment
-import com.jess.arms.di.component.AppComponent
-
-import com.cgy.wandroid.di.component.DaggerCollectArticleComponent
-import com.cgy.wandroid.di.module.CollectModule
-import com.cgy.wandroid.mvp.contract.CollectContract
-import com.cgy.wandroid.mvp.presenter.CollectPresenter
-
 import com.cgy.wandroid.R
+import com.cgy.wandroid.base.BaseFragment
+import com.cgy.wandroid.di.component.DaggerCollectComponent
+import com.cgy.wandroid.di.module.CollectModule
 import com.cgy.wandroid.event.CollectEvent
+import com.cgy.wandroid.mvp.contract.CollectContract
 import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.CollectResponse
+import com.cgy.wandroid.mvp.presenter.CollectPresenter
 import com.cgy.wandroid.ui.adapter.CollectAdapter
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.RecyclerViewUtils
@@ -32,6 +28,7 @@ import com.cgy.wandroid.weight.loadCallback.EmptyCallback
 import com.cgy.wandroid.weight.loadCallback.ErrorCallback
 import com.cgy.wandroid.weight.loadCallback.LoadingCallback
 import com.chad.library.adapter.base.BaseViewHolder
+import com.jess.arms.di.component.AppComponent
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
@@ -61,7 +58,7 @@ class CollectArticleFragment : BaseFragment<CollectPresenter>(), CollectContract
 
 
     override fun setupFragmentComponent(appComponent: AppComponent) {
-        DaggerCollectArticleComponent //如找不到该类,请编译一下项目
+        DaggerCollectComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
                 .collectModule(CollectModule(this))

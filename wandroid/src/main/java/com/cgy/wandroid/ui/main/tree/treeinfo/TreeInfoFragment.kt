@@ -41,7 +41,6 @@ import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import me.hegj.wandroid.app.event.CollectEvent
 import org.greenrobot.eventbus.Subscribe
 
 

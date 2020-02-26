@@ -11,7 +11,6 @@ import com.cgy.wandroid.weight.loadCallback.ErrorCallback
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import me.hegj.wandroid.app.event.CollectEvent
 import org.greenrobot.eventbus.Subscribe
 import android.content.Intent
 import android.os.Bundle
@@ -23,6 +22,7 @@ import com.cgy.wandroid.di.module.SearchResultModule
 import com.cgy.wandroid.mvp.contract.SearchResultContract
 import com.cgy.wandroid.mvp.presenter.SearchResultPresenter
 import com.cgy.wandroid.R
+import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.ui.adapter.ArticleAdapter

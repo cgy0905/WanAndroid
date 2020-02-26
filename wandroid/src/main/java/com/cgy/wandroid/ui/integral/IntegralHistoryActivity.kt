@@ -1,17 +1,15 @@
 package com.cgy.wandroid.ui.integral
 
 import android.annotation.SuppressLint
-
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cgy.wandroid.base.BaseActivity
-import com.jess.arms.di.component.AppComponent
 import com.cgy.wandroid.R
-import com.cgy.wandroid.di.module.IntegralModule
+import com.cgy.wandroid.base.BaseActivity
 import com.cgy.wandroid.di.component.DaggerIntegralComponent
+import com.cgy.wandroid.di.module.IntegralModule
 import com.cgy.wandroid.mvp.contract.IntegralContract
 import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.IntegralHistoryResponse
@@ -24,6 +22,7 @@ import com.cgy.wandroid.weight.DefineLoadMoreView
 import com.cgy.wandroid.weight.loadCallback.EmptyCallback
 import com.cgy.wandroid.weight.loadCallback.ErrorCallback
 import com.cgy.wandroid.weight.loadCallback.LoadingCallback
+import com.jess.arms.di.component.AppComponent
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
@@ -48,7 +47,7 @@ class IntegralHistoryActivity : BaseActivity<IntegralPresenter>(), IntegralContr
         DaggerIntegralComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
-                .integralHistoryModule(IntegralModule(this))
+                .integralModule(IntegralModule(this))
                 .build()
                 .inject(this)
     }

@@ -88,13 +88,13 @@ interface Api {
      * 根据分类id获取项目数据
      */
     @GET("/project/list/{page}/json")
-    fun getProjecDataByType(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
+    fun getProjectDataByType(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 获取最新项目数据
      */
     @GET("/article/listproject/{page}/json")
-    fun getProjecNewData(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
+    fun getProjectNewData(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 公众号分类
@@ -131,7 +131,7 @@ interface Api {
      * 知识体系下的文章数据
      */
     @GET("/article/list/{page}/json")
-    fun getAritrilDataByTree(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
+    fun getArticleDataByTree(@Path("page") pageNo: Int, @Query("cid") cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 获取导航数据
@@ -228,6 +228,12 @@ interface Api {
     @POST("/lg/todo/done/{id}/json")
     @FormUrlEncoded
     fun doneTodo(@Path("id") id: Int, @Field("status") status: Int): Observable<ApiResponse<Any>>
+
+    /**
+     * 获取分享文章列表数据
+     */
+    @GET("/user/{id}/share_articles/{page}/json")
+    fun getShareByIdData(@Path("page") page: Int,@Path("id") id: Int): Observable<ApiResponse<ShareResponse>>
 
 
 }

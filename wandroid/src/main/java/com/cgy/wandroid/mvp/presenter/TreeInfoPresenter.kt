@@ -6,7 +6,7 @@ import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.ApiResponse
 import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.util.HttpUtils
-import com.jess.arms.di.scope.ActivityScope
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.integration.AppManager
 import com.jess.arms.mvp.BasePresenter
@@ -20,7 +20,7 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay
 import javax.inject.Inject
 
 
-@ActivityScope
+@FragmentScope
 class TreeInfoPresenter
 @Inject
 constructor(model: TreeInfoContract.Model, rootView: TreeInfoContract.View) :

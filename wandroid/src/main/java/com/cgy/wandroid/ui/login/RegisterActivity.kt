@@ -3,11 +3,9 @@ package com.cgy.wandroid.ui.login
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
-import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import butterknife.OnClick
-import com.blankj.utilcode.util.ToastUtils
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseActivity
 import com.cgy.wandroid.di.component.DaggerLoginComponent
@@ -159,13 +157,4 @@ class RegisterActivity : BaseActivity<LoginPresenter>(), LoginContract.View {
     override fun closeProgress() {
         LoadingDialog.dismiss()
     }
-
-    override fun showMessage(message: String) {
-        if (TextUtils.isEmpty(message)) {
-            return
-        }
-        ToastUtils.showShort(message)
-    }
-
-
 }

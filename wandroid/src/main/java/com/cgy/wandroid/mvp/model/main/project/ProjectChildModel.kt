@@ -40,7 +40,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun getProjects(pageNo: Int, cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .getProjecDataByType(pageNo, cid))
+                .getProjectDataByType(pageNo, cid))
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }
@@ -49,7 +49,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun getNewProjects(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .getProjecNewData(pageNo))
+                .getProjectNewData(pageNo))
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }

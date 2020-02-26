@@ -30,8 +30,6 @@ import com.jess.arms.utils.ArmsUtils
 import com.just.agentweb.AgentWeb
 import kotlinx.android.synthetic.main.activity_web_view.*
 import kotlinx.android.synthetic.main.include_toolbar.*
-import me.hegj.wandroid.app.event.CollectEvent
-import me.hegj.wandroid.mvp.model.entity.enums.CollectType
 import org.greenrobot.eventbus.Subscribe
 
 /**

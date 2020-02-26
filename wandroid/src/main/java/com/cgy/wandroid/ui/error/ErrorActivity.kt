@@ -47,7 +47,7 @@ class ErrorActivity : BaseActivity<IPresenter>(){
             //创建普通字符型ClipData
             val mClipData = ClipData.newPlainText("Label", CustomActivityOnCrash.getStackTraceFromIntent(intent))
             //将ClipData内容放到系统剪贴板里
-            cm.primaryClip = mClipData
+            cm.setPrimaryClip(mClipData)
             ShowUtil.showToast(this, "已复制错误日子到粘贴板")
             ShowUtil.showDialog(this, "QQ：1020110023\n\n微　信：cgykb240905\n\n邮　箱：1020110023@qq.com", "联系我")
         }

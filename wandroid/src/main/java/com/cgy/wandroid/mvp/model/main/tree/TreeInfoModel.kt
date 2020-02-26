@@ -26,7 +26,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun getTreeInfoData(pageNo: Int, cid: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
-                .getAritrilDataByTree(pageNo, cid))
+                .getArticleDataByTree(pageNo, cid))
                 .flatMap { apiResponseObservable ->
                     apiResponseObservable
                 }

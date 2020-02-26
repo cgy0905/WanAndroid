@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cgy.wandroid.R
 import com.cgy.wandroid.base.BaseFragment
-import com.jess.arms.di.component.AppComponent
-import com.cgy.wandroid.di.component.DaggerpublicChildComponent
+import com.cgy.wandroid.di.component.DaggerPublicChildComponent
 import com.cgy.wandroid.di.module.PublicChildModule
+import com.cgy.wandroid.event.CollectEvent
 import com.cgy.wandroid.event.LoginFreshEvent
 import com.cgy.wandroid.event.SettingChangeEvent
 import com.cgy.wandroid.mvp.contract.PublicChildContract
@@ -21,7 +21,6 @@ import com.cgy.wandroid.mvp.model.entity.ApiPagerResponse
 import com.cgy.wandroid.mvp.model.entity.ArticleResponse
 import com.cgy.wandroid.mvp.presenter.PublicChildPresenter
 import com.cgy.wandroid.ui.adapter.ArticleAdapter
-
 import com.cgy.wandroid.ui.web.WebViewActivity
 import com.cgy.wandroid.util.RecyclerViewUtils
 import com.cgy.wandroid.util.SettingUtil
@@ -31,6 +30,7 @@ import com.cgy.wandroid.weight.loadCallback.EmptyCallback
 import com.cgy.wandroid.weight.loadCallback.ErrorCallback
 import com.cgy.wandroid.weight.loadCallback.LoadingCallback
 import com.chad.library.adapter.base.BaseViewHolder
+import com.jess.arms.di.component.AppComponent
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 import com.yanzhenjie.recyclerview.SwipeRecyclerView
@@ -39,7 +39,6 @@ import kotlinx.android.synthetic.main.include_recyclerview.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import me.hegj.wandroid.app.event.CollectEvent
 import org.greenrobot.eventbus.Subscribe
 
 
@@ -70,7 +69,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
 
 
     override fun setupFragmentComponent(appComponent: AppComponent) {
-        DaggerpublicChildComponent //如找不到该类,请编译一下项目
+        DaggerPublicChildComponent //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
                 .publicChildModule(PublicChildModule(this))
