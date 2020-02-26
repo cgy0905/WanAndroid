@@ -10,19 +10,19 @@ import com.zhy.view.flowlayout.TagFlowLayout
 import kotlinx.android.synthetic.main.flow_layout.view.*
 import me.hegj.wandroid.R
 import me.hegj.wandroid.app.utils.ColorUtil
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.model.entity.NavigationResponse
 
 class NavigationAdapter(data: MutableList<NavigationResponse>?) : BaseQuickAdapter<NavigationResponse, BaseViewHolder>(R.layout.item_system, data) {
 
-    lateinit var tagClicklistener:TagClicklistener
-    
+    lateinit var tagClickListener: OnTagClickListener
+
     override fun convert(helper: BaseViewHolder?, item: NavigationResponse?) {
         item?.let {
             helper?.setText(R.id.item_system_title, it.name)
             helper?.getView<TagFlowLayout>(R.id.item_system_flowlayout)?.run {
-                adapter = object : TagAdapter<AriticleResponse>(it.articles) {
-                    override fun getView(parent: FlowLayout?, position: Int, hotSearchBean: AriticleResponse?): View {
+                adapter = object : TagAdapter<ArticleResponse>(it.articles) {
+                    override fun getView(parent: FlowLayout?, position: Int, hotSearchBean: ArticleResponse?): View {
                         return LayoutInflater.from(parent?.context).inflate(R.layout.flow_layout, this@run, false)
                                 .apply {
                                     flow_tag.text = hotSearchBean?.title
@@ -31,20 +31,20 @@ class NavigationAdapter(data: MutableList<NavigationResponse>?) : BaseQuickAdapt
                     }
                 }
                 setOnTagClickListener { view, position, parent ->
-                    tagClicklistener?.onClick(helper.adapterPosition,position)
+                    tagClickListener?.onClick(helper.adapterPosition, position)
                     false
                 }
             }
         }
     }
 
-    fun setTagClickListener(tagClicklistener:TagClicklistener) {
-        this.tagClicklistener = tagClicklistener
+    fun setOnTagClickListener(tagClickListener: OnTagClickListener) {
+        this.tagClickListener = tagClickListener
     }
-    
-     interface TagClicklistener{
-         fun onClick(position:Int,childPosition:Int)
-     }
+
+    interface OnTagClickListener {
+        fun onClick(position: Int, childPosition: Int)
+    }
 
 
 }

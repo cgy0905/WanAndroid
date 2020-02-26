@@ -34,18 +34,18 @@ import me.hegj.wandroid.di.component.main.publicNumber.DaggerPublicChildComponen
 import me.hegj.wandroid.di.module.main.publicNumber.PublicChildModule
 import me.hegj.wandroid.mvp.contract.main.publicNumber.PublicChildContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.publicNumber.PublicChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
 class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildContract.View {
 
     lateinit var loadsir: LoadService<Any>
-    lateinit var adapter: AriticleAdapter
+    lateinit var adapter: ArticleAdapter
     private var initPageNo = 1 //注意，公众号页码从 1开始的 ！！！！
     private var pageNo: Int = initPageNo
     private var cid: Int = 0
@@ -98,17 +98,17 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
         }
 
         //初始化adapter
-        adapter = AriticleAdapter(arrayListOf()).apply {
+        adapter = ArticleAdapter(arrayListOf()).apply {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
             } else {
                 closeLoadAnimation()
             }
             //点击爱心收藏执行操作
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     if (v.isChecked) {
-                        mPresenter?.uncollect(adapter.data[position].id, position)
+                        mPresenter?.unCollect(adapter.data[position].id, position)
                     } else {
                         mPresenter?.collect(adapter.data[position].id, position)
                     }
@@ -116,7 +116,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("data", adapter.data[position])
                     putString("tag", this@PublicChildFragment::class.java.simpleName)
@@ -172,7 +172,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
 
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestDataSuccess(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
@@ -203,7 +203,7 @@ class PublicChildFragment : BaseFragment<PublicChildPresenter>(), PublicChildCon
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页

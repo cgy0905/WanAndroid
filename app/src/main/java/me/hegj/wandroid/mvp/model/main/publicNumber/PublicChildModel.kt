@@ -13,7 +13,7 @@ import me.hegj.wandroid.mvp.contract.main.publicNumber.PublicChildContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 
 
 /**
@@ -40,7 +40,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     override fun onDestroy() {
         super.onDestroy()
     }
-    override fun getPublicDatas(pageNo: Int,cid:Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>> {
+    override fun getPublicDatas(pageNo: Int,cid:Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getPublicNewData(pageNo,cid))
@@ -51,7 +51,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
 
 
     //取消收藏
-    override fun uncollect(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollect(id))

@@ -2,23 +2,21 @@ package me.hegj.wandroid.mvp.presenter.main.publicNumber
 
 import android.app.Application
 import com.google.gson.Gson
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.CacheUtil
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.publicNumber.PublicContract
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.ClassifyResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -50,7 +48,7 @@ constructor(model: PublicContract.Model, rootView: PublicContract.View) :
     fun getProjectTitles() {
         val datas = CacheUtil.getPublicTitles()
         if(datas.size!=0){
-            mRootView.requestTitileSucc(datas)
+            mRootView.requestTitleSuccess(datas)
         }
         mModel.getTitles()
                 .subscribeOn(Schedulers.io())
@@ -63,17 +61,17 @@ constructor(model: PublicContract.Model, rootView: PublicContract.View) :
                         if (response.isSucces()) {
                             CacheUtil.setPublicTitles(Gson().toJson(response.data))
                             if(datas.size==0){
-                                mRootView.requestTitileSucc(response.data)
+                                mRootView.requestTitleSuccess(response.data)
                             }
                         } else {
-                            mRootView.requestTitileSucc(datas)
+                            mRootView.requestTitleSuccess(datas)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
                         if(datas.size==0){
-                            mRootView.requestTitileSucc(datas)
+                            mRootView.requestTitleSuccess(datas)
                         }
                     }
 

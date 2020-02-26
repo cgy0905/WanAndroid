@@ -32,7 +32,7 @@ class CollectAdapter(data: ArrayList<CollectResponse>?) : BaseQuickAdapter<Colle
         }
         //注册多布局
         multiTypeDelegate
-                .registerItemType(Ariticle, R.layout.item_ariticle)
+                .registerItemType(Ariticle, R.layout.item_article)
                 .registerItemType(Project, R.layout.item_project)
     }
 

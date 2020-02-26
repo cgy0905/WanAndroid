@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.google.gson.Gson
@@ -28,7 +27,7 @@ import me.hegj.wandroid.mvp.contract.main.home.search.SearchContract
 import me.hegj.wandroid.mvp.model.entity.SearchResponse
 import me.hegj.wandroid.mvp.presenter.main.home.search.SearchPresenter
 import me.hegj.wandroid.mvp.ui.BaseActivity
-import me.hegj.wandroid.mvp.ui.adapter.SearchistoryAdapter
+import me.hegj.wandroid.mvp.ui.adapter.SearchHistoryAdapter
 
 
 /**
@@ -40,7 +39,7 @@ class SearchActivity : BaseActivity<SearchPresenter>(), SearchContract.View {
 
     var mtagData = mutableListOf<SearchResponse>()//搜索热词数据
     var historyData = mutableListOf<String>()//搜索历史数据
-    lateinit var adapter: SearchistoryAdapter//搜索历史适配器
+    lateinit var adapter: SearchHistoryAdapter//搜索历史适配器
 
     override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerSearchComponent //如找不到该类,请编译一下项目
@@ -98,7 +97,7 @@ class SearchActivity : BaseActivity<SearchPresenter>(), SearchContract.View {
             }
         }
         historyData = CacheUtil.getSearchHistoryData()
-        adapter = SearchistoryAdapter(historyData).apply {
+        adapter = SearchHistoryAdapter(historyData).apply {
             //设置空布局
             emptyView = LayoutInflater.from(this@SearchActivity).inflate(R.layout.search_empty_view, null)
             //删除单个搜索历史
@@ -169,7 +168,7 @@ class SearchActivity : BaseActivity<SearchPresenter>(), SearchContract.View {
     /**
      * 获取搜索热词成功
      */
-    override fun requestSearchSucc(tagData: MutableList<SearchResponse>) {
+    override fun requestSearchSuccess(tagData: MutableList<SearchResponse>) {
         mtagData.addAll(tagData)
         search_flowlayout.adapter = object : TagAdapter<SearchResponse>(mtagData) {
             override fun getView(parent: FlowLayout?, position: Int, hotSearchBean: SearchResponse?): View {

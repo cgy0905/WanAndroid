@@ -22,11 +22,11 @@ import me.hegj.wandroid.mvp.model.entity.TodoResponse
 interface TodoContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View : IView {
-        fun requestDataSucces(ariticles: ApiPagerResponse<MutableList<TodoResponse>>)
-        fun requestDataFaild(errorMsg: String)
-        fun updateTodoDataSucc(position: Int)
-        fun deleteTodoDataSucc(position: Int)
-        fun updateTodoDataFaild(errorMsg: String)
+        fun requestDataSuccess(articles: ApiPagerResponse<MutableList<TodoResponse>>)
+        fun requestDataFailed(errorMsg: String)
+        fun updateTodoDataSuccess(position: Int)
+        fun deleteTodoDataSuccess(position: Int)
+        fun updateTodoDataFailed(errorMsg: String)
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

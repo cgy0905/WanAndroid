@@ -1,4 +1,4 @@
-package me.hegj.wandroid.mvp.model.entity.enums
+package com.cgy.wandroid.mvp.model.entity.enums
 
 /**
  * 需要收藏的类型

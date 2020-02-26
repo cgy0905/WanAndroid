@@ -2,19 +2,17 @@ package me.hegj.wandroid.mvp.model.main.home
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.home.HomeContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
+import javax.inject.Inject
 
 
 /**
@@ -39,7 +37,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     lateinit var mGson: Gson
     @Inject
     lateinit var mApplication: Application
-    override fun getArilist(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>> {
+    override fun getArticleList(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getAritrilList(pageNo))
@@ -48,7 +46,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
                 }
     }
 
-    override fun getBannList(): Observable<ApiResponse<MutableList<BannerResponse>>> {
+    override fun getBannerList(): Observable<ApiResponse<MutableList<BannerResponse>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getBanner())
@@ -57,7 +55,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
                 }
     }
 
-    override fun getTopArilist(): Observable<ApiResponse<MutableList<AriticleResponse>>> {
+    override fun getTopArticleList(): Observable<ApiResponse<MutableList<ArticleResponse>>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .getTopAritrilList())
@@ -67,7 +65,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     }
 
     //取消收藏
-    override fun uncollect(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollect(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollect(id))
@@ -86,6 +84,6 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     }
 
     override fun onDestroy() {
-        super.onDestroy();
+        super.onDestroy()
     }
 }

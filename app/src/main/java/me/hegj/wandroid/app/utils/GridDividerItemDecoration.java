@@ -120,8 +120,8 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
 
         int maxDividerWidth = screenWidth - itemWidth * spanCount;
         if (itemHeight < 0 || itemWidth < 0 || (isNeedSpace && maxDividerWidth <= (spanCount - 1) * mDividerWidth)) {
-            view.getLayoutParams().width = getAttachCloumnWidth();
-            view.getLayoutParams().height = getAttachCloumnWidth();
+            view.getLayoutParams().width = getAttachColumnWidth();
+            view.getLayoutParams().height = getAttachColumnWidth();
 
             maxDividerWidth = screenWidth - view.getLayoutParams().width * spanCount;
         }
@@ -133,7 +133,7 @@ public class GridDividerItemDecoration extends RecyclerView.ItemDecoration {
      *
      * @return
      */
-    private int getAttachCloumnWidth() {
+    private int getAttachColumnWidth() {
         int itemWidth = 0;
         int spaceWidth = 0;
         try {

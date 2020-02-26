@@ -1,24 +1,22 @@
 package me.hegj.wandroid.mvp.presenter.main.tree
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.CacheUtil
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.tree.SystemContract
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.SystemResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -59,14 +57,14 @@ constructor(model: SystemContract.Model, rootView: SystemContract.View) :
                     override fun onNext(response: ApiResponse<MutableList<SystemResponse>>) {
                         if (response.isSucces()) {
                             CacheUtil.setSystemHistoryData(response.data)
-                            mRootView.getSystemDataSucc(response.data)
+                            mRootView.getSystemDataSuccess(response.data)
                         } else {
-                            mRootView.getSystemDataSucc(CacheUtil.getSystemHistoryData())
+                            mRootView.getSystemDataSuccess(CacheUtil.getSystemHistoryData())
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.getSystemDataSucc(CacheUtil.getSystemHistoryData())
+                        mRootView.getSystemDataSuccess(CacheUtil.getSystemHistoryData())
                     }
                 })
     }

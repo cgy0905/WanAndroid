@@ -49,7 +49,7 @@ class CollectActivity : BaseActivity<IPresenter>() {
             setNavigationOnClickListener { finish() }
         }
         fragments.run {
-            add(CollectAriticleFragment.newInstance())
+            add(CollectArticleFragment.newInstance())
             add(CollectUrlFragment.newInstance())
         }
         viewpager_linear.setBackgroundColor(SettingUtil.getColor(this))

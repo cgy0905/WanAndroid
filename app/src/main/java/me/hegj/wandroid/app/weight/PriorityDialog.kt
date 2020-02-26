@@ -18,7 +18,7 @@ import net.lucode.hackware.magicindicator.buildins.UIUtil
 class PriorityDialog(context: Context,type:Int) : Dialog(context, R.style.BottomDialogStyle) {
     private lateinit var shareAdapter: PriorityAdapter
     private var priorityInterface: PriorityInterface? = null
-    private var proiorityData: ArrayList<TodoType> = ArrayList()
+    private var priorityData: ArrayList<TodoType> = ArrayList()
     var type = TodoType.TodoType1.type
     init {
         this.type = type
@@ -40,13 +40,13 @@ class PriorityDialog(context: Context,type:Int) : Dialog(context, R.style.Bottom
         super.onCreate(savedInstanceState)
         //添加数据
         TodoType.values().forEach {
-            proiorityData.add(it)
+            priorityData.add(it)
         }
         //初始化adapter
-        shareAdapter = PriorityAdapter(proiorityData,type).apply {
+        shareAdapter = PriorityAdapter(priorityData,type).apply {
             setOnItemClickListener { adapter, view1, position ->
                 priorityInterface?.run {
-                    onSelect(proiorityData[position])
+                    onSelect(priorityData[position])
                 }
                 dismiss()
             }

@@ -27,5 +27,5 @@
         android:visibility="invisible"
         app:elevation="5dp"
         app:fabSize="mini"
-        app:layout_behavior="me.hegj.wandroid.app.weight.FatScrollAwareFABBehavior" />
+        app:layout_behavior=".app.weight.FatScrollAwareFABBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

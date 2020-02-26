@@ -7,6 +7,6 @@ import java.io.Serializable
   * @Author:         hegaojian
   * @CreateDate:     2019/8/26 17:40
  */
-data class NavigationResponse(var articles: MutableList<AriticleResponse>,
+data class NavigationResponse(var articles: MutableList<ArticleResponse>,
                               var cid: Int,
                               var name: String) : Serializable

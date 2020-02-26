@@ -115,7 +115,7 @@ class PublicFragment : BaseFragment<PublicPresenter>(), PublicContract.View {
         ViewPagerHelper.bind(magic_indicator, view_pager)
     }
 
-    override fun requestTitileSucc(titles: MutableList<ClassifyResponse>) {
+    override fun requestTitleSuccess(titles: MutableList<ClassifyResponse>) {
         //请求到 项目分类头部标题集合
         if (titles.size == 0) {
             //没有数据，说明肯定出错了 这种情况只有第一次会出现，因为第一次请求成功后，会做本地保存操作，下次就算请求失败了，也会从本地取出来

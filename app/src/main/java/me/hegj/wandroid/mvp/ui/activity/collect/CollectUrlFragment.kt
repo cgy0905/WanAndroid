@@ -29,7 +29,7 @@ import me.hegj.wandroid.mvp.contract.collect.CollectUrlContract
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
 import me.hegj.wandroid.mvp.presenter.collect.CollectUrlPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.CollectUrlAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import org.greenrobot.eventbus.Subscribe
@@ -115,12 +115,12 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
             //点击爱心收藏执行操作
             setOnCollectViewClickListener(object : CollectUrlAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
-                    mPresenter?.uncollect(adapter.data[position].id, position)
+                    mPresenter?.unCollect(adapter.data[position].id, position)
                 }
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("collectUrl", adapter.data[position])
                     putString("tag", this@CollectUrlFragment::class.java.simpleName)
@@ -134,13 +134,12 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
 
     override fun onLazyInitView(savedInstanceState: Bundle?) {
         super.onLazyInitView(savedInstanceState)
-        super.onLazyInitView(savedInstanceState)
         swiperecyclerview.adapter = adapter//设置适配器
         loadsir.showCallback(LoadingCallback::class.java)//设置加载中
         mPresenter?.getCollectUrlData()//请求数据
     }
 
-    override fun requestDataUrlSucc(apiPagerResponse: MutableList<CollectUrlResponse>) {
+    override fun requestDataUrlSuccess(apiPagerResponse: MutableList<CollectUrlResponse>) {
         swipeRefreshLayout.isRefreshing = false
         if (apiPagerResponse.size == 0) {
             //如果没有数据，页面提示空布局
@@ -152,7 +151,7 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         loadsir.setCallBack(ErrorCallback::class.java) { _, view ->
             //设置错误页文字错误提示
@@ -162,7 +161,7 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
         }
     }
 
-    override fun uncollect(position: Int) {
+    override fun unCollect(position: Int) {
         //当前收藏数据大于1条的时候，直接删除
         if (adapter.data.size > 1) {
             adapter.remove(position)
@@ -172,7 +171,7 @@ class CollectUrlFragment : BaseFragment<CollectUrlPresenter>(), CollectUrlContra
         }
     }
 
-    override fun uncollectFaild(position: Int) {
+    override fun unCollectFailed(position: Int) {
         adapter.notifyItemChanged(position)
     }
 

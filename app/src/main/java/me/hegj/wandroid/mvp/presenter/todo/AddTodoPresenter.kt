@@ -60,14 +60,14 @@ constructor(model: AddTodoContract.Model, rootView: AddTodoContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
-                            mRootView.addTodoSucc()
+                            mRootView.addTodoSuccess()
                         } else {
-                            mRootView.addTodoFaild(response.errorMsg)
+                            mRootView.addTodoFailed(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.addTodoFaild(HttpUtils.getErrorText(t))
+                        mRootView.addTodoFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -88,14 +88,14 @@ constructor(model: AddTodoContract.Model, rootView: AddTodoContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<Any>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<Any>) {
                         if (response.isSucces()) {
-                            mRootView.addTodoSucc()
+                            mRootView.addTodoSuccess()
                         } else {
-                            mRootView.addTodoFaild(response.errorMsg)
+                            mRootView.addTodoFailed(response.errorMsg)
                         }
                     }
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.addTodoFaild(HttpUtils.getErrorText(t))
+                        mRootView.addTodoFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }

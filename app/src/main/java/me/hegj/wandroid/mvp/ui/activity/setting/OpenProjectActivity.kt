@@ -14,7 +14,7 @@ import me.hegj.wandroid.app.utils.SpaceItemDecoration
 import me.hegj.wandroid.mvp.model.entity.BannerResponse
 import me.hegj.wandroid.mvp.model.entity.OpenProject
 import me.hegj.wandroid.mvp.ui.BaseActivity
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.OpenProjectAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 
@@ -44,7 +44,7 @@ class OpenProjectActivity : BaseActivity<IPresenter>() {
             }
             setOnItemClickListener { adapter, view, position ->
                 val data = BannerResponse("", 0, "", 0, 0, openData[position].name, 0, openData[position].url)
-                launchActivity(Intent(this@OpenProjectActivity, WebviewActivity::class.java).apply {
+                launchActivity(Intent(this@OpenProjectActivity, WebViewActivity::class.java).apply {
                     putExtras(Bundle().apply {
                         putSerializable("bannerdata", data)
                     })

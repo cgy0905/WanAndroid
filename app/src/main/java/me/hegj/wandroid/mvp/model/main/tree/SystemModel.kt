@@ -2,17 +2,15 @@ package me.hegj.wandroid.mvp.model.main.tree
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.tree.SystemContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.SystemResponse
+import javax.inject.Inject
 
 
 /**
@@ -41,9 +39,9 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     }
 
     @Inject
-    lateinit var mGson: Gson;
+    lateinit var mGson: Gson
     @Inject
-    lateinit var mApplication: Application;
+    lateinit var mApplication: Application
 
     override fun onDestroy() {
         super.onDestroy()

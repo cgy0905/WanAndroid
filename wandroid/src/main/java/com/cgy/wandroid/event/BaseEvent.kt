@@ -1,4 +1,4 @@
-package me.hegj.wandroid.app.event
+package com.cgy.wandroid.event
 
 import org.greenrobot.eventbus.EventBus
 

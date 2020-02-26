@@ -34,18 +34,18 @@ import me.hegj.wandroid.di.component.main.project.DaggerProjectChildComponent
 import me.hegj.wandroid.di.module.main.project.ProjectChildModule
 import me.hegj.wandroid.mvp.contract.main.project.ProjectChildContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
 import me.hegj.wandroid.mvp.presenter.main.project.ProjectChildPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
-import me.hegj.wandroid.mvp.ui.adapter.AriticleAdapter
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
+import me.hegj.wandroid.mvp.ui.adapter.ArticleAdapter
 import org.greenrobot.eventbus.Subscribe
 
 
 class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChildContract.View {
 
     lateinit var loadsir: LoadService<Any>
-    lateinit var adapter: AriticleAdapter
+    lateinit var adapter: ArticleAdapter
     private var cid: Int = 0 //分类项目ID
     private var isNew = false//是否是最新项目
     private var initPageNo: Int = 1 //初始化页码，因为最新项目跟其他分类的初始页码不一样 最新 为0 分类项目为1
@@ -83,9 +83,9 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val rootview = inflater.inflate(R.layout.fragment_list, container, false)
-        //绑定loadsir
-        loadsir = LoadSir.getDefault().register(rootview.findViewById(R.id.swipeRefreshLayout)) {
+        val rootView = inflater.inflate(R.layout.fragment_list, container, false)
+        //绑定loadSir
+        loadsir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipeRefreshLayout)) {
             loadsir.showCallback(LoadingCallback::class.java)
             pageNo = initPageNo
             if (isNew) {
@@ -96,7 +96,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
         }.apply {
             SettingUtil.setLoadingColor(_mActivity, this)
         }
-        return rootview
+        return rootView
     }
 
     /**
@@ -122,17 +122,17 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
             }
         }
         //初始化 adapter
-        adapter = AriticleAdapter(arrayListOf()).apply {
+        adapter = ArticleAdapter(arrayListOf()).apply {
             if (SettingUtil.getListMode(_mActivity) != 0) {
                 openLoadAnimation(SettingUtil.getListMode(_mActivity))
             } else {
                 closeLoadAnimation()
             }
             //点击爱心收藏执行操作
-            setOnCollectViewClickListener(object : AriticleAdapter.OnCollectViewClickListener {
+            setOnCollectViewClickListener(object : ArticleAdapter.OnCollectViewClickListener {
                 override fun onClick(helper: BaseViewHolder, v: CollectView, position: Int) {
                     if (v.isChecked) {
-                        mPresenter?.uncollect(adapter.data[position].id, position)
+                        mPresenter?.unCollect(adapter.data[position].id, position)
                     } else {
                         mPresenter?.collect(adapter.data[position].id, position)
                     }
@@ -140,7 +140,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
             })
             //点击了整行
             setOnItemClickListener { _, view, position ->
-                val intent = Intent(_mActivity, WebviewActivity::class.java)
+                val intent = Intent(_mActivity, WebViewActivity::class.java)
                 val bundle = Bundle().apply {
                     putSerializable("data", adapter.data[position])
                     putString("tag", this@ProjectChildFragment::class.java.simpleName)
@@ -203,7 +203,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
     }
 
     @SuppressLint("RestrictedApi")
-    override fun requestDataSucc(apiPagerResponse: ApiPagerResponse<MutableList<AriticleResponse>>) {
+    override fun requestDataSuccess(apiPagerResponse: ApiPagerResponse<MutableList<ArticleResponse>>) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo && apiPagerResponse.datas.size == 0) {
             //如果是第一页，并且没有数据，页面提示空布局
@@ -234,7 +234,7 @@ class ProjectChildFragment : BaseFragment<ProjectChildPresenter>(), ProjectChild
         }
     }
 
-    override fun requestDataFaild(errorMsg: String) {
+    override fun requestDataFailed(errorMsg: String) {
         swipeRefreshLayout.isRefreshing = false
         if (pageNo == initPageNo) {
             //如果页码是 初始页 说明是刷新，界面切换成错误页

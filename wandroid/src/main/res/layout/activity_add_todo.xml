@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadeScrollbars="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_18"
+            android:layout_marginEnd="@dimen/dp_18"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:text="标题"
+                android:textColor="@color/texttipColor"
+                android:textSize="@dimen/sp_10" />
+
+            <EditText
+                android:id="@+id/et_add_todo_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/shape_et"
+                android:hint="标题"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLength="10"
+                android:padding="@dimen/dp_12"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:text="内容"
+                android:textColor="@color/texttipColor"
+                android:textSize="@dimen/dp_10" />
+
+            <EditText
+                android:id="@+id/et_add_todo_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/shape_et"
+                android:gravity="top|left"
+                android:hint="内容描述"
+                android:maxLength="100"
+                android:minLines="4"
+                android:padding="@dimen/dp_12"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:textColor="@color/texttipColor"
+                android:textSize="@dimen/dp_10" />
+
+            <TextView
+                android:id="@+id/tv_add_todo_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/shape_et"
+                android:hint="选择预定完成时间"
+                android:padding="@dimen/dp_12"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dp_12" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:text="优先级"
+                android:textColor="@color/texttipColor"
+                android:textSize="@dimen/dp_10" />
+
+            <LinearLayout
+                android:id="@+id/ll_add_todo_prox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/shape_et"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_add_todo_prox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/dp_12"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_15" />
+
+                <com.cgy.wandroid.weight.MyColorCircleView
+                    android:id="@+id/color_view_add_todo"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/dp_12" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_add_todo_submit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginBottom="@dimen/dp_12"
+                android:background="@drawable/shape_btn"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dp_16" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

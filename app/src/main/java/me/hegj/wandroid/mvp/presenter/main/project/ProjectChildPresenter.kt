@@ -1,25 +1,23 @@
 package me.hegj.wandroid.mvp.presenter.main.project
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.FragmentScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import com.trello.rxlifecycle2.android.FragmentEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.main.project.ProjectChildContract
 import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
-import me.hegj.wandroid.mvp.model.entity.AriticleResponse
+import me.hegj.wandroid.mvp.model.entity.ArticleResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 
 /**
@@ -56,18 +54,18 @@ constructor(model: ProjectChildContract.Model, rootView: ProjectChildContract.Vi
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindUntilEvent(mRootView,FragmentEvent.DESTROY))//使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>(mErrorHandler) {
-                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>) {
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucc(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -80,18 +78,18 @@ constructor(model: ProjectChildContract.Model, rootView: ProjectChildContract.Vi
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(RxLifecycleUtils.bindUntilEvent(mRootView, FragmentEvent.DESTROY))//使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
-                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>>(mErrorHandler) {
-                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<AriticleResponse>>>) {
+                .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>(mErrorHandler) {
+                    override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucc(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -129,7 +127,7 @@ constructor(model: ProjectChildContract.Model, rootView: ProjectChildContract.Vi
     /**
      * 取消收藏
      */
-    fun uncollect(id:Int,position:Int) {
+    fun unCollect(id:Int, position:Int) {
         mModel.uncollect(id)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(RetryWithDelay(1, 0))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔

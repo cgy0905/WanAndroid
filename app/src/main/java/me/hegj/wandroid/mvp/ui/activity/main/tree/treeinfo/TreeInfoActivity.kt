@@ -44,7 +44,7 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
-        return R.layout.activity_treeinfo
+        return R.layout.activity_tree_info
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -60,7 +60,7 @@ class TreeInfoActivity : BaseActivity<IPresenter>() {
         }
         //根据集合循环添加Fragment
         for (i in systemResponse.children.indices) {
-            fragments.add(TreeinfoFragment.newInstance(systemResponse.children[i].id))
+            fragments.add(TreeInfoFragment.newInstance(systemResponse.children[i].id))
         }
         viewpager_linear?.setBackgroundColor(SettingUtil.getColor(this))
         pagerAdapter = ViewPagerAdapter(supportFragmentManager, fragments)

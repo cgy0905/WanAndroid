@@ -98,7 +98,7 @@ class MeFragment : BaseFragment<MePresenter>(), MeContract.View {
             //接收到登录了，赋值 并去请求积分接口
             userInfo = CacheUtil.getUser()
             me_name.text = userInfo.username
-            //吊起请求 设置触发 下拉 swipe
+            //调起请求 设置触发 下拉 swipe
             me_swipe.isRefreshing = true
             mPresenter?.getIntegral()
         } else {
@@ -163,7 +163,7 @@ class MeFragment : BaseFragment<MePresenter>(), MeContract.View {
     /**
      * 获取积分成功回调
      */
-    override fun getIntegralSucc(integral: IntegralResponse) {
+    override fun getIntegralSuccess(integral: IntegralResponse) {
         this.integral = integral
         me_swipe.isRefreshing = false
         me_integral.text = integral.coinCount.toString()
@@ -172,7 +172,7 @@ class MeFragment : BaseFragment<MePresenter>(), MeContract.View {
     /**
      * 获取积分失败回调
      */
-    override fun getIntegralFaild(errorMsg: String) {
+    override fun getIntegralFailed(errorMsg: String) {
         me_swipe.isRefreshing = false
         ShowUtils.showToast(_mActivity, errorMsg)
     }

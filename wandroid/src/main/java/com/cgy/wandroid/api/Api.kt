@@ -22,8 +22,9 @@ import retrofit2.http.*
 
 /**
  * 存放一些与 API 有关的东西,如请求地址,请求码等
- * @Author:         hegaojian
- * @CreateDate:     2019/8/4 15:28
+ * @author: cgy
+ * @description : 存放一些与 API 有关的东西,如请求地址,请求码等
+ * @date: 2019/9/17 15:28
  */
 interface Api {
 
@@ -43,7 +44,7 @@ interface Api {
      */
     @FormUrlEncoded
     @POST("/user/register")
-    fun register(@Field("username") username: String, @Field("password") pwd: String, @Field("repassword") rpwd: String): Observable<ApiResponse<Any>>
+    fun register(@Field("username") username: String, @Field("password") pwd: String, @Field("repassword") confirmPwd: String): Observable<ApiResponse<Any>>
 
 
     /**
@@ -56,13 +57,13 @@ interface Api {
      * 获取置顶文章集合数据
      */
     @GET("/article/top/json")
-    fun getTopAritrilList(): Observable<ApiResponse<MutableList<ArticleResponse>>>
+    fun getTopArticleList(): Observable<ApiResponse<MutableList<ArticleResponse>>>
 
     /**
      * 获取首页文章数据
      */
     @GET("/article/list/{page}/json")
-    fun getAritrilList(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
+    fun getArticleList(@Path("page") pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<ArticleResponse>>>>
 
     /**
      * 收藏
@@ -74,14 +75,14 @@ interface Api {
      * 取消收藏
      */
     @POST("/lg/uncollect_originId/{id}/json")
-    fun uncollect(@Path("id") id: Int): Observable<ApiResponse<Any>>
+    fun unCollect(@Path("id") id: Int): Observable<ApiResponse<Any>>
 
 
     /**
      * 项目分类
      */
     @GET("/project/tree/json")
-    fun getProjecTypes(): Observable<ApiResponse<MutableList<ClassifyResponse>>>
+    fun getProjectTypes(): Observable<ApiResponse<MutableList<ClassifyResponse>>>
 
     /**
      * 根据分类id获取项目数据
@@ -165,7 +166,7 @@ interface Api {
     /**
      * 取消收藏
      */
-    @POST("/lg/uncollect/{id}/json")
+    @POST("/lg/unCollect/{id}/json")
     fun uncollectList(@Path("id") id: Int, @Query("originId") originId: Int): Observable<ApiResponse<Any>>
 
     /**

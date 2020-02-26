@@ -22,10 +22,12 @@ import androidx.multidex.MultiDex
 import butterknife.ButterKnife
 import cat.ereza.customactivityoncrash.config.CaocConfig
 import com.cgy.wandroid.BuildConfig
-import com.cgy.wandroid.ui.SplashActivity
 import com.cgy.wandroid.ui.error.ErrorActivity
+import com.cgy.wandroid.ui.splash.SplashActivity
 import com.cgy.wandroid.util.HttpUtils
-import com.cgy.wandroid.weight.LoadingCallback
+import com.cgy.wandroid.weight.loadCallback.EmptyCallback
+import com.cgy.wandroid.weight.loadCallback.ErrorCallback
+import com.cgy.wandroid.weight.loadCallback.LoadingCallback
 import com.jess.arms.base.delegate.AppLifecycles
 import com.jess.arms.integration.cache.IntelligentCache
 import com.jess.arms.utils.ArmsUtils
@@ -36,8 +38,6 @@ import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy
 import com.tencent.mmkv.MMKV
-import me.hegj.wandroid.app.weight.loadCallBack.EmptyCallback
-import me.hegj.wandroid.app.weight.loadCallBack.ErrorCallback
 
 
 /**
@@ -101,7 +101,7 @@ class AppLifecyclesImpl : AppLifecycles {
         val strategy = UserStrategy(context)
         strategy.isUploadProcess = processName == null || processName == packageName
         // 初始化Bugly
-        Bugly.init(context, "xxxxx", BuildConfig.DEBUG)
+        Bugly.init(context, BuildConfig.BUGLY_KEY, BuildConfig.DEBUG)
 
         CaocConfig.Builder.create()
                 .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM

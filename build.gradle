@@ -26,7 +26,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext {
+/*ext {
     Properties properties = new Properties()
     InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
     properties.load(inputStream)
@@ -75,6 +75,6 @@ def getUploadFileUrlValue() {
         return 'http://fabu.ximgs.net/'
 //        return 'http://192.168.10.35:43010/'
     }
-}
+}*/
 
 

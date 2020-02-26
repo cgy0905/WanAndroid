@@ -2,17 +2,15 @@ package me.hegj.wandroid.mvp.model.collect
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.collect.CollectUrlContract
 import me.hegj.wandroid.mvp.model.api.Api
 import me.hegj.wandroid.mvp.model.entity.ApiResponse
 import me.hegj.wandroid.mvp.model.entity.CollectUrlResponse
+import javax.inject.Inject
 
 
 /**
@@ -36,7 +34,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     @Inject
     lateinit var mApplication: Application
 
-    override fun getCollectUrlDatas(): Observable<ApiResponse<MutableList<CollectUrlResponse>>> {
+    override fun getCollectUrlData(): Observable<ApiResponse<MutableList<CollectUrlResponse>>> {
         return Observable.just(mRepositoryManager.obtainRetrofitService(Api::class.java)
                 .getCollectUrlData())
                 .flatMap { apiResponseObservable ->
@@ -44,7 +42,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
                 }
     }
 
-    override fun uncollectList(id: Int): Observable<ApiResponse<Any>> {
+    override fun unCollectList(id: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .deletetool(id))

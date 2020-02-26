@@ -14,7 +14,6 @@ import me.hegj.wandroid.mvp.model.entity.UserInfoResponse
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
-import java.lang.Exception
 import javax.inject.Inject
 
 
@@ -57,7 +56,7 @@ constructor(model: LoginContract.Model, rootView: LoginContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<UserInfoResponse>>(mErrorHandler) {
                     override fun onNext(users: ApiResponse<UserInfoResponse>) {
                         if (users.errorCode != -1) {
-                            mRootView.onSucc(users.data)
+                            mRootView.onSuccess(users.data)
                         } else {
                             mRootView.showMessage(users.errorMsg)
                         }
@@ -95,7 +94,7 @@ constructor(model: LoginContract.Model, rootView: LoginContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<UserInfoResponse>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<UserInfoResponse>) {
                         if (response.errorCode != -1) {
-                            mRootView.onSucc(response.data)
+                            mRootView.onSuccess(response.data)
                         } else {
                             mRootView.showMessage(response.errorMsg)
                         }

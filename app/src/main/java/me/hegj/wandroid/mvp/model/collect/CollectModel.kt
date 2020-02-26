@@ -2,17 +2,16 @@ package me.hegj.wandroid.mvp.model.collect
 
 import android.app.Application
 import com.google.gson.Gson
+import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BaseModel
-
-import com.jess.arms.di.scope.ActivityScope
-import com.jess.arms.di.scope.FragmentScope
 import io.reactivex.Observable
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.collect.CollectContract
 import me.hegj.wandroid.mvp.model.api.Api
-import me.hegj.wandroid.mvp.model.entity.*
+import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
+import me.hegj.wandroid.mvp.model.entity.ApiResponse
+import me.hegj.wandroid.mvp.model.entity.CollectResponse
+import javax.inject.Inject
 
 
 /**
@@ -38,7 +37,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     @Inject
     lateinit var mApplication: Application
 
-    override fun getCollectDatas(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>> {
+    override fun getCollectData(pageNo: Int): Observable<ApiResponse<ApiPagerResponse<MutableList<CollectResponse>>>> {
         return Observable.just(mRepositoryManager.obtainRetrofitService(Api::class.java)
                 .getCollectData(pageNo))
                 .flatMap { apiResponseObservable ->
@@ -47,7 +46,7 @@ constructor(repositoryManager: IRepositoryManager) : BaseModel(repositoryManager
     }
 
 
-    override fun uncollectList(id: Int, originId: Int): Observable<ApiResponse<Any>> {
+    override fun unCollectList(id: Int, originId: Int): Observable<ApiResponse<Any>> {
         return Observable.just(mRepositoryManager
                 .obtainRetrofitService(Api::class.java)
                 .uncollectList(id, originId))

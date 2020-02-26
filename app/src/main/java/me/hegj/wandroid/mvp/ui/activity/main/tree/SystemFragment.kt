@@ -56,16 +56,16 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
     }
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val rootview = inflater.inflate(R.layout.fragment_list, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_list, container, false)
         //绑定loadsir
-        loadsir = LoadSir.getDefault().register(rootview.findViewById(R.id.swipeRefreshLayout)) {
+        loadsir = LoadSir.getDefault().register(rootView.findViewById(R.id.swipeRefreshLayout)) {
             loadsir.showCallback(LoadingCallback::class.java)
             //点击重试时请求
             mPresenter?.getSystemData()
         }.apply {
             SettingUtil.setLoadingColor(_mActivity, this)
         }
-        return rootview
+        return rootView
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -123,7 +123,7 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
                 })
             }
             //设置点击tag的回调
-            setTagClickListener(object : SystemAdapter.TagClicklistener {
+            setOnTagClickListener(object : SystemAdapter.OnTagClickListener {
                 override fun onClick(position: Int, childPosition: Int) {
                     // position = 点击了第几个item, childPosition 点击的第几个tag
                     launchActivity(Intent(_mActivity, TreeInfoActivity::class.java).apply {
@@ -147,7 +147,7 @@ class SystemFragment : BaseFragment<SystemPresenter>(), SystemContract.View {
     /**
      * 获取体系数据回调
      */
-    override fun getSystemDataSucc(data: MutableList<SystemResponse>) {
+    override fun getSystemDataSuccess(data: MutableList<SystemResponse>) {
         floatbtn.visibility = View.INVISIBLE
         if (data.size == 0) {
             //集合大小为0 说明肯定是第一次请求数据并且请求失败了，因为只要请求成功过一次就会有缓存数据

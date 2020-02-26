@@ -7,16 +7,14 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
-import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.flow_layout.view.*
 import me.hegj.wandroid.R
 import me.hegj.wandroid.app.utils.ColorUtil
 import me.hegj.wandroid.mvp.model.entity.ClassifyResponse
-import me.hegj.wandroid.mvp.model.entity.SearchResponse
 import me.hegj.wandroid.mvp.model.entity.SystemResponse
 
 class SystemAdapter(data: MutableList<SystemResponse>?) : BaseQuickAdapter<SystemResponse, BaseViewHolder>(R.layout.item_system, data) {
-    lateinit var tagClicklistener:TagClicklistener
+    lateinit var tagClickListener:OnTagClickListener
     
     override fun convert(helper: BaseViewHolder?, item: SystemResponse?) {
         item?.let {
@@ -32,18 +30,18 @@ class SystemAdapter(data: MutableList<SystemResponse>?) : BaseQuickAdapter<Syste
                     }
                 }
                 setOnTagClickListener { view, position, parent ->
-                    tagClicklistener?.onClick(helper.adapterPosition,position)
+                    tagClickListener?.onClick(helper.adapterPosition,position)
                     false
                 }
             }
         }
     }
 
-    fun setTagClickListener(tagClicklistener:TagClicklistener) {
-        this.tagClicklistener = tagClicklistener
+    fun setOnTagClickListener(tagClickListener:OnTagClickListener) {
+        this.tagClickListener = tagClickListener
     }
     
-     interface TagClicklistener{
+     interface OnTagClickListener{
          fun onClick(position:Int,childPosition:Int)
      }
 

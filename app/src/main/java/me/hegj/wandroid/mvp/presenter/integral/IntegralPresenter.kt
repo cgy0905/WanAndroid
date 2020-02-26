@@ -1,22 +1,23 @@
 package me.hegj.wandroid.mvp.presenter.integral
 
 import android.app.Application
-
-import com.jess.arms.integration.AppManager
 import com.jess.arms.di.scope.ActivityScope
-import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.integration.AppManager
+import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.RxLifecycleUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.hegj.wandroid.app.utils.HttpUtils
-import me.jessyan.rxerrorhandler.core.RxErrorHandler
-import javax.inject.Inject
-
 import me.hegj.wandroid.mvp.contract.integral.IntegralContract
-import me.hegj.wandroid.mvp.model.entity.*
+import me.hegj.wandroid.mvp.model.entity.ApiPagerResponse
+import me.hegj.wandroid.mvp.model.entity.ApiResponse
+import me.hegj.wandroid.mvp.model.entity.IntegralHistoryResponse
+import me.hegj.wandroid.mvp.model.entity.IntegralResponse
+import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
+import javax.inject.Inject
 
 @ActivityScope
 class IntegralPresenter
@@ -46,15 +47,15 @@ constructor(model: IntegralContract.Model, rootView: IntegralContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<IntegralResponse>>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<IntegralResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestDataSucces(response.data)
+                            mRootView.requestDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }
@@ -72,15 +73,15 @@ constructor(model: IntegralContract.Model, rootView: IntegralContract.View) :
                 .subscribe(object : ErrorHandleSubscriber<ApiResponse<ApiPagerResponse<MutableList<IntegralHistoryResponse>>>>(mErrorHandler) {
                     override fun onNext(response: ApiResponse<ApiPagerResponse<MutableList<IntegralHistoryResponse>>>) {
                         if (response.isSucces()) {
-                            mRootView.requestHistoryDataSucces(response.data)
+                            mRootView.requestHistoryDataSuccess(response.data)
                         } else {
-                            mRootView.requestDataFaild(response.errorMsg)
+                            mRootView.requestDataFailed(response.errorMsg)
                         }
                     }
 
                     override fun onError(t: Throwable) {
                         super.onError(t)
-                        mRootView.requestDataFaild(HttpUtils.getErrorText(t))
+                        mRootView.requestDataFailed(HttpUtils.getErrorText(t))
                     }
                 })
     }

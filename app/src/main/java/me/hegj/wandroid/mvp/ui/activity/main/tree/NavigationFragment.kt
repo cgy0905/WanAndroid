@@ -31,7 +31,7 @@ import me.hegj.wandroid.mvp.contract.main.tree.NavigationContract
 import me.hegj.wandroid.mvp.model.entity.NavigationResponse
 import me.hegj.wandroid.mvp.presenter.main.tree.NavigationPresenter
 import me.hegj.wandroid.mvp.ui.BaseFragment
-import me.hegj.wandroid.mvp.ui.activity.web.WebviewActivity
+import me.hegj.wandroid.mvp.ui.activity.web.WebViewActivity
 import me.hegj.wandroid.mvp.ui.adapter.NavigationAdapter
 import net.lucode.hackware.magicindicator.buildins.UIUtil
 import org.greenrobot.eventbus.Subscribe
@@ -121,10 +121,10 @@ class NavigationFragment : BaseFragment<NavigationPresenter>(), NavigationContra
                 closeLoadAnimation()
             }
             //设置点击tag的回调
-            setTagClickListener(object : NavigationAdapter.TagClicklistener {
+            setOnTagClickListener(object : NavigationAdapter.OnTagClickListener {
                 override fun onClick(position: Int, childPosition: Int) {
                     // position = 点击了第几个item, childPosition 点击的第几个tag
-                    launchActivity(Intent(_mActivity, WebviewActivity::class.java).apply {
+                    launchActivity(Intent(_mActivity, WebViewActivity::class.java).apply {
                         putExtras(Bundle().also {
                             it.putSerializable("data", adapter.data[position].articles[childPosition])
                             it.putString("tag", this@NavigationFragment::class.java.simpleName)
@@ -147,7 +147,7 @@ class NavigationFragment : BaseFragment<NavigationPresenter>(), NavigationContra
     /**
      * 获取导航数据回调
      */
-    override fun getNavigationDataSucc(data: MutableList<NavigationResponse>) {
+    override fun getNavigationDataSuccess(data: MutableList<NavigationResponse>) {
         floatbtn.visibility = View.INVISIBLE
         if (data.size == 0) {
             //集合大小为0 说明肯定是第一次请求数据并且请求失败了，因为只要请求成功过一次就会有缓存数据
@@ -170,9 +170,9 @@ class NavigationFragment : BaseFragment<NavigationPresenter>(), NavigationContra
         if (event.login) {
             event.collectIds.forEach {
                 for (item in adapter.data) {
-                    for (actri in item.articles) {
-                        if (it.toInt() == actri.id) {
-                            actri.collect = true
+                    for (article in item.articles) {
+                        if (it.toInt() == article.id) {
+                            article.collect = true
                         }
                     }
                 }
@@ -180,8 +180,8 @@ class NavigationFragment : BaseFragment<NavigationPresenter>(), NavigationContra
         } else {
             //退出了，把所有的收藏全部变为未收藏
             for (item in adapter.data) {
-                for (actri in item.articles) {
-                    actri.collect = false
+                for (article in item.articles) {
+                    article.collect = false
                 }
             }
         }
